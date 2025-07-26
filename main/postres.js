@@ -21,9 +21,11 @@ mostrar1.addEventListener('click', function()
             {
             ingrediente1.classList.remove('ingredientes');
             mostrar1.textContent = 'Ocultar';
+            window.location.hash = ('ingredientes1');
         } else {
             ingrediente1.classList.add('ingredientes');
             mostrar1.textContent = 'Mostrar';
+            window.history.back();
         }
     });
     const mostrar2 = document.getElementById('mostrar2');
@@ -35,9 +37,11 @@ mostrar2.addEventListener('click', function()
             {
             ingrediente2.classList.remove('ingredientes');
             mostrar2.textContent = 'Ocultar';
+            window.location.hash = ('ingrediente2');
         } else {
             ingrediente2.classList.add('ingredientes');
             mostrar2.textContent = 'Mostrar';
+            window.history.back();
         }
     });
     
@@ -50,9 +54,11 @@ mostrar3.addEventListener('click', function()
             {
             ingrediente3.classList.remove('ingredientes');
             mostrar3.textContent = 'Ocultar';
+            window.location.hash =('ingrediente3');
         } else {
             ingrediente3.classList.add('ingredientes');
             mostrar3.textContent = 'Mostrar';
+            window.history.back();
         }
     });
 const mostrar4 = document.getElementById('mostrar4');
@@ -64,9 +70,11 @@ mostrar4.addEventListener('click', function()
     {
         ingrediente4.classList.remove('ingredientes');
         mostrar4.textContent = 'Ocultar';
+        window.location.hash = ('ingrediente4');
     } else {
         ingrediente4.classList.add('ingredientes');
         mostrar4.textContent = 'Mostrar';
+        window.history.back();
     }
 });
 const mostrar5 = document.getElementById('mostrar5');
@@ -78,9 +86,11 @@ mostrar5.addEventListener('click', function()
             {
             ingrediente5.classList.remove('ingredientes');
             mostrar5.textContent = 'Ocultar';
+            window.location.hash = ('ingrediente5');
         } else {
             ingrediente5.classList.add('ingredientes');
             mostrar5.textContent = 'Mostrar';
+            window.history.back();
         }
     });
 const mostrar6 = document.getElementById('mostrar6');
@@ -92,8 +102,10 @@ mostrar6.addEventListener('click', function()
     {
         ingrediente6.classList.remove('ingredientes');
         mostrar6.textContent = 'Ocultar';
+        window.location.hash = ('ingrediente6');
     } else {
         ingrediente6.classList.add('ingredientes');
         mostrar6.textContent = 'Mostrar';
+        window.history.back();
     }
 });

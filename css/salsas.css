@@ -293,3 +293,28 @@ body{
 button {
   -webkit-tap-highlight-color: transparent;
 }
+.ingredientes{
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transform: translateY(-1.25rem);
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
+}
+#ingrediente1:not(.ingredientes),
+#ingrediente2:not(.ingredientes),
+#ingrediente3:not(.ingredientes),
+#ingrediente5:not(.ingredientes),
+#ingrediente6:not(.ingredientes),
+#ingrediente7:not(.ingredientes),
+#ingrediente8:not(.ingredientes),
+#ingrediente9:not(.ingredientes),
+#ingrediente10:not(.ingredientes),
+#ingrediente:not(.ingredientes),
+#ingrediente11:not(.ingredientes) {
+    
+    max-height: 200rem; /* Ajusta según la altura máxima de tu contenido en rem */
+    padding-top: 1.5rem; /* ¡CORREGIDO: 1.5ren a 1.5rem! */
+    padding-bottom: 1.5rem; /* Agrega padding-bottom también para simetría */
+    transform: translateY(0); /* Vuelve a la posición original */
+    transition: max-height 1.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
+}
