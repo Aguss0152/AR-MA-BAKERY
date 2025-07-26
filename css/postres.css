@@ -1,0 +1,401 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    height: 90vh;
+}
+.navegador{
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: white;
+    top: 0;
+    z-index: 1000;
+    position: sticky;
+}
+.navegador .logo{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.navegador a{
+    text-decoration: none;
+    color: white;
+}
+.navegador2 a:hover{
+    color: #616161;
+}
+.navegador2 {
+    transition: color 0.3s;
+    -webtik-tap-highlight-color: transparent;
+    list-style: none;
+    display: flex;
+    gap: 0.8rem;
+}
+.postres {
+    transition: 0.3s, transform 0.3s;
+}
+.salsas{
+    transition: 0.3s, transform 0.3s;
+}
+.postres:hover{
+    transform: translate(-3px);
+}
+.salsas:hover{
+    transform: translate(-3px);   
+}
+.menos{
+    padding: 0.5rem 0.7rem;
+    display: none;
+}
+.presentacion {
+    background-image: url(../css/fotos/pedazo-pastel-capa-dulce-frambuesas-crema-blanca-fresas_73989-83037.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    border-bottom: 2px solid white;
+    overflow: hidden;
+}
+.presentacion h4 {
+    text-align: justify;
+    text-shadow: 2px 2px 2px black;
+    gap: 2rem;
+    margin: 5%;
+    width: 60%;
+}
+.texto {
+    display: flex;
+    justify-content: flex-end;
+}
+.tarjetas_contenedor {
+    background-color: black;
+    color: white;
+}
+.tarjetas_contenedor h2 {
+    text-align: center;
+    padding: 3rem;
+}
+.tarjeta1 {
+    background-image: url(../css/fotos/2664_receta-1200x675.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+    
+}
+.tarjeta1 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta1 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+.parrafo {
+    display: flex;
+    justify-content: flex-end;
+}
+.mirar{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    border: 2px solid white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    background: black;
+    transition: 0.5s;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    -webtik-tap-highlight-color: transparent;
+}
+.btn:hover{
+    transform: translate(-3px);
+    background: #0001;
+}
+.tarjeta2 {
+    background-image: url(../css/fotos/budin_vainilla.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta2 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta2 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+
+.tarjeta3 {
+    background-image: url(../css/fotos/maxresdefault1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta3 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta3 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+
+.tarjeta4 {
+    background-image: url(../css/fotos/flan-de-queso-caramel-topped-cream-cheese-custard.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta4 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta4 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+
+.tarjeta5 {
+    background-image: url(../css/fotos/roscas.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta5 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta5 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+
+.tarjeta6 {
+    background-image: url(../css/fotos/92cd34cb06980d6b4096cb73e5cab8fa_arroz-con-leche.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta6 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta6 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+
+.tarjeta7 {
+    background-image: url(../css/fotos/receta-ganache-chocolate-relleno-tecnica-popular-reposteria.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta7 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta7 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+
+@media (max-width: 768px) {
+    .navegador2{
+        display: none;
+        flex-direction: column;
+        transition: 0.5s;
+    }
+    .navegador2.active {
+        display: flex;
+        position: absolute;
+        background-color: #000;
+        top: 100%;
+        right: 0%;
+        left: 0%;
+        padding: 1rem;
+    }
+    .menos{
+        display: flex;
+    }
+}
+.mirar{
+    display: flex;
+    justify-content: center;
+}
+.mostrar{
+    cursor: pointer;
+    color:white;
+    font-weight: bold;
+    border: 2px solid white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    background: black;
+    transition: 0.5s;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    -webtik-tap-highlight-color: transparent;
+}
+.mostrar:hover{
+    transform: translate(-3px);
+    background: #0001;
+}
+.ingredientes{
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+#ingredientes:not(.ingredientes){
+    opacity: 1;
+    max-height: 500px;
+    padding: 20px;
+    transform: translateY(0);
+}
+.tarjeta2 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta2 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+.tarjeta1 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta1 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+.tarjeta3 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta3 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+.tarjeta4 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta4 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+.tarjeta5 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta5 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+.tarjeta6 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta6 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+.tarjeta7 h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta7 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    height: 90vh;
+}
+.navegador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: white;
+    position: sticky;
+    background-color: black;
+    top: 0;
+    z-index: 1000;
+}
+.navegador .logo{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+.nav_links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+.nav_links a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+    -webtik-tap-highlight-color: transparent;
+}
+.nav_links a:hover {
+    color: #818181;
+}
+.hamburguesa {
+    display: none;
+    flex-direction: column;
+    grid-gap: 0.3rem;
+    cursor: pointer;
+}
+.hamburguesa span{
+    width: 25px;
+    height: 3px;
+    color: white;
+}
+.hero_seccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    background-image: url(../css/fotos/photo-1506368249639-73a05d6f6488.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(#0001, #000);
+    text-align: center;
+    padding: 2rem;
+}
+.hero_seccion h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+.hero_seccion p{
+    margin: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.btn_primary {
+    background-color: black;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    -webtik-tap-highlight-color: transparent;
+}
+.btn_primary:hover {
+    background: #0001;
+    border: 2px solid white;
+    transform: translate(-3px);
+}
+.tarjetas_contenedor {
+    background-color: black; 
+    border-top: 2px solid white;
+}
+.tarjetas_contenedor h2{
+    text-align: center;
+    margin: 2rem;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+.tarjeta1 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../css/fotos/plato.jpg);
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    overflow: hidden;
+    margin: 1rem 0;
+}
+.tarjeta1 h3{
+    color: white;
+    gap: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 1rem;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjeta1 p{
+    color: white;
+    text-align: justify;
+    width: 60%;
+    margin: 1rem;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjeta1 a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+    -webtik-tap-highlight-color: transparent;
+    background-color: white;
+    color: black;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 2rem;
+}
+.tarjeta2 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../css/fotos/pedazo-pastel-capa-dulce-frambuesas-crema-blanca-fresas_73989-83037.jpg);
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    overflow: hidden;
+    margin: 2rem 0;
+}
+.tarjeta2 h3{
+    color: white;
+    gap: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 1rem;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjeta2 p{
+    color: white;
+    text-align: justify;
+    width: 60%;
+    margin: 1rem;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjeta2 a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+    -webtik-tap-highlight-color: transparent;
+    background-color: white;
+    color: black;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 2rem;
+}
+.tarjeta3 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../css/fotos/deliciosa-salsa-napoletana-roja-cebolla-sal-especias-hierbas-recipiente-blanco-sobre-fondo-hormigon-oscuro_73989-52273.jpg);
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    overflow: hidden;
+}
+.tarjeta3 h3{
+    color: white;
+    gap: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 1rem;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjeta3 p{
+    color: white;
+    text-align: justify;
+    width: 60%;
+    margin: 1rem;
+    text-shadow: 4px 4px 5px black;
+}
+.tarjeta3 a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+    -webtik-tap-highlight-color: transparent;
+    background-color: white;
+    color: black;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 2rem;
+}
+.tarjeta1 a:hover{
+    background-color:#0001;
+    color: white;
+    border: 1px solid white;
+    transform: translate(-3px);
+}
+.tarjeta2 a:hover{
+    background-color:#0001;
+    color: white;
+    border: 1px solid white;
+    transform: translate(-3px);
+}
+.tarjeta3 a:hover{
+    background-color:#0001;
+    color: white;
+    border: 1px solid white;
+    transform: translate(-3px);
+}
+.parrafo {
+    display: flex;
+    justify-content: flex-end;
+}
+.mirar {
+    display: flex;
+    justify-content: center;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color:#000;
+}
+footer p {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .nav_links{
+        display: none;
+        flex-direction: column;
+    }
+    .nav_links.active {
+        display: flex;
+        position: absolute;
+        background-color: #000;
+        top: 100%;
+        right: 0%;
+        left: 0%;
+        padding: 1rem;
+    }
+    .hamburguesa{
+        display: flex;
+    }
+}
+a {
+    -webkit-tap-highlight-color: transparent;
+}
