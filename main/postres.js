@@ -109,3 +109,19 @@ mostrar6.addEventListener('click', function()
         window.history.back();
     }
 });
+const mostrar8 = document.getElementById('mostrar8');
+const ingrediente8 = document.getElementById('ingrediente8');
+
+mostrar8.addEventListener('click', function()
+    {
+        if (ingrediente8.classList.contains('ingredientes'))
+            {
+            ingrediente8.classList.remove('ingredientes');
+            mostrar8.textContent = 'Ocultar';
+            window.location.hash = ('ingredientes1');
+        } else {
+            ingrediente8.classList.add('ingredientes');
+            mostrar8.textContent = 'Mostrar';
+            window.history.back();
+        }
+    });

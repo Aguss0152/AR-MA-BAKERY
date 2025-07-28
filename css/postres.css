@@ -194,7 +194,7 @@ body{
 }
 
 .tarjeta5 {
-    background-image: url(../css/fotos/roscas.jpg);
+    background-image: url(../css/fotos/1698756642313.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -298,20 +298,6 @@ body{
     transform: translate(-3px);
     background: #0001;
 }
-.ingredientes{
-    opacity: 0;
-    max-height: 0;
-    padding: 0;
-    overflow: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, max-height 0.5s ease-out, padding 0.5s ease-out;
-}
-#ingredientes:not(.ingredientes){
-    opacity: 1;
-    max-height: 500px;
-    padding: 20px;
-    transform: translateY(0);
-}
 .tarjeta2 h2 {
     text-align: center;
     text-shadow: 2px 2px 2px black;
@@ -410,6 +396,7 @@ button {
 #ingrediente2:not(.ingredientes),
 #ingrediente3:not(.ingredientes),
 #ingrediente5:not(.ingredientes),
+#ingrediente4:not(.ingredientes),
 #ingrediente6:not(.ingredientes),
 #ingrediente7:not(.ingredientes),
 #ingrediente8:not(.ingredientes),
@@ -418,9 +405,48 @@ button {
 #ingrediente:not(.ingredientes),
 #ingrediente11:not(.ingredientes) {
     
-    max-height: 200rem; /* Ajusta según la altura máxima de tu contenido en rem */
+    max-height: 700rem; /* Ajusta según la altura máxima de tu contenido en rem */
     padding-top: 1.5rem; /* ¡CORREGIDO: 1.5ren a 1.5rem! */
     padding-bottom: 1.5rem; /* Agrega padding-bottom también para simetría */
     transform: translateY(0); /* Vuelve a la posición original */
     transition: max-height 1.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
+}
+.tarjeta5 h4 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta8 {
+    background-image: url(../css/fotos/D_NQ_NP_735854-MLA49730805313_042022-O.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+.tarjeta8 h2{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta8 h3{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin: 1rem;
+    font-size: 2rem;
+}
+.tarjeta8 p{
+   text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 1.3rem;
+}
+.tarjeta8 li{
+    text-align: justify;
+   text-shadow: 2px 2px 1px black;
+   font-size: 1.2rem;
+    margin: 0.5rem;
 }
