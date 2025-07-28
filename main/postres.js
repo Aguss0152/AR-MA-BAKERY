@@ -118,7 +118,7 @@ mostrar8.addEventListener('click', function()
             {
             ingrediente8.classList.remove('ingredientes');
             mostrar8.textContent = 'Ocultar';
-            window.location.hash = ('ingredientes1');
+            window.location.hash = ('ingredientes8');
         } else {
             ingrediente8.classList.add('ingredientes');
             mostrar8.textContent = 'Mostrar';
