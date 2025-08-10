@@ -1,14 +1,17 @@
-*{
+/* postres.css */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
     height: 90vh;
+    background-color: #000;
 }
-.navegador{
+.navegador {
     display: flex;
     background-color: black;
     justify-content: space-between;
@@ -19,20 +22,20 @@ body{
     z-index: 1000;
     position: sticky;
 }
-.navegador .logo{
+.navegador .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
-.navegador a{
+.navegador a {
     text-decoration: none;
     color: white;
 }
-.navegador2 a:hover{
+.navegador2 a:hover {
     color: #616161;
 }
 .navegador2 {
     transition: color 0.3s;
-    -webtik-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
     list-style: none;
     display: flex;
     gap: 0.8rem;
@@ -40,16 +43,10 @@ body{
 .postres {
     transition: 0.3s, transform 0.3s;
 }
-.salsas{
-    transition: 0.3s, transform 0.3s;
-}
 .postres:hover{
     transform: translate(-3px);
 }
-.salsas:hover{
-    transform: translate(-3px);   
-}
-.menos{
+.menos {
     padding: 0.5rem 0.7rem;
     display: none;
 }
@@ -77,190 +74,80 @@ body{
     background-color: black;
     color: white;
 }
-.tarjetas_contenedor h2 {
+.tarjetas_contenedor h1{
     text-align: center;
     padding: 3rem;
+    font-size: 3rem;
 }
-.tarjeta1 {
-    background-image: url(../css/fotos/2664_receta-1200x675.jpg);
+.tarjetas_contenedor h2 {
+    text-align: center;
+    border-bottom: 1px solid white;
+    padding: 1rem;
+    border-top: 1px solid white;
+    margin-bottom: 1rem;
+}
+.tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6 {
+    padding: 2rem;
+    margin-bottom: 1rem;
+    border-image: fill 0 linear-gradient(to left, #000, #0001);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-    
 }
-.tarjeta1 h3{
+.tarjeta1 { background-image: url(../css/fotos/2664_receta-1200x675.jpg); }
+.tarjeta2 { background-image: url(../css/fotos/budin_vainilla.jpg); }
+.tarjeta3 { background-image: url(../css/fotos/budin_de_banana_con_aceite_74758_paso_6_orig.jpg); }
+.tarjeta4 { background-image: url(../css/fotos/budindechocolate-2.jpg); }
+.tarjeta5 { background-image: url(../css/fotos/imagepng.webp); } /* El usuario tiene una imagen llamada 'imagepng.webp' en su código, pero la etiqueta se repite. Usé esa.*/
+.tarjeta6 { background-image: url(../css/fotos/carrot-cakejpg.webp); }
+
+.tarjeta1 h3, .tarjeta2 h3, .tarjeta3 h3, .tarjeta4 h3, .tarjeta5 h3, .tarjeta6 h3 {
     text-align: center;
     text-shadow: 2px 2px 2px black;
     margin: 1rem;
     font-size: 2rem;
 }
-.tarjeta1 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
+.tarjeta1 p, .tarjeta2 p, .tarjeta3 p, .tarjeta4 p, .tarjeta5 p, .tarjeta6 p {
+    text-align: justify;
+    text-shadow: 2px 2px 1px black;
+    font-size: 1.2rem;
     margin: 1.3rem;
 }
+
 .parrafo {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem;
 }
-.mirar{
+.mirar {
     display: flex;
     justify-content: center;
 }
-.btn{
+.mostrar, .btn {
     text-decoration: none;
-    color:white;
+    color: white;
     font-weight: bold;
     border: 2px solid white;
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
     background: black;
     transition: 0.5s;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    -webtik-tap-highlight-color: transparent;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
 }
-.btn:hover{
+.mostrar:hover, .btn:hover {
     transform: translate(-3px);
     background: #0001;
 }
-.tarjeta2 {
-    background-image: url(../css/fotos/budin_vainilla.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta2 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta2 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
-}
-
-.tarjeta3 {
-    background-image: url(../css/fotos/maxresdefault1.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta3 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta3 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
-}
-
-.tarjeta4 {
-    background-image: url(../css/fotos/flan-de-queso-caramel-topped-cream-cheese-custard.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta4 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta4 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
-}
-
-.tarjeta5 {
-    background-image: url(../css/fotos/1698756642313.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta5 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta5 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
-}
-
-.tarjeta6 {
-    background-image: url(../css/fotos/92cd34cb06980d6b4096cb73e5cab8fa_arroz-con-leche.jpeg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta6 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta6 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
-}
-
-.tarjeta7 {
-    background-image: url(../css/fotos/receta-ganache-chocolate-relleno-tecnica-popular-reposteria.webp);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta7 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta7 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
 @media (max-width: 768px) {
-    .navegador2{
+    .navegador2 {
         display: none;
         flex-direction: column;
         transition: 0.5s;
@@ -274,179 +161,119 @@ body{
         left: 0%;
         padding: 1rem;
     }
-    .menos{
+    .menos {
         display: flex;
     }
 }
-.mirar{
+
+/* Estilos para el carrito */
+.carrito-fijo {
+    position: fixed;
+    bottom: -100rem;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: bottom 0.3s ease-in-out;
+    z-index: 1000;
+}
+.carrito-fijo.visible {
+    bottom: 0;
+}
+.carrito-fijo.minimizado {
+    padding: 1rem;
+    height: auto;
+    bottom: 0;
+}
+.carrito-fijo.minimizado .carrito-contenido #lista-productos,
+.carrito-fijo.minimizado .carrito-contenido p:not(.carrito-header h3),
+.carrito-fijo.minimizado .carrito-contenido #mensaje-promo,
+.carrito-fijo.minimizado .carrito-contenido #btn-whatsapp {
+    display: none;
+}
+.carrito-header {
+    display: flex; /* Corrección para que sea visible */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+#btn-minimizar {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+}
+#btn-minimizar:hover {
+    background-color: white;
+    color: black;
+}
+#lista-productos {
+    text-align: left;
+    margin-bottom: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #555;
+}
+.item-carrito:last-child {
+    border-bottom: none;
+}
+.btn-quitar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+.btn-quitar:hover {
+    background-color: #c82333;
+}
+#btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1rem;
+}
+#btn-whatsapp:hover {
+    background-color: #128c7e;
+}
+.mensaje-oculto {
+    display: none;
+}
+#mensaje-promo {
+    color: #25d366;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+footer{
     display: flex;
     justify-content: center;
+    padding: 1rem;
+    background-color:#000;
+    border-top: 1px solid white;
 }
-.mostrar{
-    cursor: pointer;
-    color:white;
-    font-weight: bold;
-    border: 2px solid white;
-    padding: 0.8rem 1.8rem;
-    border-radius: 50px;
-    background: black;
-    transition: 0.5s;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    -webtik-tap-highlight-color: transparent;
-}
-.mostrar:hover{
-    transform: translate(-3px);
-    background: #0001;
-}
-.tarjeta2 h2 {
+footer p {
+    color: white;
+    font-size: 1rem;
     text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta2 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.tarjeta1 h2 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta1 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.tarjeta3 h2 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta3 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.tarjeta4 h2 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta4 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.tarjeta5 h2 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta5 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.tarjeta6 h2 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta6 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-.tarjeta7 h2 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta7 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
-}
-button {
-  -webkit-tap-highlight-color: transparent;
-}
-.ingredientes{
-    max-height: 0;
-    padding: 0;
-    overflow: hidden;
-    transform: translateY(-1.25rem);
-    transition: max-height 0.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
-}
-#ingrediente1:not(.ingredientes),
-#ingrediente2:not(.ingredientes),
-#ingrediente3:not(.ingredientes),
-#ingrediente5:not(.ingredientes),
-#ingrediente4:not(.ingredientes),
-#ingrediente6:not(.ingredientes),
-#ingrediente7:not(.ingredientes),
-#ingrediente8:not(.ingredientes),
-#ingrediente9:not(.ingredientes),
-#ingrediente10:not(.ingredientes),
-#ingrediente:not(.ingredientes),
-#ingrediente11:not(.ingredientes) {
-    
-    max-height: 700rem; /* Ajusta según la altura máxima de tu contenido en rem */
-    padding-top: 1.5rem; /* ¡CORREGIDO: 1.5ren a 1.5rem! */
-    padding-bottom: 1.5rem; /* Agrega padding-bottom también para simetría */
-    transform: translateY(0); /* Vuelve a la posición original */
-    transition: max-height 1.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
-}
-.tarjeta5 h4 {
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta8 {
-    background-image: url(../css/fotos/D_NQ_NP_735854-MLA49730805313_042022-O.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    padding: 2rem;
-    margin-bottom: 1rem;
-}
-.tarjeta8 h2{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta8 h3{
-    text-align: center;
-    text-shadow: 2px 2px 2px black;
-    margin: 1rem;
-    font-size: 2rem;
-}
-.tarjeta8 p{
-   text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 1.3rem;
-}
-.tarjeta8 li{
-    text-align: justify;
-   text-shadow: 2px 2px 1px black;
-   font-size: 1.2rem;
-    margin: 0.5rem;
 }
