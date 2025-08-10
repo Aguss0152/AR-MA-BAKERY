@@ -23,29 +23,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const pedido = {};
     let productosEnCarrito = 0;
 
-    const recalcularTotal = () => {
-        let esPromoAplicable = productosEnCarrito === 2;
-        let contieneChocolate = pedido['Budín de Chocolate'] > 0;
-        let contieneZanahoria = pedido['Budín de Zanahoria'] > 0;
+const recalcularTotal = () => {
+    let esPromoAplicable = productosEnCarrito === 2;
+    // CORRECCIÓN: Ahora verificamos si contiene el budín de Chocolate O el de Zanahoria
+    let contieneProductosExcluidos = pedido['Budín de Chocolate'] > 0 || pedido['Budín de Zanahoria'] > 0;
+    
+    let total = 0;
 
-        let total = 0;
-
-        if (esPromoAplicable && !contieneChocolate && !contieneZanahoria) {
-            total = 12500;
+    // La promoción solo se aplicará si hay 2 productos Y NINGUNO de los productos excluidos está en el pedido
+    if (esPromoAplicable && !contieneProductosExcluidos) {
+        total = 12500;
+        if (mensajePromo) {
             mensajePromo.style.display = 'block';
-        } else {
-            for (const nombre in pedido) {
-                // CORRECCIÓN 1: Aseguramos que el elemento exista antes de intentar obtener su precio
-                const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-                if (tarjeta) {
-                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                    total += pedido[nombre] * precio;
-                }
+        }
+    } else {
+        for (const nombre in pedido) {
+            const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+            if (tarjeta) {
+                const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                total += pedido[nombre] * precio;
             }
+        }
+        if (mensajePromo) {
             mensajePromo.style.display = 'none';
         }
-        return total;
-    };
+    }
+    return total;
+};
 
     const actualizarCarrito = () => {
         const totalCalculado = recalcularTotal();
