@@ -26,10 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const recalcularTotal = () => {
         let esPromoAplicable = productosEnCarrito === 2;
         let contieneChocolate = pedido['Budín de Chocolate'] > 0;
-        
+        let contieneZanahoria = pedido['Budín de Zanahoria'] > 0;
+
         let total = 0;
 
-        if (esPromoAplicable && !contieneChocolate) {
+        if (esPromoAplicable && !contieneChocolate && !contieneZanahoria) {
             total = 12500;
             mensajePromo.style.display = 'block';
         } else {
