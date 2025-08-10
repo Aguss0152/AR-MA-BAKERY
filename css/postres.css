@@ -190,9 +190,7 @@ button {
     bottom: 0;
 }
 .carrito-fijo.minimizado .carrito-contenido #lista-productos,
-.carrito-fijo.minimizado .carrito-contenido p:not(.carrito-header h3),
-.carrito-fijo.minimizado .carrito-contenido #mensaje-promo,
-.carrito-fijo.minimizado .carrito-contenido #btn-whatsapp {
+.carrito-fijo.minimizado .carrito-contenido #mensaje-promo {
     display: none;
 }
 .carrito-header {
@@ -275,5 +273,30 @@ footer{
 footer p {
     color: white;
     font-size: 1rem;
+    text-align: center;
+}
+.titulo-sticky {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    padding: 1rem;
+    border-bottom: 1px solid white;
+    z-index: 1000;
+    margin: 0;
+}
+.carrito-contenido {
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.lista-scroll {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 1rem;
+}
+.carrito-footer {
+    border-top: 1px solid white;
+    padding: 1rem;
     text-align: center;
 }

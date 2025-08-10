@@ -25,12 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const recalcularTotal = () => {
     let esPromoAplicable = productosEnCarrito === 2;
-    // CORRECCIÓN: Ahora verificamos si contiene el budín de Chocolate O el de Zanahoria
-    let contieneProductosExcluidos = pedido['Budín de Chocolate'] > 0 || pedido['Budín de Zanahoria'] > 0;
+    let contieneProductosExcluidos = false;
     
+    // Iteramos sobre los productos del pedido para buscar exclusiones
+    for (const nombre in pedido) {
+        const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+        if (tarjeta) {
+            // Buscamos productos excluidos por nombre Y por su atributo "sin gluten"
+            if (nombre === 'Budín de Chocolate' || nombre === 'Budín de Zanahoria' || tarjeta.hasAttribute('data-sin-gluten')) {
+                contieneProductosExcluidos = true;
+                break; // No necesitamos seguir buscando, la condición ya se cumple
+            }
+        }
+    }
+
     let total = 0;
 
-    // La promoción solo se aplicará si hay 2 productos Y NINGUNO de los productos excluidos está en el pedido
     if (esPromoAplicable && !contieneProductosExcluidos) {
         total = 12500;
         if (mensajePromo) {

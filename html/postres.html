@@ -25,7 +25,7 @@
         <main>
     <section id="cocina" class="tarjetas_contenedor">
       <h1>Menú</h1>
-        <h2>Budínes</h2>
+        <h2 class="titulo-sticky">Budínes</h2>
         <div class="tarjeta1" id="tarjeta1" data-nombre="Budín de Limón" data-precio="8000">
     <h3>Budín de Limón</h3>
     <div class="parrafo">
@@ -74,6 +74,56 @@
     </div>
     <div class="mirar"><button class="mostrar" id="mostrar6">Agregar</button></div>
 </div>
+
+    <h2 class="titulo-sticky">Budínes (Sin gluten)</h2>
+    <div class="tarjeta1" id="tarjetasingluten1" data-nombre="Budín de Limón gluten free" data-precio="9500" data-sin-gluten="true">
+    <h3>Budín de Limón</h3>
+    <div class="parrafo">
+        <p>Contiene: Limón.</p>
+        <p>Precio: $9.500</p>
+    </div>
+    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
+</div>
+         <div class="tarjeta2" id="tarjetasingluten2" data-nombre="Budín de Vainilla gluten free" data-precio="9500" data-sin-gluten="true">
+            <h3>Budín de Vainilla</h3>
+            <div class="parrafo">
+                <p>Contiene: Vainilla.</p>
+                <p>Precio: $9.500</p>
+            </div>
+          <div class="mirar"><button class="mostrar" id="mostrar2">Agregar</button></div>
+         </div>
+         <div class="tarjeta3" id="tarjetasingluten3" data-nombre="Budín de Banana gluten free" data-precio="9500" data-sin-gluten="true">
+            <h3>Budín de Banana</h3>
+            <div class="parrafo">
+                <p>Contiene: Canela, Banana, Vainilla.</p>
+                <p>Precio: $9.500</p>
+            </div>
+          <div class="mirar"><button class="mostrar" id="mostrar3">Agregar</button></div>
+         </div>
+         <div class="tarjeta4" id="tarjetasingluten4" data-nombre="Budín de Chocolate gluten free" data-precio="10500" data-sin-gluten="true">
+            <h3>Budín de Chocolate</h3>
+            <div class="parrafo">
+                <p>Contiene: Chocolate, Vainilla.</p>
+                <p>Precio: $10.500</p>
+            </div>
+          <div class="mirar"><button class="mostrar" id="mostrar4">Agregar</button></div>
+         </div>
+         <div class="tarjeta5" id="tarjetasingluten5" data-nombre="Budín de Naranja y Mandarina gluten free" data-precio="9500" data-sin-gluten="true">
+            <h3>Budín de Naranja y Mandarina</h3>
+            <div class="parrafo">
+                <p>Contiene: Naranja, Mandarina, Cafe.</p>
+                <p>Precio: $9.500</p>
+            </div>
+          <div class="mirar"><button class="mostrar" id="mostrar5">Agregar</button></div>
+         </div>
+          <div class="tarjeta6" id="tarjetasingluten6" data-nombre="Budín de Zanahoria gluten free" data-precio="11500" data-sin-gluten="true">
+    <h3>Budin de Zanahoria</h3>
+    <div class="parrafo">
+        <p>Contiene: Zanahoria, Canela, Nueces Moscada, Clavos de olor en polvo.</p>
+        <p>Precio: $11.500</p>
+    </div>
+    <div class="mirar"><button class="mostrar" id="mostrar6">Agregar</button></div>
+</div>
     </section>
   </main>
         <div id="carrito" class="carrito-fijo">
@@ -82,10 +132,12 @@
                 <h3>Tu Pedido</h3>
                 <button id="btn-minimizar">_</button>
             </div>
-            <div id="lista-productos"></div>
+            <div id="lista-productos" class="lista-scroll"></div>
+            <div class="carrito-footer">
             <p>Total: $<span id="total">0</span></p>
             <p id="mensaje-promo" class="mensaje-oculto">¡Promo 2 x $12.500 aplicada!</p>
             <button id="btn-whatsapp">Encargar</button>
+            </div>
         </div>
     </div>
      <footer>
