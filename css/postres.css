@@ -169,44 +169,73 @@ button {
 /* Estilos para el carrito */
 .carrito-fijo {
     position: fixed;
-    bottom: -100rem;
+    bottom: 0rem;
     left: 0;
     width: 100%;
     background-color: black;
     color: white;
     border: 2px solid white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    transform: translateY(100%);
     transition: bottom 0.3s ease-in-out;
     z-index: 1000;
 }
 .carrito-fijo.visible {
-    bottom: 0;
+    transform: translateY(0);
 }
 .carrito-fijo.minimizado {
-    padding: 1rem;
     height: auto;
-    bottom: 0;
+    overflow: hidden;
 }
-.carrito-fijo.minimizado .carrito-contenido #lista-productos,
-.carrito-fijo.minimizado .carrito-contenido #mensaje-promo {
+.carrito-fijo.minimizado .lista-scroll {
     display: none;
+}
+.carrito-contenido {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .carrito-header {
     display: flex; /* Corrección para que sea visible */
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
 }
+.carrito-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.header-info p {
+    margin: 0;
+    font-size: 1rem;
+}
+.header-total{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.header-total p {
+    margin: 0;
+    font-size: 1rem;
+}
+
 #btn-minimizar {
     background: none;
-    border: 1px solid white;
+    border: none;
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
     border-radius: 5px;
-    padding: 0.2rem 0.5rem;
+    padding: 0 0.5rem;
+    line-height: 1
 }
 #btn-minimizar:hover {
     background-color: white;
@@ -244,9 +273,9 @@ button {
     background-color: #25d366;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1em;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     margin: 1rem;

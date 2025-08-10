@@ -131,7 +131,7 @@ const recalcularTotal = () => {
     });
 
     btnWhatsapp.addEventListener('click', () => {
-        const telefono = '5492616522585';
+        const telefono = '5492617028044';
         let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
 
         for (const nombre in pedido) {
