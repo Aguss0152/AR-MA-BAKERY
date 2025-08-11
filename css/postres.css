@@ -86,7 +86,7 @@ body {
     border-top: 1px solid white;
     margin-bottom: 1rem;
 }
-.tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6 {
+.tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11{
     padding: 2rem;
     margin-bottom: 1rem;
     border-image: fill 0 linear-gradient(to left, #000, #0001);
@@ -100,14 +100,19 @@ body {
 .tarjeta4 { background-image: url(../css/fotos/budindechocolate-2.jpg); }
 .tarjeta5 { background-image: url(../css/fotos/imagepng.webp); } /* El usuario tiene una imagen llamada 'imagepng.webp' en su código, pero la etiqueta se repite. Usé esa.*/
 .tarjeta6 { background-image: url(../css/fotos/carrot-cakejpg.webp); }
+.tarjeta7 { background-image: url(../css/fotos/OIP.webp); }
+.tarjeta8 { background-image: url(../css/fotos/chocotorta-con-chocolinas-422x300.jpg); }
+.tarjeta9 { background-image: url(../css/fotos/lemonpie.jpg); } /* Esta imagen también se repite en el código del usuario, pero con un nombre diferente. */
+.tarjeta10 { background-image: url(../css/fotos/OIP\ \(1\).webp); }
+.tarjeta11 { background-image: url(../css/fotos/avena.jpg); }
 
-.tarjeta1 h3, .tarjeta2 h3, .tarjeta3 h3, .tarjeta4 h3, .tarjeta5 h3, .tarjeta6 h3 {
+.tarjeta1 h3, .tarjeta2 h3, .tarjeta3 h3, .tarjeta4 h3, .tarjeta5 h3, .tarjeta6 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3 {
     text-align: center;
     text-shadow: 2px 2px 2px black;
     margin: 1rem;
     font-size: 2rem;
 }
-.tarjeta1 p, .tarjeta2 p, .tarjeta3 p, .tarjeta4 p, .tarjeta5 p, .tarjeta6 p {
+.tarjeta1 p, .tarjeta2 p, .tarjeta3 p, .tarjeta4 p, .tarjeta5 p, .tarjeta6 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p{
     text-align: justify;
     text-shadow: 2px 2px 1px black;
     font-size: 1.2rem;
@@ -328,4 +333,10 @@ footer p {
     border-top: 1px solid white;
     padding: 1rem;
     text-align: center;
+}
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
 }
