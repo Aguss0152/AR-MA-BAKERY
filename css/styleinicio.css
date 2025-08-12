@@ -112,7 +112,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(../css/fotos/plato.jpg);
+    background-image: url(../css/fotos/Homemade-Vegan-Mexican-Beef-Tacos-with-Herbs.jpg);
     border-image: fill 0 linear-gradient(to left, #000, #0001);
     overflow: hidden;
     margin: 1rem 0;
@@ -127,10 +127,11 @@ body {
 }
 .tarjeta1 p{
     color: white;
-    text-align: justify;
-    width: 60%;
+    text-align: center;
+    width: 100%;
     margin: 1rem;
     text-shadow: 4px 4px 5px black;
+    font-size: 1.2rem;
 }
 .tarjeta1 a{
     text-decoration: none;
@@ -170,6 +171,7 @@ body {
     width: 100%;
     margin: 1rem;
     text-shadow: 4px 4px 5px black;
+    font-size: 1.2rem;
 }
 .tarjeta2 a{
     text-decoration: none;
