@@ -16,7 +16,7 @@ body {
     color: white;
     position: sticky;
     background-color: black;
-    top: 1.5rem;
+    top: 0rem;
     z-index: 900;
 }
 .navegador .logo{
