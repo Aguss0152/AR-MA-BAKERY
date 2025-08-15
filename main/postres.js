@@ -34,7 +34,7 @@ const recalcularTotal = () => {
             // 1. Si el nombre no comienza con "Budín"
             // 2. Si el nombre es "Budín de Chocolate"
             // 3. Si el nombre es "Budín de Zanahoria"
-            if (!nombre.startsWith('Budín') || nombre === 'Budín de Chocolate' || nombre === 'Budín de Zanahoria') {
+            if (!nombre.startsWith('promo') || nombre === '' || nombre === '') {
                 promoValida = false;
                 break; // Si encontramos un solo producto inválido, la promo deja de ser válida
             }
