@@ -44,7 +44,7 @@ const recalcularTotal = () => {
     let total = 0;
 
     if (promoValida) {
-        total = 14500;
+        total = 5000;
         if (mensajePromo) {
             mensajePromo.style.display = 'block';
         }
