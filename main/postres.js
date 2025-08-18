@@ -36,69 +36,63 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Función para recalcular el total (mejorada para la promo)
     const recalcularTotal = () => {
-        let productosPromoCount = 0;
-        let esPromoAplicable = false;
-        
-        // Contar la cantidad de productos de la promo
-        for (const nombre in pedido) {
-            if (nombre.startsWith('promo mini budín')) {
+    let total = 0;
+    let productosPromoCount = 0;
+    
+    // Primero, calculamos el costo total de los productos NO de la promo
+    for (const nombre in pedido) {
+        // Excluimos los productos de la promoción para el cálculo inicial
+        if (!nombre.startsWith('promo mini budín')) {
+            const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+            if (tarjeta) {
+                const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                total += pedido[nombre] * precio;
+            }
+        }
+    }
+
+    // Segundo, contamos la cantidad de productos de la promoción
+    for (const nombre in pedido) {
+        if (nombre.startsWith('promo mini budín')) {
+            // Aseguramos que el "mini budín de Zanahoria" no cuente para la promo
+            if (nombre !== 'promo mini budín de Zanahoria') {
                 productosPromoCount += pedido[nombre];
-            }
-        }
-
-        // Verificar si la promo es aplicable
-        if (productosPromoCount >= 2) {
-            esPromoAplicable = true;
-        }
-
-        let total = 0;
-
-        // Calcular el total
-        if (esPromoAplicable) {
-            const promoPairs = Math.floor(productosPromoCount / 2);
-            const productosRestantes = productosPromoCount % 2;
-            total += (promoPairs * 5000);
-
-            // Sumar el costo de los productos restantes de la promo
-            for (const nombre in pedido) {
-                if (nombre.startsWith('promo mini budín')) {
-                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                    if (productosRestantes > 0) {
-                       total += (pedido[nombre] * precio);
-                    } else {
-                         total += (0 * precio);
-                    }
-                }
-            }
-
-            // Sumar el costo de los demás productos no incluidos en la promo
-            for (const nombre in pedido) {
-                if (!nombre.startsWith('promo mini budín')) {
-                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                    total += (pedido[nombre] * precio);
-                }
-            }
-
-            if (mensajePromo) {
-                mensajePromo.style.display = 'block';
-            }
-        } else {
-            // Si la promo no aplica, calcular el total normal
-            for (const nombre in pedido) {
+            } else {
+                // Si es el de Zanahoria, lo sumamos al total sin promo
                 const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
                 if (tarjeta) {
                     const precio = parseInt(tarjeta.getAttribute('data-precio'));
                     total += pedido[nombre] * precio;
                 }
             }
-            if (mensajePromo) {
-                mensajePromo.style.display = 'none';
+        }
+    }
+    
+    // Tercero, aplicamos la lógica de la promoción SOLO a los mini budines que califican
+    if (productosPromoCount === 2) {
+        // Si hay exactamente 2, el total para estos dos es $5.000
+        total += 5000;
+        if (mensajePromo) {
+            mensajePromo.style.display = 'block';
+        }
+    } else {
+        // Si no son exactamente 2, sumamos el costo normal de cada uno de ellos
+        for (const nombre in pedido) {
+            if (nombre.startsWith('promo mini budín') && nombre !== 'promo mini budín de Zanahoria') {
+                const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                if (tarjeta) {
+                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                    total += pedido[nombre] * precio;
+                }
             }
         }
-        return total;
-    };
+        if (mensajePromo) {
+            mensajePromo.style.display = 'none';
+        }
+    }
+    
+    return total;
+};
     
     const actualizarCarrito = () => {
         const totalCalculado = recalcularTotal();
