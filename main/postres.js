@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Si no son exactamente 2, sumamos el costo normal de cada uno de ellos
         for (const nombre in pedido) {
-            if (nombre.startsWith('promo mini budín') && nombre !== 'promo mini budín de Zanahoria') {
+            if (nombre.startsWith('promo') && nombre !== 'promo mini budín de Zanahoria') {
                 const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
                 if (tarjeta) {
                     const precio = parseInt(tarjeta.getAttribute('data-precio'));
