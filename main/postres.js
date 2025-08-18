@@ -20,49 +20,86 @@ document.addEventListener('DOMContentLoaded', () => {
     const mensajePromo = document.getElementById('mensaje-promo');
     const btnMinimizar = document.getElementById('btn-minimizar');
 
+    // Elementos del nuevo modal
+    const modalOpciones = document.getElementById('modal-opciones');
+    const btnDelivery = document.getElementById('btn-delivery');
+    const btnRetiro = document.getElementById('btn-retiro');
+    const cerrarModal = document.getElementById('cerrar-modal');
+    const deliveryForm = document.getElementById('delivery-form');
+    const direccionInput = document.getElementById('direccion-input');
+    const referenciaInput = document.getElementById('referencia-input');
+    const obtenerUbicacionBtn = document.getElementById('obtener-ubicacion');
+    const enviarPedidoDeliveryBtn = document.getElementById('enviar-pedido-delivery');
+
     const pedido = {};
     let productosEnCarrito = 0;
-
-const recalcularTotal = () => {
-    let esPromoAplicable = productosEnCarrito === 2;
-    let promoValida = esPromoAplicable; // Asumimos que la promo es válida si hay 2 productos
-
-    // Si la promo es aplicable, verificamos si los productos cumplen con las reglas
-    if (promoValida) {
+    
+    // Función para recalcular el total (mejorada para la promo)
+    const recalcularTotal = () => {
+        let productosPromoCount = 0;
+        let esPromoAplicable = false;
+        
+        // Contar la cantidad de productos de la promo
         for (const nombre in pedido) {
-            // Buscamos productos que NO deberían tener la promo
-            // 1. Si el nombre no comienza con "Budín"
-            // 2. Si el nombre es "Budín de Chocolate"
-            // 3. Si el nombre es "Budín de Zanahoria"
-            if (!nombre.startsWith('promo') || nombre === '' || nombre === '') {
-                promoValida = false;
-                break; // Si encontramos un solo producto inválido, la promo deja de ser válida
+            if (nombre.startsWith('promo mini budín')) {
+                productosPromoCount += pedido[nombre];
             }
         }
-    }
 
-    let total = 0;
-
-    if (promoValida) {
-        total = 5000;
-        if (mensajePromo) {
-            mensajePromo.style.display = 'block';
+        // Verificar si la promo es aplicable
+        if (productosPromoCount >= 2) {
+            esPromoAplicable = true;
         }
-    } else {
-        for (const nombre in pedido) {
-            const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-            if (tarjeta) {
-                const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                total += pedido[nombre] * precio;
+
+        let total = 0;
+
+        // Calcular el total
+        if (esPromoAplicable) {
+            const promoPairs = Math.floor(productosPromoCount / 2);
+            const productosRestantes = productosPromoCount % 2;
+            total += (promoPairs * 5000);
+
+            // Sumar el costo de los productos restantes de la promo
+            for (const nombre in pedido) {
+                if (nombre.startsWith('promo mini budín')) {
+                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                    if (productosRestantes > 0) {
+                       total += (pedido[nombre] * precio);
+                    } else {
+                         total += (0 * precio);
+                    }
+                }
+            }
+
+            // Sumar el costo de los demás productos no incluidos en la promo
+            for (const nombre in pedido) {
+                if (!nombre.startsWith('promo mini budín')) {
+                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                    total += (pedido[nombre] * precio);
+                }
+            }
+
+            if (mensajePromo) {
+                mensajePromo.style.display = 'block';
+            }
+        } else {
+            // Si la promo no aplica, calcular el total normal
+            for (const nombre in pedido) {
+                const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                if (tarjeta) {
+                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                    total += pedido[nombre] * precio;
+                }
+            }
+            if (mensajePromo) {
+                mensajePromo.style.display = 'none';
             }
         }
-        if (mensajePromo) {
-            mensajePromo.style.display = 'none';
-        }
-    }
-    return total;
-};
-
+        return total;
+    };
+    
     const actualizarCarrito = () => {
         const totalCalculado = recalcularTotal();
         spanTotal.textContent = totalCalculado.toLocaleString('es-CL');
@@ -79,7 +116,7 @@ const recalcularTotal = () => {
         if (pedido[nombre] > 1) {
             pedido[nombre]--;
             const itemElement = listaProductos.querySelector(`[data-nombre-item="${nombre}"]`);
-            if (itemElement) { // Verificación añadida para evitar errores
+            if (itemElement) {
                 itemElement.querySelector('.cantidad-producto').textContent = pedido[nombre];
             }
         } else {
@@ -93,11 +130,10 @@ const recalcularTotal = () => {
     
     botonesAgregar.forEach(boton => {
         boton.addEventListener('click', () => {
-            // CORRECCIÓN 2: Aseguramos que la tarjeta exista antes de leer sus atributos
             const tarjeta = boton.closest('[data-nombre]');
             if (!tarjeta) {
                 console.error("No se pudo encontrar la tarjeta del producto.");
-                return; // Detiene la ejecución si no encuentra la tarjeta
+                return;
             }
             
             const nombre = tarjeta.getAttribute('data-nombre');
@@ -111,7 +147,6 @@ const recalcularTotal = () => {
                 }
             } else {
                 pedido[nombre] = 1;
-
                 const item = document.createElement('div');
                 item.classList.add('item-carrito');
                 item.setAttribute('data-nombre-item', nombre);
@@ -132,10 +167,75 @@ const recalcularTotal = () => {
         });
     });
 
-    btnWhatsapp.addEventListener('click', () => {
-        const telefono = '5492617028044';
-        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido:\n\n';
+    // --- Lógica del nuevo modal de pedido ---
 
+    btnWhatsapp.addEventListener('click', () => {
+        if (productosEnCarrito === 0) {
+            alert('El carrito está vacío. Por favor, agrega productos para continuar.');
+            return;
+        }
+        modalOpciones.classList.add('visible');
+    });
+
+    cerrarModal.addEventListener('click', () => {
+        modalOpciones.classList.remove('visible');
+        deliveryForm.style.display = 'none'; // Ocultar el formulario si se cierra
+    });
+
+    btnRetiro.addEventListener('click', () => {
+        const telefono = '5492617028044';
+        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO**:\n\n';
+        mensaje += generarMensajePedido();
+        mensaje += `\n\n_Para la ubicación del local, por favor revisa el perfil de WhatsApp._`;
+        
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+        window.open(urlWhatsapp, '_blank');
+        modalOpciones.classList.remove('visible');
+    });
+
+    btnDelivery.addEventListener('click', () => {
+        deliveryForm.style.display = 'block';
+    });
+
+    obtenerUbicacionBtn.addEventListener('click', () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    direccionInput.value = `Ubicación automática: https://www.google.com/maps?q=${lat},${lon}`;
+                    alert('Ubicación obtenida con éxito. Puedes corregirla si es necesario.');
+                },
+                (error) => {
+                    alert('No se pudo obtener la ubicación. Por favor, ingrésala manualmente.');
+                    console.error('Error de geolocalización:', error);
+                }
+            );
+        } else {
+            alert('Tu navegador no soporta la geolocalización. Por favor, ingrésala manualmente.');
+        }
+    });
+
+    enviarPedidoDeliveryBtn.addEventListener('click', () => {
+        const telefono = '5492617028044';
+        const direccion = direccionInput.value || 'Dirección no especificada';
+        const referencia = referenciaInput.value || 'Sin referencia';
+        
+        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **DELIVERY**:\n\n';
+        mensaje += generarMensajePedido();
+        mensaje += `\n\n*Dirección de entrega:*\n${direccion}`;
+        mensaje += `\n*Referencia:*\n${referencia}`;
+        
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+        window.open(urlWhatsapp, '_blank');
+        modalOpciones.classList.remove('visible');
+    });
+
+    // Función auxiliar para generar el mensaje del pedido
+    const generarMensajePedido = () => {
+        let mensaje = '';
         for (const nombre in pedido) {
             if (pedido[nombre] > 0) {
                 const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
@@ -146,15 +246,10 @@ const recalcularTotal = () => {
                 }
             }
         }
-
         const totalFinal = recalcularTotal();
         mensaje += `\nTotal: $${totalFinal.toLocaleString('es-CL')}`;
-
-        const mensajeCodificado = encodeURIComponent(mensaje);
-        const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
-
-        window.open(urlWhatsapp, '_blank');
-    });
+        return mensaje;
+    };
 
     btnMinimizar.addEventListener('click', () => {
         carritoFijo.classList.toggle('minimizado');
