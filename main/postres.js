@@ -2,12 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Lógica del menú de hamburguesa
-    const menos = document.querySelector('.menos');
+    const hamburguesa = document.querySelector('.hamburguesa');
     const navegador2 = document.querySelector('.navegador2');
-    if (menos && navegador2) {
-        menos.addEventListener('click', () => {
+    if (hamburguesa && navegador2) {
+        hamburguesa.addEventListener('click', () => {
             navegador2.classList.toggle('active');
-            menos.classList.toggle('active');
+            hamburguesa.classList.toggle('active');
         });
     }
 

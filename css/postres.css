@@ -44,9 +44,34 @@ body {
 .postres:hover{
     transform: translate(-3px);
 }
-.menos {
-    padding: 0.5rem 0.7rem;
+.hamburguesa {
     display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0%;
+    z-index: 1000;
+}
+.hamburguesa span{
+    display: block;
+    width: 100%;
+    height: 3px;
+    color: white;
+    background: white;
+    transition: all 0.3s ease-in-out;
+}
+.hamburguesa.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7.6px, 6.5px);
+}
+.hamburguesa.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburguesa.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4.9px, -5.1px);
 }
 .presentacion {
     background-image: url(../css/fotos/pedazo-pastel-capa-dulce-frambuesas-crema-blanca-fresas_73989-83037.jpg);
@@ -157,20 +182,25 @@ button {
 
 @media (max-width: 768px) {
     .navegador2 {
-        display: none;
-        flex-direction: column;
-        transition: 0.5s;
+         flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #000;
+        padding: 0 1rem;
+        /* Estilos para la animación */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        visibility: hidden; /* Oculta el menú pero mantiene su espacio en el DOM */
     }
     .navegador2.active {
-        display: flex;
-        position: absolute;
-        background-color: #000;
-        top: 100%;
-        right: 0%;
-        left: 0%;
+        max-height: 300px;
         padding: 1rem;
+        visibility: visible;
     }
-    .menos {
+    .hamburguesa {
         display: flex;
     }
 }
