@@ -313,6 +313,31 @@ a {
 .redes-link:active {
     transform: scale(0.95); /* Encoge la imagen un 5% al ser presionada */
 }
+.whatsapp-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1003;
+}
+.whatsapp-btn img{
+    width: 8vw;
+    max-width: 55px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.whatsapp-btn img:hover {
+    transform: scale(1.1); /* Agranda la imagen un 10% al pasar el mouse */
+}
+.whatsapp-btn a:active {
+    transform: scale(0.95); /* Encoge la imagen un 5% al ser presionada */
+}
+@media (max-width: 768px) {
+    .whatsapp-btn img {
+        width: 15vw; /* Ajusta el tamaño para pantallas más pequeñas */
+    }
+}
 .contenido-marquee {
     overflow: hidden;
     white-space: nowrap;
