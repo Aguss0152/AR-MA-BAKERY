@@ -317,10 +317,10 @@ a {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1003;
+    z-index: 1000;
 }
 .whatsapp-btn img{
-    width: 8vw;
+    width: 60px;
     max-width: 55px;
     height: auto;
     border-radius: 50%;
