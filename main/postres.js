@@ -1,5 +1,3 @@
-// main/postres.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // Lógica del menú de hamburguesa
     const hamburguesa = document.querySelector('.hamburguesa');
@@ -36,63 +34,65 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Función para recalcular el total (mejorada para la promo)
     const recalcularTotal = () => {
-    let total = 0;
-    let productosPromoCount = 0;
-    
-    // Primero, calculamos el costo total de los productos NO de la promo
-    for (const nombre in pedido) {
-        // Excluimos los productos de la promoción para el cálculo inicial
-        if (!nombre.startsWith('promo mini budín')) {
-            const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-            if (tarjeta) {
-                const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                total += pedido[nombre] * precio;
-            }
-        }
-    }
-
-    // Segundo, contamos la cantidad de productos de la promoción
-    for (const nombre in pedido) {
-        if (nombre.startsWith('promo mini budín')) {
-            // Aseguramos que el "mini budín de Zanahoria" no cuente para la promo
-            if (nombre !== 'promo mini budín de Zanahoria') {
-                productosPromoCount += pedido[nombre];
-            } else {
-                // Si es el de Zanahoria, lo sumamos al total sin promo
-                const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-                if (tarjeta) {
-                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                    total += pedido[nombre] * precio;
-                }
-            }
-        }
-    }
-    
-    // Tercero, aplicamos la lógica de la promoción SOLO a los mini budines que califican
-    if (productosPromoCount === 2) {
-        // Si hay exactamente 2, el total para estos dos es $5.000
-        total += 5000;
-        if (mensajePromo) {
-            mensajePromo.style.display = 'block';
-        }
-    } else {
-        // Si no son exactamente 2, sumamos el costo normal de cada uno de ellos
+        let total = 0;
+        let productosPromoCount = 0;
+        
+        // Primero, calculamos el costo total de los productos NO de la promo
         for (const nombre in pedido) {
-            if (nombre.startsWith('promo') && nombre !== 'promo mini budín de Zanahoria') {
-                const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+            // Excluimos los productos de la promoción para el cálculo inicial
+            if (!nombre.startsWith('promo')) {
+                const tarjeta = document.querySelector(`[data-nombre="${nombre.split(' (')[0]}"]`);
                 if (tarjeta) {
                     const precio = parseInt(tarjeta.getAttribute('data-precio'));
                     total += pedido[nombre] * precio;
                 }
             }
         }
-        if (mensajePromo) {
-            mensajePromo.style.display = 'none';
+
+        // Segundo, contamos la cantidad de productos de la promoción
+        for (const nombre in pedido) {
+            if (nombre.startsWith('promo')) {
+                // Aseguramos que el "mini budín de Zanahoria" no cuente para la promo
+                if (nombre !== 'promo mini budín de Zanahoria') {
+                    productosPromoCount += pedido[nombre];
+                } else {
+                    // Si es el de Zanahoria, lo sumamos al total sin promo
+                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                    if (tarjeta) {
+                        const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                        total += pedido[nombre] * precio;
+                    }
+                }
+            }
         }
-    }
-    
-    return total;
-};
+        
+        // Tercero, aplicamos la lógica de la promoción SOLO a los mini budines que califican
+        if (productosPromoCount >= 2) {
+            // Si hay 2 o más, el total para estos dos es $5.000 (hay que calcular el excedente)
+            total += 5000 * Math.floor(productosPromoCount / 2); // 5000 por cada par
+            total += 3500 * (productosPromoCount % 2); // Precio normal para los impares
+            
+            if (mensajePromo) {
+                mensajePromo.style.display = 'block';
+            }
+        } else {
+            // Si no son 2 o más, sumamos el costo normal de cada uno de ellos
+            for (const nombre in pedido) {
+                if (nombre.startsWith('promo') && nombre !== 'promo mini budín de Zanahoria') {
+                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                    if (tarjeta) {
+                        const precio = parseInt(tarjeta.getAttribute('data-precio'));
+                        total += pedido[nombre] * precio;
+                    }
+                }
+            }
+            if (mensajePromo) {
+                mensajePromo.style.display = 'none';
+            }
+        }
+        
+        return total;
+    };
     
     const actualizarCarrito = () => {
         const totalCalculado = recalcularTotal();
@@ -130,9 +130,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            const nombre = tarjeta.getAttribute('data-nombre');
+            let nombre = tarjeta.getAttribute('data-nombre');
             const precio = parseInt(tarjeta.getAttribute('data-precio'));
             
+            // --- LÓGICA PARA AGREGAR EL SABOR SI EXISTE ---
+            const selectSabor = tarjeta.querySelector('#saborMinitorta');
+            if (selectSabor) {
+                const sabor = selectSabor.value;
+                nombre = `${nombre} (${sabor})`;
+            }
+            // --- FIN DE LA LÓGICA ---
+
             if (pedido[nombre]) {
                 pedido[nombre]++;
                 const itemElement = listaProductos.querySelector(`[data-nombre-item="${nombre}"]`);
@@ -198,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 (position) => {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    direccionInput.value = `Ubicación automática: https://www.google.com/maps?q=${lat},${lon}`;
+                    direccionInput.value = `Ubicación automática: http://google.com/maps?q=${lat},${lon}`;
                     alert('Ubicación obtenida con éxito. Puedes corregirla si es necesario.');
                 },
                 (error) => {
@@ -232,12 +240,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let mensaje = '';
         for (const nombre in pedido) {
             if (pedido[nombre] > 0) {
-                const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
+                // Buscamos la tarjeta original, sin el sabor, para obtener el precio base
+                const nombreSinSabor = nombre.split(' (')[0];
+                const tarjeta = document.querySelector(`[data-nombre="${nombreSinSabor}"]`);
+                let precio = 0;
                 if (tarjeta) {
-                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                    const subtotal = pedido[nombre] * precio;
-                    mensaje += `${pedido[nombre]} x ${nombre} = $${subtotal.toLocaleString('es-CL')}\n`;
+                    precio = parseInt(tarjeta.getAttribute('data-precio'));
                 }
+                const subtotal = pedido[nombre] * precio;
+                mensaje += `${pedido[nombre]} x ${nombre} = $${subtotal.toLocaleString('es-CL')}\n`;
             }
         }
         const totalFinal = recalcularTotal();

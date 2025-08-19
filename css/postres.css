@@ -109,7 +109,7 @@ body {
     border-top: 1px solid white;
     margin-bottom: 1rem;
 }
-.tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11, .tarjeta12, .tarjeta13, .tarjeta14, .tarjeta15, .tarjeta16, .tarjeta17 {
+.tarjeta1, .tarjeta2, .tarjeta3, .tarjeta4, .tarjeta5, .tarjeta6, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11, .tarjeta12, .tarjeta13, .tarjeta14, .tarjeta15, .tarjeta16, .tarjeta17, .tarjeta18 {
     padding: 2rem;
     margin-bottom: 1rem;
     border-image: fill 0 linear-gradient(to left, #000, #0001);
@@ -134,20 +134,57 @@ body {
 .tarjeta15 { background-image: url(../css/fotos/mini\ budin\ chocolate.jpg); }
 .tarjeta16 { background-image: url(../css/fotos/mini\ budin\ naranja.webp); }
 .tarjeta17 { background-image: url(../css/fotos/mini\ budin\ zanahoria.jpeg); }
+.tarjeta18 { background-image: url(../css/fotos/mini\ tortas.jpeg); }
 
-.tarjeta1 h3, .tarjeta2 h3, .tarjeta3 h3, .tarjeta4 h3, .tarjeta5 h3, .tarjeta6 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3, .tarjeta12 h3, .tarjeta13 h3, .tarjeta14 h3, .tarjeta15 h3, .tarjeta16 h3, .tarjeta17 h3 {
+
+.tarjeta1 h3, .tarjeta2 h3, .tarjeta3 h3, .tarjeta4 h3, .tarjeta5 h3, .tarjeta6 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3, .tarjeta12 h3, .tarjeta13 h3, .tarjeta14 h3, .tarjeta15 h3, .tarjeta16 h3, .tarjeta17 h3, .tarjeta18 h3 {
     text-align: center;
     text-shadow: 2px 2px 2px black;
     margin: 1rem;
     font-size: 2rem;
 }
-.tarjeta1 p, .tarjeta2 p, .tarjeta3 p, .tarjeta4 p, .tarjeta5 p, .tarjeta6 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p, .tarjeta12 p, .tarjeta13 p, .tarjeta14 p, .tarjeta15 p, .tarjeta16 p, .tarjeta17 p {
+.tarjeta1 p, .tarjeta2 p, .tarjeta3 p, .tarjeta4 p, .tarjeta5 p, .tarjeta6 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p, .tarjeta12 p, .tarjeta13 p, .tarjeta14 p, .tarjeta15 p, .tarjeta16 p, .tarjeta17 p, .tarjeta18 p {
     text-align: justify;
     text-shadow: 2px 2px 1px black;
     font-size: 1.2rem;
     margin: 1.3rem;
 }
-
+.tarjeta18 label {
+    text-align: justify;
+    text-shadow: 2px 2px 1px black;
+    font-size: 1.2rem;
+    margin: 1.3rem;
+}
+.seleccion-sabor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.seleccion-sabor select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+}
+.seleccion-sabor label {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 2px 2px 1px black;
+}
+.seleccion-sabor select:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+}
+.seleccion-sabor option {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    text-shadow: 2px 2px 1px black;
+}
 .parrafo {
     display: flex;
     justify-content: center;
@@ -453,7 +490,7 @@ footer p {
 .opciones-botones button,
 #obtener-ubicacion,
 .btn-enviar-pedido {
-    background-color: #ffffff;
+    background-color: #fdfdfd;
     color: rgb(0, 0, 0);
     border: none;
     padding: 10px 20px;
@@ -484,9 +521,10 @@ footer p {
 }
 
 #obtener-ubicacion {
-    background-color: #ffffff;
+    background-color: #0ca520;
     margin-bottom: 10px;
     width: 100%;
+    border: 2px solid white;
 }
 
 .cerrar-modal {
