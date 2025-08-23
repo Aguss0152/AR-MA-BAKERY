@@ -20,14 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Elementos del nuevo modal
     const modalOpciones = document.getElementById('modal-opciones');
-    const btnDelivery = document.getElementById('btn-delivery');
-    const btnRetiro = document.getElementById('btn-retiro');
+    const btnRetirar = document.getElementById('btn-retirar');
+    const btnCancelar = document.getElementById('btn-cancelar');
     const cerrarModal = document.getElementById('cerrar-modal');
-    const deliveryForm = document.getElementById('delivery-form');
-    const direccionInput = document.getElementById('direccion-input');
-    const referenciaInput = document.getElementById('referencia-input');
-    const obtenerUbicacionBtn = document.getElementById('obtener-ubicacion');
-    const enviarPedidoDeliveryBtn = document.getElementById('enviar-pedido-delivery');
 
     const pedido = {};
     let productosEnCarrito = 0;
@@ -181,12 +176,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cerrarModal.addEventListener('click', () => {
         modalOpciones.classList.remove('visible');
-        deliveryForm.style.display = 'none'; // Ocultar el formulario si se cierra
+    });
+    
+    btnCancelar.addEventListener('click', () => {
+        modalOpciones.classList.remove('visible');
     });
 
-    btnRetiro.addEventListener('click', () => {
+    btnRetirar.addEventListener('click', () => {
         const telefono = '5492617028044';
-        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO**:\n\n';
+        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO**:\n\n';
         mensaje += generarMensajePedido();
         mensaje += `\n\n_Para la ubicación del local, por favor revisa el perfil de WhatsApp._`;
         
@@ -196,44 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOpciones.classList.remove('visible');
     });
 
-    btnDelivery.addEventListener('click', () => {
-        deliveryForm.style.display = 'block';
-    });
-
-    obtenerUbicacionBtn.addEventListener('click', () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    direccionInput.value = `Ubicación automática: http://google.com/maps?q=${lat},${lon}`;
-                    alert('Ubicación obtenida con éxito. Puedes corregirla si es necesario.');
-                },
-                (error) => {
-                    alert('No se pudo obtener la ubicación. Por favor, ingrésala manualmente.');
-                    console.error('Error de geolocalización:', error);
-                }
-            );
-        } else {
-            alert('Tu navegador no soporta la geolocalización. Por favor, ingrésala manualmente.');
-        }
-    });
-
-    enviarPedidoDeliveryBtn.addEventListener('click', () => {
-        const telefono = '5492617028044';
-        const direccion = direccionInput.value || 'Dirección no especificada';
-        const referencia = referenciaInput.value || 'Sin referencia';
-        
-        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **DELIVERY**:\n\n';
-        mensaje += generarMensajePedido();
-        mensaje += `\n\n*Dirección de entrega:*\n${direccion}`;
-        mensaje += `\n*Referencia:*\n${referencia}`;
-        
-        const mensajeCodificado = encodeURIComponent(mensaje);
-        const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
-        window.open(urlWhatsapp, '_blank');
-        modalOpciones.classList.remove('visible');
-    });
 
     // Función auxiliar para generar el mensaje del pedido
     const generarMensajePedido = () => {
