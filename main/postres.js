@@ -178,15 +178,25 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOpciones.classList.remove('visible');
     });
     
-    btnCancelar.addEventListener('click', () => {
-        modalOpciones.classList.remove('visible');
-    });
-
+    // LÓGICA DEL BOTÓN "SÍ" (QUIERE RETIRAR)
     btnRetirar.addEventListener('click', () => {
         const telefono = '5492617028044';
         let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO**:\n\n';
         mensaje += generarMensajePedido();
         mensaje += `\n\n_Para la ubicación del local, por favor revisa el perfil de WhatsApp._`;
+        
+        const mensajeCodificado = encodeURIComponent(mensaje);
+        const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+        window.open(urlWhatsapp, '_blank');
+        modalOpciones.classList.remove('visible');
+    });
+
+    // LÓGICA DEL BOTÓN "NO" (NO QUIERE RETIRAR, QUIERE COORDINAR)
+    btnCancelar.addEventListener('click', () => {
+        const telefono = '5492617028044';
+        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido.\n\n';
+        mensaje += generarMensajePedido();
+        mensaje += `\n\n_No retiraré en el domicilio, me gustaría coordinar la entrega.`;
         
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
