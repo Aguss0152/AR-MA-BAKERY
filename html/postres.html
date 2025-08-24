@@ -10,7 +10,7 @@
     <nav class="navegador">
         <div class="logo"><a href="../index.html">ARÓMA BAKERY</a></div>
         <ul class="navegador2">
-            <div class="salsas"><li><a href="#tarjeta1" class="salsas">Budines</a></li></div>
+            <div class="salsas"><li><a href="#budines" class="salsas">Budines</a></li></div>
             <div class="salsas"><li><a href="#mini-budines" class="salsas">Mini budines</a></li></div>
             <div class="salsas"><li><a href="#budines-sin-gluten" class="salsas">Budines (Sin gluten)</a></li></div>
             <div class="salsas"><li><a href="#reposteria" class="salsas">Reposteria</a></li></div>
@@ -28,266 +28,187 @@
         </header>
         <main>
     <section id="cocina" class="tarjetas_contenedor">
-        
-       
-
       <h1>Menú</h1>
-        <h2 class="titulo-sticky-promo"> Budínes<div class="contenido-marquee">
-    </div></h2>
-        <div class="tarjeta1" id="tarjeta1" data-nombre="Budín de Limón" data-precio="8000">
-    <h3>Budín de Limón</h3>
-    <div class="parrafo">
-        <p>Contiene: Limón.</p>
-        <p>Precio: $8.000</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
-         <div class="tarjeta2" id="tarjeta2" data-nombre="Budín de Vainilla" data-precio="8000">
-            <h3>Budín de Vainilla</h3>
-            <div class="parrafo">
-                <p>Contiene: Vainilla.</p>
-                <p>Precio: $8.000</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar2">Agregar</button></div>
-         </div>
-         <div class="tarjeta3" id="tarjeta3" data-nombre="Budín de Banana" data-precio="8000">
-            <h3>Budín de Banana</h3>
-            <div class="parrafo">
-                <p>Contiene: Canela, Banana, Vainilla.</p>
-                <p>Precio: $8.000</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar3">Agregar</button></div>
-         </div>
-         <div class="tarjeta4" id="tarjeta4" data-nombre="Budín de Chocolate" data-precio="9000">
-            <h3>Budín de Chocolate</h3>
-            <div class="parrafo">
-                <p>Contiene: Chocolate, Vainilla.</p>
-                <p>Precio: $9.000</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar4">Agregar</button></div>
-         </div>
-         <div class="tarjeta5" id="tarjeta5" data-nombre="Budín de Naranja y Mandarina" data-precio="8000">
-            <h3>Budín de Naranja y Mandarina</h3>
-            <div class="parrafo">
-                <p>Contiene: Naranja, Mandarina, Cafe.</p>
-                <p>Precio: $8.000</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar5">Agregar</button></div>
-         </div>
-          <div class="tarjeta6" id="tarjeta6" data-nombre="Budín de Zanahoria" data-precio="10000">
-    <h3>Budin de Zanahoria</h3>
-    <div class="parrafo">
-        <p>Contiene: Zanahoria, Canela, Queso crema, Nueces moscada, Clavos de olor en polvo.</p>
-        <p>Precio: $10.000</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar6">Agregar</button></div>
-</div>
 
- <h2 class="titulo-sticky-promo" id="mini-budines">Mini budínes</h2>
-        <div class="tarjeta12" id="tarjeta12" data-nombre="mini budín de Limón" data-precio="3500">
-    <h3>Budín de Limón</h3>
-    <div class="parrafo">
-        <p>Contiene: Limón.</p>
-        <p>Precio: $3.500</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
-         <div class="tarjeta13" id="tarjeta13" data-nombre="mini budín de Vainilla" data-precio="3500">
-            <h3>Budín de Vainilla</h3>
+        <h2 class="titulo-sticky-promo" id="budines">Budines</h2>
+        <div class="tarjeta-budin">
+            <h3>Selecciona tu Budín</h3>
             <div class="parrafo">
-                <p>Contiene: Vainilla.</p>
-                <p>Precio: $3.500</p>
+                <label for="saborBudin">Sabor:</label>
+                <select id="saborBudin" name="saborBudin">
+                    <option value="chocolate" data-nombre="Budín de Chocolate" data-precio="9000">Chocolate</option>
+                    <option value="limon" data-nombre="Budín de Limón" data-precio="8000">Limón</option>
+                    <option value="vainilla" data-nombre="Budín de Vainilla" data-precio="8000">Vainilla</option>
+                    <option value="banana" data-nombre="Budín de Banana" data-precio="8000">Banana</option>
+                    <option value="naranja-mandarina" data-nombre="Budín de Naranja y Mandarina" data-precio="8000">Naranja y Mandarina</option>
+                    <option value="zanahoria" data-nombre="Budín de Zanahoria" data-precio="10000">Zanahoria</option>
+                </select>
+                <p>Precio:$8.000 (Unidad)</p>
+                <p>Precio Zanahoria:$10.000 (Unidad)</p>
             </div>
-          <div class="mirar"><button class="mostrar" id="mostrar2">Agregar</button></div>
-         </div>
-         <div class="tarjeta14" id="tarjeta14" data-nombre="mini budín de Banana" data-precio="3500">
-            <h3>Budín de Banana</h3>
-            <div class="parrafo">
-                <p>Contiene: Canela, Banana, Vainilla.</p>
-                <p>Precio: $3.500</p>
+            <div class="mirar">
+                <button class="mostrar">Agregar</button>
             </div>
-          <div class="mirar"><button class="mostrar" id="mostrar3">Agregar</button></div>
-         </div>
-         <div class="tarjeta15" id="tarjeta15" data-nombre="mini budín de Chocolate" data-precio="3500">
-            <h3>Budín de Chocolate</h3>
-            <div class="parrafo">
-                <p>Contiene: Chocolate, Vainilla.</p>
-                <p>Precio: $3.500</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar4">Agregar</button></div>
-         </div>
-         <div class="tarjeta16" id="tarjeta16" data-nombre="mini budín de Naranja y Mandarina" data-precio="3500">
-            <h3>Budín de Naranja y Mandarina</h3>
-            <div class="parrafo">
-                <p>Contiene: Naranja, Mandarina, Cafe.</p>
-                <p>Precio: $3.500</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar5">Agregar</button></div>
-         </div>
-          <div class="tarjeta17" id="tarjeta17" data-nombre="mini budín de Zanahoria" data-precio="4500">
-    <h3>Budin de Zanahoria</h3>
-    <div class="parrafo">
-        <p>Contiene: Zanahoria, Canela, Queso crema, Nueces moscada, Clavos de olor en polvo.</p>
-        <p>Precio: $4.500</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar6">Agregar</button></div>
-</div>
-
-    <h2 class="titulo-sticky" id="budines-sin-gluten">Budínes (Sin gluten)</h2>
-    <div class="tarjeta1" id="tarjetasingluten1" data-nombre="(Gluten free) Budín de Limón" data-precio="9500" data-sin-gluten="true">
-    <h3>Budín de Limón</h3>
-    <div class="parrafo">
-        <p>Contiene: Limón.</p>
-        <p>Precio: $9.500</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
-         <div class="tarjeta2" id="tarjetasingluten2" data-nombre="(Gluten free) Budín de Vainilla" data-precio="9500" data-sin-gluten="true">
-            <h3>Budín de Vainilla</h3>
-            <div class="parrafo">
-                <p>Contiene: Vainilla.</p>
-                <p>Precio: $9.500</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar2">Agregar</button></div>
-         </div>
-         <div class="tarjeta3" id="tarjetasingluten3" data-nombre="(Gluten free) Budín de Banana" data-precio="9500" data-sin-gluten="true">
-            <h3>Budín de Banana</h3>
-            <div class="parrafo">
-                <p>Contiene: Canela, Banana, Vainilla.</p>
-                <p>Precio: $9.500</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar3">Agregar</button></div>
-         </div>
-         <div class="tarjeta4" id="tarjetasingluten4" data-nombre="(Gluten free) Budín de Chocolate" data-precio="10500" data-sin-gluten="true">
-            <h3>Budín de Chocolate</h3>
-            <div class="parrafo">
-                <p>Contiene: Chocolate, Vainilla.</p>
-                <p>Precio: $10.500</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar4">Agregar</button></div>
-         </div>
-         <div class="tarjeta5" id="tarjetasingluten5" data-nombre="(Gluten free) Budín de Naranja y Mandarina" data-precio="9500" data-sin-gluten="true">
-            <h3>Budín de Naranja y Mandarina</h3>
-            <div class="parrafo">
-                <p>Contiene: Naranja, Mandarina, Cafe.</p>
-                <p>Precio: $9.500</p>
-            </div>
-          <div class="mirar"><button class="mostrar" id="mostrar5">Agregar</button></div>
-         </div>
-         
-    <div class="tarjeta6" id="tarjetasingluten6" data-nombre="(Gluten free) Budín de Zanahoria" data-precio="11500" data-sin-gluten="true">
-    <h3>Budin de Zanahoria</h3>
-    <div class="parrafo">
-        <p>Contiene: Zanahoria, Canela, Queso crema, Nueces moscada, Clavos de olor en polvo.</p>
-        <p>Precio: $11.500</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar6">Agregar</button></div>
-</div>
-
-<h2 class="titulo-sticky" id="reposteria">Reposteria</h2>
-
-    <div class="tarjeta18" data-nombre="Mini torta" data-precio="5000">
-        <h3>Mini torta</h3>
-        <div class="parrafo">
-            <p>Selecciona el sabor.</p>
-        <div class="seleccion-sabor">
-            <label for="saborMinitorta">Sabor:</label>
-            <select id="saborMinitorta" name="saborMinitorta">
-                <option value="tres leches vainilla">Tres leches vainilla</option>
-                <option value="chocolate">Chocolate</option>
-                <option value="oreo">Oreo</option>
-                <option value="frutilla">Frutilla</option>
-                <option value="red velvet">Red Velvet</option>
-            </select>
         </div>
-        <p>Precio:$5.000 (Unidad)</p>
+        
+        <h2 class="titulo-sticky-promo" id="mini-budines">Mini budines</h2>
+        <div class="tarjeta-mini-budin">
+            <h3>Selecciona tu Mini Budín</h3>
+            <div class="parrafo">
+                <label for="saborMiniBudin">Sabor:</label>
+                <select id="saborMiniBudin" name="saborMiniBudin">
+                    <option value="limon" data-nombre="Mini budín de Limón" data-precio="3500">Limón</option>
+                    <option value="vainilla" data-nombre="Mini budín de Vainilla" data-precio="3500">Vainilla</option>
+                    <option value="banana" data-nombre="Mini budín de Banana" data-precio="3500">Banana</option>
+                    <option value="chocolate" data-nombre="Mini budín de Chocolate" data-precio="3500">Chocolate</option>
+                    <option value="naranja-mandarina" data-nombre="Mini budín de Naranja y Mandarina" data-precio="3500">Naranja y Mandarina</option>
+                    <option value="zanahoria" data-nombre="Mini budín de Zanahoria" data-precio="3500">Zanahoria</option>
+                </select>
+                <p>Precio:$3.500 (Unidad)</p>
+            </div>
+            <div class="mirar">
+                <button class="mostrar-mini">Agregar</button>
+            </div>
         </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
 
-    <div class="tarjeta7" id="tarjeta7" data-nombre="Mini Brownies 25ud" data-precio="20000">
-    <h3>Mini Brownies 25ud</h3>
-    <div class="parrafo">
-        <p>Contiene: Dulce de leche y crema chantilly.</p>
-        <p>Precio: $20.000</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
-
-    <div class="tarjeta8" id="tarjeta8" data-nombre="Chocotorta" data-precio="37000">
-        <h3>Chocotorta</h3>
+        <h2 class="titulo-sticky" id="budines-sin-gluten">Budines (Sin gluten)</h2>
+        <div class="tarjeta-sin-gluten">
+            <h3>Selecciona tu Budín Sin Gluten</h3>
             <div class="parrafo">
-            <p>Contiene: Chocolinas, dulce de leche repostero, queso crema y cafe.</p>
-            <p>Precio: $37.000</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
-
-    <div class="tarjeta9" id="tarjeta9" data-nombre="Lemon pie" data-precio="25000">
-        <h3>Lemon Pie</h3>
-            <div class="parrafo">
-            <p>Contiene: Leche condensada, merengue.</p>
-            <p>Precio: $25.000</p>
-    </div>
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
-</div>
-
-        <div class="tarjeta10" id="tarjeta10" data-nombre="Galletas de vainilla (12ud)" data-precio="7500">
-        <h3>Galletas de Vainilla</h3>
-            <div class="parrafo">
-            <p>Precio 12ud: $7.500</p>
-            <p>Precio 24ud: $13.500</p>
-    </div>
-    <div class="botones">
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar 12ud</button></div>
-    <div clas="tarjeta11" id="tarjeta11" data-nombre="Galletas de vainilla (24ud)" data-precio="13500">
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar 24ud</button></div></div>
+                <label for="saborSinGluten">Sabor:</label>
+                <select id="saborSinGluten" name="saborSinGluten">
+                    <option value="banana" data-nombre="(Gluten free) Budín de Banana" data-precio="9500">Banana</option>
+                    <option value="limon" data-nombre="(Gluten free) Budín de Limón" data-precio="9500">Limón</option>
+                    <option value="vainilla" data-nombre="(Gluten free) Budín de Vainilla" data-precio="9500">Vainilla</option>
+                    <option value="chocolate" data-nombre="(Gluten free) Budín de Chocolate" data-precio="10500">Chocolate</option>
+                    <option value="naranja-mandarina" data-nombre="(Gluten free) Budín de Naranja y Mandarina" data-precio="9500">Naranja y Mandarina</option>
+                    <option value="zanahoria" data-nombre="(Gluten free) Budín de Zanahoria" data-precio="11500">Zanahoria</option>
+                </select>
+            </div>
+            <div class="mirar">
+                <button class="mostrar-sg">Agregar</button>
+            </div>
         </div>
-</div>
-    <div class="tarjeta11" id="tarjeta11" data-nombre="Galletas de avena (12ud)" data-precio="10000">
-        <h3>Galletas de Avena</h3>
+
+        <h2 class="titulo-sticky" id="reposteria">Reposteria</h2>
+
+        <div class="postres-pote">
+            <h3>Selecciona tu Postre en Pote</h3>
             <div class="parrafo">
-            <p>Contiene: Avena, miel, canela.</p>
-            <p>Precio 12ud: $10.000</p>
-            <p>Precio 24ud: $18.500</p>
-    </div>
-    <div class="botones">
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar 12ud</button></div>
-    <div clas="tarjeta12" id="tarjeta12" data-nombre="Galletas de avena (24ud)" data-precio="18500">
-    <div class="mirar"><button class="mostrar" id="mostrar1">Agregar 24ud</button></div></div>
+                <label for="saborpostre">Sabor:</label>
+                <select id="saborpostre" name="saborpostre">
+                    <option value="chocotorta" data-nombre="Postre en Pote de chocotorta" data-precio="7000">Chocotorta</option>
+                    <option value="oreo" data-nombre="Postre en Pote de Oreo" data-precio="7000">Oreo</option>
+                    <option value="cheesecake" data-nombre="Postre en Pote - Cheesecake de Frutilla" data-precio="7000">Cheesecake de frutilla</option>
+                    <option value="durazno" data-nombre="Postre en Pote - Cheesecake de Durazno" data-precio="7000">Cheesecake de durazno</option>
+                </select>
+            </div>
+            <div class="mirar">
+                <button class="mostrar-mini">Agregar</button>
+            </div>
         </div>
-</div>
+
+        <div class="tarjeta18" data-nombre="Mini torta" data-precio="5000">
+            <h3>Mini torta</h3>
+            <div class="parrafo">
+                <p>Selecciona el sabor.</p>
+                <div class="seleccion-sabor">
+                    <select id="saborMinitorta" name="saborMinitorta">
+                        <option value="tres leches vainilla">Tres leches vainilla</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="oreo">Oreo</option>
+                        <option value="frutilla">Frutilla</option>
+                        <option value="red velvet">Red Velvet</option>
+                    </select>
+                </div>
+                <p>Precio:$5.000 (Unidad)</p>
+            </div>
+            <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
+        </div>
+
+        <div class="tarjeta7" id="tarjeta7" data-nombre="Mini Brownies 25ud" data-precio="20000">
+            <h3>Mini Brownies 25ud</h3>
+            <div class="parrafo">
+                <p>Contiene: Dulce de leche y crema chantilly.</p>
+                <p>Precio: $20.000</p>
+            </div>
+            <div class="mirar"><button class="mostrar">Agregar</button></div>
+        </div>
+
+        <div class="tarjeta8" id="tarjeta8" data-nombre="Chocotorta" data-precio="37000">
+            <h3>Chocotorta</h3>
+            <div class="parrafo">
+                <p>Contiene: Chocolinas, dulce de leche repostero, queso crema y cafe.</p>
+                <p>Precio: $37.000</p>
+            </div>
+            <div class="mirar"><button class="mostrar">Agregar</button></div>
+        </div>
+
+        <div class="tarjeta9" id="tarjeta9" data-nombre="Lemon pie" data-precio="25000">
+            <h3>Lemon Pie</h3>
+            <div class="parrafo">
+                <p>Contiene: Leche condensada, merengue.</p>
+                <p>Precio: $25.000</p>
+            </div>
+            <div class="mirar"><button class="mostrar">Agregar</button></div>
+        </div>
+
+        <div class="tarjeta10" data-nombre="Galletas de vainilla (12ud)" data-precio="7500">
+            <h3>Galletas de Vainilla</h3>
+            <div class="parrafo">
+                <p>Precio 12ud: $7.500</p>
+                <p>Precio 24ud: $13.500</p>
+            </div>
+            <div class="botones">
+                <div class="mirar"><button class="mostrar" data-nombre="Galletas de vainilla (12ud)" data-precio="7500">Agregar 12ud</button></div>
+                <div class="mirar"><button class="mostrar" data-nombre="Galletas de vainilla (24ud)" data-precio="13500">Agregar 24ud</button></div>
+            </div>
+        </div>
+        
+        <div class="tarjeta11" data-nombre="Galletas de avena (12ud)" data-precio="10000">
+            <h3>Galletas de Avena</h3>
+            <div class="parrafo">
+                <p>Contiene: Avena, miel, canela.</p>
+                <p>Precio 12ud: $10.000</p>
+                <p>Precio 24ud: $18.500</p>
+            </div>
+            <div class="botones">
+                <div class="mirar"><button class="mostrar" data-nombre="Galletas de avena (12ud)" data-precio="10000">Agregar 12ud</button></div>
+                <div class="mirar"><button class="mostrar" data-nombre="Galletas de avena (24ud)" data-precio="18500">Agregar 24ud</button></div>
+            </div>
+        </div>
     </section>
-  </main>
-       <div id="carrito" class="carrito-fijo">
-    <div class="carrito-contenido">
-        <div class="carrito-header">
-            <div class="header-info">
-                <h3>Tu Pedido</h3>
-                <p id="mensaje-promo" class="mensaje-oculto">¡Promo 2 x $5.000 aplicada!</p>
+    </main>
+
+    <div id="carrito" class="carrito-fijo">
+        <div class="carrito-contenido">
+            <div class="carrito-header">
+                <div class="header-info">
+                    <h3>Tu Pedido</h3>
+                    <p id="mensaje-promo" class="mensaje-oculto">¡Promo 2 x $5.000 aplicada!</p>
+                </div>
+                <div class="header-total">
+                    <p>Total: $<span id="total">0</span></p>
+                    <button id="btn-whatsapp">Encargar</button>
+                </div>
+                <button id="btn-minimizar">-</button>
             </div>
-            <div class="header-total">
-                <p>Total: $<span id="total">0</span></p>
-                <button id="btn-whatsapp">Encargar</button>
+            <div id="lista-productos" class="lista-scroll"></div>
+        </div>
+    </div>
+    <div id="modal-opciones" class="modal-opciones">
+        <div class="modal-contenido">
+            <h3>¿Desea retirar en domicilio?</h3>
+            <div class="opciones-botones">
+                <button id="btn-retirar">Sí</button>
+                <button id="btn-cancelar">No</button>
             </div>
-            <button id="btn-minimizar">-</button>
+            <button id="cerrar-modal" class="cerrar-modal">×</button>
         </div>
-        <div id="lista-productos" class="lista-scroll"></div>
     </div>
-</div>
-<div id="modal-opciones" class="modal-opciones">
-    <div class="modal-contenido">
-        <h3>¿Desea retirar en domicilio?</h3>
-        <div class="opciones-botones">
-            <button id="btn-retirar">Sí</button>
-            <button id="btn-cancelar">No</button>
-        </div>
-        <button id="cerrar-modal" class="cerrar-modal">×</button>
-    </div>
-</div>
-     <footer>
-    <p>&copy; 2025 Todos los derechos reservados.</p>
-  </footer>
-  <script src="../main/postres.js"></script>
+    <footer>
+        <p>&copy; 2025 Todos los derechos reservados.</p>
+    </footer>
+    <script src="../main/postres.js"></script>
 </body>
 </html>

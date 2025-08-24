@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Lógica del carrito de compras
     const botonesAgregar = document.querySelectorAll('.mostrar');
+    const botonesAgregarMini = document.querySelectorAll('.mostrar-mini');
+    const botonesAgregarSinGluten = document.querySelectorAll('.mostrar-sg');
     const carritoFijo = document.getElementById('carrito');
     const listaProductos = document.getElementById('lista-productos');
     const spanTotal = document.getElementById('total');
@@ -26,69 +28,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pedido = {};
     let productosEnCarrito = 0;
-    
-    // Función para recalcular el total (mejorada para la promo)
+
     const recalcularTotal = () => {
         let total = 0;
-        let productosPromoCount = 0;
+        let miniBudinesPromoCount = 0;
         
-        // Primero, calculamos el costo total de los productos NO de la promo
         for (const nombre in pedido) {
-            // Excluimos los productos de la promoción para el cálculo inicial
-            if (!nombre.startsWith('promo')) {
-                const tarjeta = document.querySelector(`[data-nombre="${nombre.split(' (')[0]}"]`);
-                if (tarjeta) {
-                    const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                    total += pedido[nombre] * precio;
-                }
-            }
-        }
-
-        // Segundo, contamos la cantidad de productos de la promoción
-        for (const nombre in pedido) {
-            if (nombre.startsWith('promo')) {
-                // Aseguramos que el "mini budín de Zanahoria" no cuente para la promo
-                if (nombre !== 'promo mini budín de Zanahoria') {
-                    productosPromoCount += pedido[nombre];
+            const cantidad = pedido[nombre];
+            const itemElement = listaProductos.querySelector(`[data-nombre-item="${nombre}"]`);
+            if (itemElement) {
+                const precio = parseInt(itemElement.getAttribute('data-precio'));
+                if (nombre.startsWith('Promo') && !nombre.includes('Zanahoria')) {
+                    miniBudinesPromoCount += cantidad;
                 } else {
-                    // Si es el de Zanahoria, lo sumamos al total sin promo
-                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-                    if (tarjeta) {
-                        const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                        total += pedido[nombre] * precio;
-                    }
+                    total += cantidad * precio;
                 }
             }
         }
         
-        // Tercero, aplicamos la lógica de la promoción SOLO a los mini budines que califican
-        if (productosPromoCount >= 2) {
-            // Si hay 2 o más, el total para estos dos es $5.000 (hay que calcular el excedente)
-            total += 5000 * Math.floor(productosPromoCount / 2); // 5000 por cada par
-            total += 3500 * (productosPromoCount % 2); // Precio normal para los impares
-            
-            if (mensajePromo) {
-                mensajePromo.style.display = 'block';
-            }
+        const pares = Math.floor(miniBudinesPromoCount / 2);
+        const impares = miniBudinesPromoCount % 2;
+        total += pares * 5000;
+        total += impares * 3500;
+        
+        if (miniBudinesPromoCount >= 2 && miniBudinesPromoCount !== 0) {
+            mensajePromo.style.display = 'block';
         } else {
-            // Si no son 2 o más, sumamos el costo normal de cada uno de ellos
-            for (const nombre in pedido) {
-                if (nombre.startsWith('promo') && nombre !== 'promo mini budín de Zanahoria') {
-                    const tarjeta = document.querySelector(`[data-nombre="${nombre}"]`);
-                    if (tarjeta) {
-                        const precio = parseInt(tarjeta.getAttribute('data-precio'));
-                        total += pedido[nombre] * precio;
-                    }
-                }
-            }
-            if (mensajePromo) {
-                mensajePromo.style.display = 'none';
-            }
+            mensajePromo.style.display = 'none';
         }
         
         return total;
     };
-    
+
     const actualizarCarrito = () => {
         const totalCalculado = recalcularTotal();
         spanTotal.textContent = totalCalculado.toLocaleString('es-CL');
@@ -116,56 +87,101 @@ document.addEventListener('DOMContentLoaded', () => {
         productosEnCarrito--;
         actualizarCarrito();
     };
-    
+
+    const agregarAlCarrito = (nombre, precio) => {
+        if (pedido[nombre]) {
+            pedido[nombre]++;
+            const itemElement = listaProductos.querySelector(`[data-nombre-item="${nombre}"]`);
+            if (itemElement) {
+                itemElement.querySelector('.cantidad-producto').textContent = pedido[nombre];
+            }
+        } else {
+            pedido[nombre] = 1;
+            const item = document.createElement('div');
+            item.classList.add('item-carrito');
+            item.setAttribute('data-nombre-item', nombre);
+            item.setAttribute('data-precio', precio);
+            item.innerHTML = `
+                <span>${nombre} - $<span class="precio-producto">${precio.toLocaleString('es-CL')}</span> x <span class="cantidad-producto">1</span></span>
+                <button class="btn-quitar">Quitar</button>
+            `;
+            listaProductos.appendChild(item);
+
+            const btnQuitar = item.querySelector('.btn-quitar');
+            btnQuitar.addEventListener('click', () => {
+                quitarProducto(nombre);
+            });
+        }
+
+        productosEnCarrito++;
+        actualizarCarrito();
+    };
+
+    // Botones de Repostería y Galletas
     botonesAgregar.forEach(boton => {
         boton.addEventListener('click', () => {
             const tarjeta = boton.closest('[data-nombre]');
-            if (!tarjeta) {
-                console.error("No se pudo encontrar la tarjeta del producto.");
-                return;
-            }
-            
             let nombre = tarjeta.getAttribute('data-nombre');
             const precio = parseInt(tarjeta.getAttribute('data-precio'));
             
-            // --- LÓGICA PARA AGREGAR EL SABOR SI EXISTE ---
             const selectSabor = tarjeta.querySelector('#saborMinitorta');
             if (selectSabor) {
                 const sabor = selectSabor.value;
                 nombre = `${nombre} (${sabor})`;
             }
-            // --- FIN DE LA LÓGICA ---
-
-            if (pedido[nombre]) {
-                pedido[nombre]++;
-                const itemElement = listaProductos.querySelector(`[data-nombre-item="${nombre}"]`);
-                if (itemElement) {
-                    itemElement.querySelector('.cantidad-producto').textContent = pedido[nombre];
-                }
-            } else {
-                pedido[nombre] = 1;
-                const item = document.createElement('div');
-                item.classList.add('item-carrito');
-                item.setAttribute('data-nombre-item', nombre);
-                item.innerHTML = `
-                    <span>${nombre} - $<span class="precio-producto">${precio.toLocaleString('es-CL')}</span> x <span class="cantidad-producto">1</span></span>
-                    <button class="btn-quitar">Quitar</button>
-                `;
-                listaProductos.appendChild(item);
-
-                const btnQuitar = item.querySelector('.btn-quitar');
-                btnQuitar.addEventListener('click', () => {
-                    quitarProducto(nombre);
-                });
-            }
-
-            productosEnCarrito++;
-            actualizarCarrito();
+            agregarAlCarrito(nombre, precio);
         });
     });
 
-    // --- Lógica del nuevo modal de pedido ---
+    // Botón para Budines
+    const btnAgregarBudin = document.querySelector('.tarjeta-budin .mostrar');
+    if (btnAgregarBudin) {
+        btnAgregarBudin.addEventListener('click', () => {
+            const select = document.getElementById('saborBudin');
+            const selectedOption = select.options[select.selectedIndex];
+            const nombre = selectedOption.getAttribute('data-nombre');
+            const precio = parseInt(selectedOption.getAttribute('data-precio'));
+            agregarAlCarrito(nombre, precio);
+        });
+    }
 
+    // Botón para Mini Budines
+    const btnAgregarMiniBudin = document.querySelector('.tarjeta-mini-budin .mostrar-mini');
+    if (btnAgregarMiniBudin) {
+        btnAgregarMiniBudin.addEventListener('click', () => {
+            const select = document.getElementById('saborMiniBudin');
+            const selectedOption = select.options[select.selectedIndex];
+            const nombre = selectedOption.getAttribute('data-nombre');
+            const precio = parseInt(selectedOption.getAttribute('data-precio'));
+            agregarAlCarrito(nombre, precio);
+        });
+    }
+
+    // Botón para Budines sin Gluten
+    const btnAgregarSinGluten = document.querySelector('.tarjeta-sin-gluten .mostrar-sg');
+    if (btnAgregarSinGluten) {
+        btnAgregarSinGluten.addEventListener('click', () => {
+            const select = document.getElementById('saborSinGluten');
+            const selectedOption = select.options[select.selectedIndex];
+            const nombre = selectedOption.getAttribute('data-nombre');
+            const precio = parseInt(selectedOption.getAttribute('data-precio'));
+            agregarAlCarrito(nombre, precio);
+        });
+    }
+
+    // Botón para Postre en Pote
+    const btnAgregarPostrePote = document.querySelector('.postres-pote .mostrar-mini');
+    if (btnAgregarPostrePote) {
+        btnAgregarPostrePote.addEventListener('click', () => {
+            const select = document.getElementById('saborpostre');
+            const selectedOption = select.options[select.selectedIndex];
+            const nombre = selectedOption.getAttribute('data-nombre');
+            const precio = parseInt(selectedOption.getAttribute('data-precio'));
+            agregarAlCarrito(nombre, precio);
+        });
+    }
+
+    // Lógica del nuevo modal de pedido
     btnWhatsapp.addEventListener('click', () => {
         if (productosEnCarrito === 0) {
             alert('El carrito está vacío. Por favor, agrega productos para continuar.');
@@ -177,8 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cerrarModal.addEventListener('click', () => {
         modalOpciones.classList.remove('visible');
     });
-    
-    // LÓGICA DEL BOTÓN "SÍ" (QUIERE RETIRAR)
+
     btnRetirar.addEventListener('click', () => {
         const telefono = '5492617028044';
         let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO**:\n\n';
@@ -191,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOpciones.classList.remove('visible');
     });
 
-    // LÓGICA DEL BOTÓN "NO" (NO QUIERE RETIRAR, QUIERE COORDINAR)
     btnCancelar.addEventListener('click', () => {
         const telefono = '5492617028044';
         let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido.\n\n';
@@ -204,21 +218,16 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOpciones.classList.remove('visible');
     });
 
-
-    // Función auxiliar para generar el mensaje del pedido
     const generarMensajePedido = () => {
         let mensaje = '';
         for (const nombre in pedido) {
             if (pedido[nombre] > 0) {
-                // Buscamos la tarjeta original, sin el sabor, para obtener el precio base
-                const nombreSinSabor = nombre.split(' (')[0];
-                const tarjeta = document.querySelector(`[data-nombre="${nombreSinSabor}"]`);
-                let precio = 0;
-                if (tarjeta) {
-                    precio = parseInt(tarjeta.getAttribute('data-precio'));
+                const itemElement = listaProductos.querySelector(`[data-nombre-item="${nombre}"]`);
+                if (itemElement) {
+                    const precio = parseInt(itemElement.getAttribute('data-precio'));
+                    const subtotal = pedido[nombre] * precio;
+                    mensaje += `${pedido[nombre]} x ${nombre} = $${subtotal.toLocaleString('es-CL')}\n`;
                 }
-                const subtotal = pedido[nombre] * precio;
-                mensaje += `${pedido[nombre]} x ${nombre} = $${subtotal.toLocaleString('es-CL')}\n`;
             }
         }
         const totalFinal = recalcularTotal();
