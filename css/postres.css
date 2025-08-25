@@ -470,7 +470,7 @@ footer p {
 }
 
 .modal-contenido {
-    background-color: #000000;
+    background-color: #e6e6e6;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -478,12 +478,12 @@ footer p {
     max-width: 90%;
     width: 400px;
     position: relative;
-    border: 2px solid white;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .modal-contenido h3 {
     margin-bottom: 20px;
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
@@ -497,8 +497,8 @@ footer p {
 .opciones-botones button,
 #obtener-ubicacion,
 .btn-enviar-pedido {
-    background-color: #fdfdfd;
-    color: rgb(0, 0, 0);
+    background-color: black;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
