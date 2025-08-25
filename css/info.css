@@ -27,34 +27,23 @@ body {
     margin: 1rem;
     font-size: 1.2rem;
 }
+.condiciones a {
+    font-size: 1.1rem;
+}
 .navegador {
     display: flex;
     background-color: #e6e6e6;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
     color: black;
     top: 0;
-    z-index: 1000;
-    position: sticky;
     font-family: Georgia, 'Times New Roman', Times, serif;
     border-bottom: 2px solid black;
 }
-
-.navegador .logo {
+.navegador h2 {
     font-size: 1.5rem;
     font-weight: bold;
-}
-
-.navegador a {
-    text-decoration: none;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.navegador2 a:hover {
-    color: #616161;
 }
 footer {
     display: flex;
