@@ -5,23 +5,24 @@
 }
 
 body {
-    font-family: cursive;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     line-height: 1.6;
     height: 90vh;
-    background-color: #000;
+    background-color: #e6e6e6;
 }
 
 .navegador {
     display: flex;
-    background-color: black;
+    background-color: #e6e6e6;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    color: white;
+    color: black;
     top: 0;
     z-index: 1000;
     position: sticky;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: 2px solid black;
 }
 
 .navegador .logo {
@@ -31,7 +32,7 @@ body {
 
 .navegador a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .navegador2 a:hover {
@@ -72,8 +73,8 @@ body {
     display: block;
     width: 100%;
     height: 3px;
-    color: white;
-    background: white;
+    color: black;
+    background: black;
     transition: all 0.3s ease-in-out;
 }
 
@@ -90,21 +91,21 @@ body {
 }
 
 .presentacion {
-    background-image: url(../css/fotos/pedazo-pastel-capa-dulce-frambuesas-crema-blanca-fresas_73989-83037.jpg);
+    background-image: url(../css/fotos/postres.jpeg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid black;
     overflow: hidden;
 }
 
 .presentacion h4 {
-    text-align: justify;
+    text-align: center;
     text-shadow: 2px 2px 2px black;
     gap: 2rem;
     margin: 5%;
-    width: 60%;
+    padding: 2rem;
 }
 
 .texto {
@@ -113,21 +114,21 @@ body {
 }
 
 .tarjetas_contenedor {
-    background-color: black;
-    color: white;
+    background-color: #e6e6e6;
+    color: black;
 }
 
 .tarjetas_contenedor h1 {
     text-align: center;
-    padding: 3rem;
+    padding: 2rem;
     font-size: 3rem;
 }
 
 .tarjetas_contenedor h2 {
     text-align: center;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid black;
     padding: 1rem;
-    border-top: 1px solid white;
+    border-top: 2px solid black;
     margin-bottom: 1rem;
 }
 
@@ -135,34 +136,22 @@ body {
 .postres-pote, .tarjeta-budin, .tarjeta-mini-budin, .tarjeta-sin-gluten, .tarjeta18, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11 {
     padding: 2rem;
     margin-bottom: 1rem;
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
 }
-.tarjeta-budin { background-image: url(../css/fotos/budindechocolate-2.jpg); }
-.tarjeta-mini-budin { background-image: url(../css/fotos/mini\ budines.jpeg); }
-.tarjeta-sin-gluten { background-image: url(../css/fotos/budin_de_banana_con_aceite_74758_paso_6_orig.jpg); }
-.tarjeta18 { background-image: url(../css/fotos/mini\ tortas.jpeg); }
-.tarjeta7 { background-image: url(../css/fotos/mini\ brownies.jpeg); }
-.tarjeta8 { background-image: url(../css/fotos/chocotorta-con-chocolinas-422x300.jpg); }
-.tarjeta9 { background-image: url(../css/fotos/lemonpie.jpg); }
-.tarjeta10 { background-image: url(../css/fotos/OIP\ \(1\).webp); }
-.tarjeta11 { background-image: url(../css/fotos/avena.jpg); }
-.postres-pote { background-image: url(../css/fotos/postre\ pote.jpeg); }
-
 
 .postres-pote h3, .tarjeta-budin h3, .tarjeta-mini-budin h3, .tarjeta-sin-gluten h3, .tarjeta18 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3 {
     text-align: center;
-    text-shadow: 2px 2px 2px black;
     margin: 1rem;
     font-size: 2rem;
 }
 
 .postres-pote label, .postres-pote p, .tarjeta-budin label, .tarjeta-budin p, .tarjeta-mini-budin label, .tarjeta-mini-budin p, .tarjeta-sin-gluten label, .tarjeta-sin-gluten p, .tarjeta18 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p {
-    text-align: justify;
-    text-shadow: 2px 2px 1px black;
+    text-align: center;
     font-size: 1.5rem;
     margin: 0.5rem;
 }
@@ -181,12 +170,12 @@ body {
 
 .mostrar, .btn, .mostrar-mini, .mostrar-sg {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bold;
-    border: 2px solid white;
+    border: 2px solid black;
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
-    background: black;
+    background: white;
     transition: 0.5s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     -webkit-tap-highlight-color: transparent;
@@ -209,7 +198,8 @@ button {
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: #000;
+        border-top: 2px solid black;
+        background-color: #e6e6e6;
         padding: 0 1rem;
         max-height: 0;
         overflow: hidden;
@@ -233,9 +223,9 @@ button {
     bottom: 0rem;
     left: 0;
     width: 100%;
-    background-color: black;
-    color: white;
-    border: 2px solid white;
+    background-color: #e6e6e6;
+    color: black;
+    border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -301,7 +291,7 @@ button {
 #btn-minimizar {
     background: none;
     border: none;
-    color: white;
+    color: black;
     font-size: 1.5rem;
     cursor: pointer;
     border-radius: 5px;
@@ -378,12 +368,12 @@ footer {
     display: flex;
     justify-content: center;
     padding: 1rem;
-    background-color: #000;
-    border-top: 1px solid white;
+    background-color: #e6e6e6;
+    border-top: 2px solid black;
 }
 
 footer p {
-    color: white;
+    color: black;
     font-size: 1rem;
     text-align: center;
 }
@@ -391,9 +381,9 @@ footer p {
 .titulo-sticky {
     position: sticky;
     top: 0;
-    background-color: black;
+    background-color: #e6e6e6;
     padding: 1rem;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
     z-index: 1000;
     margin: 0;
 }
@@ -428,9 +418,9 @@ footer p {
 .titulo-sticky-promo {
     position: sticky;
     top: 0;
-    background-color: black;
+    background-color: #e6e6e6;
     padding: 1rem;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid black;
     z-index: 1000;
     margin: 0;
 }
