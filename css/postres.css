@@ -95,17 +95,22 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
+    color: black;
     border-bottom: 2px solid black;
     overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 2rem;
 }
 
 .presentacion h4 {
     text-align: center;
-    text-shadow: 2px 2px 2px black;
     gap: 2rem;
     margin: 5%;
-    padding: 2rem;
+    background-color: #e6e6e691;
+    border: 2px solid black;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.603);
 }
 
 .texto {
@@ -142,6 +147,7 @@ body {
     text-align: center;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
+    
 }
 
 .postres-pote h3, .tarjeta-budin h3, .tarjeta-mini-budin h3, .tarjeta-sin-gluten h3, .tarjeta18 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3 {
@@ -199,6 +205,7 @@ button {
         top: 100%;
         left: 0;
         border-top: 2px solid black;
+        border-bottom: 2px solid black;
         background-color: #e6e6e6;
         padding: 0 1rem;
         max-height: 0;
@@ -555,4 +562,7 @@ select {
     border: 3px solid black;
     border-radius: 5px;
     color: black;
+}
+img {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.637);
 }
