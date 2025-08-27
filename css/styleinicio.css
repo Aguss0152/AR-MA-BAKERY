@@ -31,6 +31,7 @@ body {
     list-style: none;
     display: flex; /* Esto es para la versión de escritorio */
     gap: 1rem;
+    border-bottom: 2px solid black;
 }
 .nav_links a{
     text-decoration: none;
