@@ -189,11 +189,10 @@ body {
     text-shadow: 4px 4px 5px black;
 }
 .tarjeta2 p{
-    color: white;
+    color: black;
     text-align: center;
     width: 100%;
     margin: 1rem;
-    text-shadow: 4px 4px 5px black;
     font-size: 1.2rem;
 }
 .tarjeta2 a{
@@ -270,7 +269,9 @@ body {
 }
 .parrafo {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    background-color: #e6e6e6a1;
+    color: black;
 }
 .mirar {
     display: flex;
@@ -391,4 +392,7 @@ a {
     to {
         transform: translateX(-100%);
     }
+}
+html {
+    scroll-behavior: smooth;
 }

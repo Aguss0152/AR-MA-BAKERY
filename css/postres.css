@@ -99,8 +99,22 @@ body {
     border-bottom: 2px solid black;
     overflow: hidden;
     width: 100%;
-    height: auto;
-    padding: 2rem;
+    animation-name: presentacion;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes presentacion {
+    from {
+        max-height: 0;
+        padding: 0;
+    }
+    to {
+        max-height: 500px;
+        padding: 1rem;
+    }
 }
 
 .presentacion h4 {
@@ -111,6 +125,22 @@ body {
     border: 2px solid black;
     font-weight: bold;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.603);
+    animation-name: subir;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes subir {
+    from {
+        opacity: 1;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .texto {
@@ -563,6 +593,25 @@ select {
     border-radius: 5px;
     color: black;
 }
+@keyframes show {
+    from {
+        opacity: 0;
+        scale: 0.4;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
 img {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.637);
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 25% cover 50%;
+    animation-name: show;
+}
+
+html {
+    scroll-behavior: smooth;
 }
