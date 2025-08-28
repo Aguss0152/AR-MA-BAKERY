@@ -117,16 +117,14 @@
             <h3>Mini torta</h3>
             <img src="../css/fotos/mini tortas.jpeg" alt="Mini torta" width="250" height="300" border="2px solid black">
             <div class="parrafo">
-                <p>Selecciona sabor:</p>
-                <div class="seleccion-sabor">
-                    <select id="saborMinitorta" name="saborMinitorta">
+                <label for="saborpostre">Selecciona sabor:</label>
+                <select id="saborpostre" name="saborpostre">
                         <option value="tres leches vainilla">Tres leches vainilla</option>
                         <option value="chocolate">Chocolate</option>
                         <option value="oreo">Oreo</option>
                         <option value="frutilla">Frutilla</option>
                         <option value="red velvet">Red Velvet</option>
                     </select>
-                </div>
                 <p>Precio: $5.000</p>
             </div>
             <div class="mirar"><button class="mostrar" id="mostrar1">Agregar</button></div>
@@ -142,12 +140,13 @@
             <div class="mirar"><button class="mostrar">Agregar</button></div>
         </div>
 
-        <div class="tarjeta8" id="tarjeta8" data-nombre="Chocotorta" data-precio="40000">
+        <div class="tarjeta8" id="tarjeta8" data-nombre="Chocotorta" data-precio="35000">
             <h3>Chocotorta</h3>
             <img src="../css/fotos/chocotorta.jpeg" alt="Chocotorta" width="300" height="300" border="2px solid black">
             <div class="parrafo">
                 <p>Contiene: Chocolinas, dulce de leche repostero y queso crema</p>
-                <p>Precio: $40.000</p>
+                <p>Deco: $10.000</p>
+                <p>Precio: $35.000</p>
             </div>
             <div class="mirar"><button class="mostrar">Agregar</button></div>
         </div>
@@ -202,7 +201,7 @@
                     <p>Total: $<span id="total">0</span></p>
                     <button id="btn-whatsapp">Encargar</button>
                 </div>
-                <button id="btn-minimizar">-</button>
+                <button id="btn-minimizar" class="btn-minimizar">-</button>
             </div>
             <div id="lista-productos" class="lista-scroll"></div>
         </div>

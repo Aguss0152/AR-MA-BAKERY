@@ -262,7 +262,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return mensaje;
     };
 
+    // Lógica mejorada del botón minimizar/maximizar
     btnMinimizar.addEventListener('click', () => {
+        // Alterna la clase para minimizar o maximizar
         carritoFijo.classList.toggle('minimizado');
+
+        // Cambia el texto del botón según el estado
+        if (carritoFijo.classList.contains('minimizado')) {
+            btnMinimizar.textContent = '+';
+        } else {
+            btnMinimizar.textContent = '-';
+        }
     });
 });
