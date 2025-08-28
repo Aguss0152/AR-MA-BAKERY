@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRetirar = document.getElementById('btn-retirar');
     const btnCancelar = document.getElementById('btn-cancelar');
     const cerrarModal = document.getElementById('cerrar-modal');
+    const fechaEntrega = document.getElementById('fecha-entrega');
 
     const pedido = {};
     let productosEnCarrito = 0;
@@ -196,7 +197,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnRetirar.addEventListener('click', () => {
         const telefono = '5492617028044';
-        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO**:\n\n';
+        const fechaSeleccionada = fechaEntrega.value;
+
+        if (!fechaSeleccionada) {
+            alert('Por favor, selecciona una fecha de entrega.');
+            return;
+        }
+
+        const fechaFormateada = new Date(fechaSeleccionada).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO** con fecha de entrega: ${fechaFormateada}.\n\n`;
         mensaje += generarMensajePedido();
         mensaje += `\n\n_Para la ubicación del local, por favor revisa el perfil de WhatsApp._`;
         
@@ -208,9 +222,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnCancelar.addEventListener('click', () => {
         const telefono = '5492617028044';
-        let mensaje = '¡Hola! Me gustaría hacer el siguiente pedido.\n\n';
+        const fechaSeleccionada = fechaEntrega.value;
+
+        if (!fechaSeleccionada) {
+            alert('Por favor, selecciona una fecha de entrega.');
+            return;
+        }
+
+        const fechaFormateada = new Date(fechaSeleccionada).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **ENVÍO A DOMICILIO** con fecha de entrega: ${fechaFormateada}.\n\n`;
         mensaje += generarMensajePedido();
-        mensaje += `\n\n_No retiraré en el domicilio, me gustaría coordinar la entrega.`;
+        mensaje += `\n\n_Me gustaría coordinar la entrega._`;
         
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
