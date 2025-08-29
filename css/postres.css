@@ -634,9 +634,6 @@ select {
     color: black;
     width: 100%;
 }
-#saborMinitorta {
-    width: 100%;
-}
 @keyframes show {
     from {
         opacity: 0;

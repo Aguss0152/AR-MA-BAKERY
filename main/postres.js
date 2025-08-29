@@ -30,6 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const pedido = {};
     let productosEnCarrito = 0;
 
+    // --- COMIENZO DEL CÓDIGO CORREGIDO ---
+    // Restringe el calendario para que no se puedan seleccionar fechas pasadas
+    const hoy = new Date();
+    const dia = String(hoy.getDate()).padStart(2, '0');
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Meses de 0 a 11
+    const anio = hoy.getFullYear();
+    const fechaMinima = `${anio}-${mes}-${dia}`;
+    fechaEntrega.min = fechaMinima;
+
+    // --- FIN DEL CÓDIGO CORREGIDO ---
+
     const recalcularTotal = () => {
         let total = 0;
         let miniBudinesPromoCount = 0;
@@ -204,13 +215,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const fechaFormateada = new Date(fechaSeleccionada).toLocaleDateString('es-ES', {
+        // --- COMIENZO DEL CÓDIGO CORREGIDO ---
+        const fechaFormateada = new Date(fechaSeleccionada + 'T00:00:00');
+        const fechaFinal = fechaFormateada.toLocaleDateString('es-ES', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
+        // --- FIN DEL CÓDIGO CORREGIDO ---
 
-        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO** con fecha de entrega: ${fechaFormateada}.\n\n`;
+        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **RETIRO EN DOMICILIO** con fecha de entrega: ${fechaFinal}.\n\n`;
         mensaje += generarMensajePedido();
         mensaje += `\n\n_Para la ubicación del local, por favor revisa el perfil de WhatsApp._`;
         
@@ -229,13 +243,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const fechaFormateada = new Date(fechaSeleccionada).toLocaleDateString('es-ES', {
+        // --- COMIENZO DEL CÓDIGO CORREGIDO ---
+        const fechaFormateada = new Date(fechaSeleccionada + 'T00:00:00');
+        const fechaFinal = fechaFormateada.toLocaleDateString('es-ES', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
+        // --- FIN DEL CÓDIGO CORREGIDO ---
 
-        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **ENVÍO A DOMICILIO** con fecha de entrega: ${fechaFormateada}.\n\n`;
+        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **ENVÍO A DOMICILIO** con fecha de entrega: ${fechaFinal}.\n\n`;
         mensaje += generarMensajePedido();
         mensaje += `\n\n_Me gustaría coordinar la entrega._`;
         
