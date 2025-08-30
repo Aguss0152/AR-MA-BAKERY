@@ -252,9 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // --- FIN DEL CÓDIGO CORREGIDO ---
 
-        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para **ENVÍO A DOMICILIO** con fecha de entrega: ${fechaFinal}.\n\n`;
+        let mensaje = `¡Hola! Me gustaría hacer el siguiente pedido para *COORDINAR LA ENTREGA* con fecha de entrega: ${fechaFinal}.\n\n`;
         mensaje += generarMensajePedido();
-        mensaje += `\n\n_Me gustaría coordinar la entrega._`;
+        mensaje += `\n\nMi nombre es:`;
         
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWhatsapp = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cambia el texto del botón según el estado
         if (carritoFijo.classList.contains('minimizado')) {
-            btnMinimizar.textContent = '+';
+            btnMinimizar.textContent = '⌃';
         } else {
             btnMinimizar.textContent = '-';
         }
