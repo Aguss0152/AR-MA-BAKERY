@@ -170,7 +170,7 @@ body {
 }
 
 /* Nuevas clases para los budines con select */
-.alfajores-maicena, .postres-pote, .tarjeta-budin, .tarjeta-mini-budin, .tarjeta-sin-gluten, .tarjeta18, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11, .tarjeta12 {
+.alfajores-maicena, .postres-pote, .tarjeta-budin, .tarjeta-mini-budin, .tarjeta-sin-gluten, .tarjeta18, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11, .tarjeta12, .tarjeta13 {
     padding: 2rem;
     margin-bottom: 1rem;
     background-position: center;
@@ -182,13 +182,13 @@ body {
     
 }
 
-.alfajores-maicena h3, .postres-pote h3, .tarjeta-budin h3, .tarjeta-mini-budin h3, .tarjeta-sin-gluten h3, .tarjeta18 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3, .tarjeta12 h3 {
+.alfajores-maicena h3, .postres-pote h3, .tarjeta-budin h3, .tarjeta-mini-budin h3, .tarjeta-sin-gluten h3, .tarjeta18 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3, .tarjeta12 h3, .tarjeta13 h3 {
     text-align: center;
     margin: 1rem;
     font-size: 2rem;
 }
 
-.alfajores-maicena label, .postres-pote label, .postres-pote p, .tarjeta-budin label, .tarjeta-budin p, .tarjeta-mini-budin label, .tarjeta-mini-budin p, .tarjeta-sin-gluten label, .tarjeta-sin-gluten p, .tarjeta18 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p{
+.alfajores-maicena label, .postres-pote label, .postres-pote p, .tarjeta-budin label, .tarjeta-budin p, .tarjeta-mini-budin label, .tarjeta-mini-budin p, .tarjeta-sin-gluten label, .tarjeta-sin-gluten p, .tarjeta18 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p, .tarjeta12 p, .tarjeta13 p{
     text-align: center;
     font-size: 1rem;
 }
