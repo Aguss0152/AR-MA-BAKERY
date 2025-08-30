@@ -126,6 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         productosEnCarrito++;
+        if (productosEnCarrito === 1) {
+            carritoFijo.classList.add('minimizado');
+            btnMinimizar.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            btnMinimizar.classList.add('palpitar'); // Solo antes del primer click
+        }
         actualizarCarrito();
     };
 
@@ -279,16 +284,28 @@ document.addEventListener('DOMContentLoaded', () => {
         return mensaje;
     };
 
-    // Lógica mejorada del botón minimizar/maximizar
-    btnMinimizar.addEventListener('click', () => {
-        // Alterna la clase para minimizar o maximizar
-        carritoFijo.classList.toggle('minimizado');
+let primerClickMinimizar = true;
+let intervaloPalpitar = null;
 
-        // Cambia el texto del botón según el estado
-        if (carritoFijo.classList.contains('minimizado')) {
-            btnMinimizar.textContent = '⌃';
-        } else {
-            btnMinimizar.textContent = '-';
-        }
-    });
+btnMinimizar.addEventListener('click', () => {
+    carritoFijo.classList.toggle('minimizado');
+    btnMinimizar.classList.remove('palpitar');
+
+    if (primerClickMinimizar) {
+        primerClickMinimizar = false;
+        // Inicia el intervalo para palpitación cada 7 segundos, dura 3 segundos
+        intervaloPalpitar = setInterval(() => {
+            btnMinimizar.classList.add('palpitar');
+            setTimeout(() => {
+                btnMinimizar.classList.remove('palpitar');
+            }, 3000); // 3 segundos de palpitación
+        }, 5000); // Cada 5 segundos
+    }
+
+    if (carritoFijo.classList.contains('minimizado')) {
+        btnMinimizar.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    } else {
+        btnMinimizar.innerHTML = '<i class="fas fa-chevron-down"></i>';
+    }
+});
 });

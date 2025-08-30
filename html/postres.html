@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aróma Bakery - Postres</title>
     <link rel="stylesheet" href="../css/postres.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav class="navegador">
@@ -190,6 +191,9 @@
             </div>
         </div>
     </section>
+    <footer>
+        <p>&copy; 2025 Todos los derechos reservados.</p>
+    </footer>
     </main>
 
     <div id="carrito" class="carrito-fijo">
@@ -197,17 +201,18 @@
             <div class="carrito-header">
                 <div class="header-info">
                     <h3>Tu Pedido</h3>
-                    <p id="mensaje-promo" class="mensaje-oculto">¡Promo 2 x $5.000 aplicada!</p>
+                    <p id="mensaje-promo" class="mensaje-oculto">¡Promo aplicada!</p>
                 </div>
+                   <div><button id="btn-minimizar" class="btn-minimizar"><i class="fas fa-chevron-down fa-bounce"></i></button></div>
                 <div class="header-total">
                     <p>Total: $<span id="total">0</span></p>
                     <button id="btn-whatsapp">Encargar</button>
                 </div>
-                <button id="btn-minimizar" class="btn-minimizar">-</button>
             </div>
-            <div id="lista-productos" class="lista-scroll"></div>
         </div>
+                <div id="lista-productos" class="lista-scroll"></div>
     </div>
+
     <div id="modal-opciones" class="modal-opciones">
         <div class="modal-contenido">
             <h3>Coordina tu entrega</h3>
@@ -218,12 +223,9 @@
                 <button id="btn-retirar">Sí</button>
                 <button id="btn-cancelar">No</button>
             </div>
-            <button id="cerrar-modal" class="cerrar-modal">×</button>
+            <button id="cerrar-modal" class="cerrar-modal"></button>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2025 Todos los derechos reservados.</p>
-    </footer>
     <script src="../main/postres.js"></script>
 </body>
 </html>

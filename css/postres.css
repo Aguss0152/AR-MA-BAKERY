@@ -290,7 +290,6 @@ button {
 
 .btn-minimizar {
     padding: 0rem 0.5rem;
-    border: none;
     font-size: 1.5rem;
     background-color: transparent;
 }
@@ -308,7 +307,7 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 0;
-    border-bottom: 1px dashed #ddd; /* Borde más discreto */
+    border-bottom: 1px solid #000000;
 }
 
 .item-carrito:last-child {
@@ -317,7 +316,7 @@ button {
 
 .item-carrito span {
     font-size: 1rem;
-    color: #444;
+    color: #000000;
 }
 
 .precio-producto {
@@ -375,48 +374,58 @@ button {
     margin-top: 5px;
 }
 
-/* Responsive adjustments for the cart */
 @media (max-width: 600px) {
     .carrito-fijo {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
     }
 
     .carrito-contenido {
-        padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 2px solid #000000;
     }
-
     .carrito-header {
         display: flex;
         justify-content: space-between;
         text-align: center;
         gap: 0.5rem;
+        width: 100%;
+        height: auto;
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
-
     .carrito-header h3 {
-        width: 100%;
         font-size: 1.2rem;
-        margin-bottom: 0.5rem;
     }
-
-    .header-info, .header-total {
-        width: 100%;
-        justify-content: center;
+    .btn-minimizar {
+        font-size: 2rem;
+        padding: 1rem;
+        border: none;
     }
-
+    .header-info {
+        display: flex;
+        align-items: center;
+    }
+    .header-total {
+        justify-content: flex-end;
+        align-content: center;
+    }
     .header-total p {
         font-size: 1rem;
     }
 
     #btn-whatsapp {
-        width: calc(100% - 1rem); /* Ocupa casi todo el ancho */
         font-size: 1rem;
         padding: 0.6rem 1rem;
         margin-top: 0.5rem;
     }
 
     #lista-productos {
-        max-height: calc(80vh - 200px); /* Ajusta la altura máxima en móviles */
+        max-height: calc(80vh - 200px);
     }
 
     .item-carrito {
@@ -431,15 +440,11 @@ button {
     }
 
     .btn-quitar {
-        align-self: flex-end; /* Alinea el botón a la derecha */
-        margin-top: -1.5rem; /* Ajusta la posición */
+        align-self: flex-end;
+        margin-top: -1.5rem;
         margin-right: 0.5rem;
     }
 }
-/* ------------------------------------------- */
-/* Fin de mejoras de diseño para el carrito    */
-/* ------------------------------------------- */
-
 footer {
     display: flex;
     justify-content: center;
@@ -675,4 +680,13 @@ html {
 
 .modal-contenido h3 {
     margin-top: 10px;
+}
+
+.palpitar {
+    animation: palpitar 1s infinite;
+}
+
+@keyframes palpitar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
 }
