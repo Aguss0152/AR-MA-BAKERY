@@ -186,11 +186,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Botón para Alfajores maicena
+    const btnAgregarAlfajores = document.querySelector('.alfajores-maicena .mostrar-sg');
+    if (btnAgregarAlfajores) {
+        btnAgregarAlfajores.addEventListener('click', () => {
+            const select = document.getElementById('cantidad');
+            const selectedOption = select.options[select.selectedIndex];
+            const nombre = selectedOption.getAttribute('data-nombre');
+            const precio = parseInt(selectedOption.getAttribute('data-precio'));
+            agregarAlCarrito(nombre, precio);
+        });
+    }
+
     // Botón para Postre en Pote
-    const btnAgregarPostrePote = document.querySelector('.postres-pote .mostrar-mini');
+    const btnAgregarPostrePote = document.querySelector('.postres-pote .mostrar-sg');
     if (btnAgregarPostrePote) {
         btnAgregarPostrePote.addEventListener('click', () => {
-            const select = document.getElementById('saborpostre');
+            const select = document.getElementById('cantidad');
             const selectedOption = select.options[select.selectedIndex];
             const nombre = selectedOption.getAttribute('data-nombre');
             const precio = parseInt(selectedOption.getAttribute('data-precio'));
