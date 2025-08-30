@@ -199,10 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Botón para Postre en Pote
-    const btnAgregarPostrePote = document.querySelector('.postres-pote .mostrar-sg');
+    const btnAgregarPostrePote = document.querySelector('.postres-pote .mostrar-mini');
     if (btnAgregarPostrePote) {
         btnAgregarPostrePote.addEventListener('click', () => {
-            const select = document.getElementById('cantidad');
+            const select = document.getElementById('saborpostre');
             const selectedOption = select.options[select.selectedIndex];
             const nombre = selectedOption.getAttribute('data-nombre');
             const precio = parseInt(selectedOption.getAttribute('data-precio'));
