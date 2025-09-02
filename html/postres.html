@@ -237,36 +237,10 @@
     </footer>
     </main>
 
-    <div id="carrito" class="carrito-fijo">
-        <div class="carrito-contenido">
-            <div class="carrito-header">
-                <div class="header-info">
-                    <h3>Tu Pedido</h3>
-                    <p id="mensaje-promo" class="mensaje-oculto">¡Promo aplicada!</p>
-                </div>
-                   <div><button id="btn-minimizar" class="btn-minimizar"><i class="fas fa-chevron-down fa-bounce"></i></button></div>
-                <div class="header-total">
-                    <p>Total: $<span id="total">0</span></p>
-                    <button id="btn-whatsapp">Encargar</button>
-                </div>
-            </div>
-        </div>
-                <div id="lista-productos" class="lista-scroll"></div>
-    </div>
-
-    <div id="modal-opciones" class="modal-opciones">
-        <div class="modal-contenido">
-            <button id="cerrar-modal" class="cerrar-modal">&times;</button>
-            <h3>Coordina tu entrega</h3>
-            <p>Selecciona una fecha de entrega:</p>
-            <input type="date" id="fecha-entrega" placeholder="dd/mm/aaaa">
-            <h3>¿Desea retirar en domicilio?</h3>
-            <div class="opciones-botones">
-                <button id="btn-retirar">Sí</button>
-                <button id="btn-cancelar">No</button>
-            </div>
-        </div>
-    </div>
+        <button class="carrito">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contador-carrito" class="contador-carrito">0</span>
+        </button>
     <script src="../main/postres.js"></script>
 </body>
 </html>

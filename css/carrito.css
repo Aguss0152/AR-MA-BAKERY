@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #d1d8e0;
+    --background-color: #f1f2f6;
+    --card-color: #ffffff;
+    --text-color: #2f3640;
+    --light-text-color: #8c8c8c;
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.header {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+#carrito {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    /* Altura ajustada para ser más corta y responsiva */
+    max-height: 40vh; /* Ajustado de 60vh a 40vh */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Media query para pantallas más pequeñas, ajustando la altura si es necesario */
+@media (max-width: 768px) {
+    #lista-carrito {
+        max-height: 55vh; /* Un poco más corto en móviles */
+    }
+}
+
+
+#lista-carrito li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#lista-carrito li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cantidad-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cantidad-control button {
+    width: 30px;
+    height: 30px;
+    background-color: var(--card-color);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cantidad-control button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.cantidad-control span {
+    font-weight: 500;
+}
+
+.total-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.total-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.total-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--card-color);
+}
+
+.btn-primary:hover {
+    background-color: #4a91e6;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--light-text-color);
+    color: var(--card-color);
+}
+
+.btn-secondary:hover {
+    background-color: #727272;
+    transform: translateY(-2px);
+}
+
+.form-container {
+    /* Aquí podrías cambiar display: none; a display: block; cuando quieras mostrarlo */
+    display: none; /* Mantener oculto por defecto, tu JS lo mostrará */
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input[type="date"],
+.form-group input[type="text"] { /* Añadido type="text" por si acaso, aunque no está en tu HTML */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}

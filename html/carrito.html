@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Postres 🛒</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Tu Carrito</h1>
+    </div>
+    
+    <div class="container">
+        <section id="carrito">
+            <ul id="lista-carrito"></ul>
+            <div class="total-container">
+                <p class="total-text" id="total">Total: $0</p>
+                <div class="total-buttons">
+                    <button id="seguir-comprando" class="btn btn-secondary">Seguir comprando</button>
+                    <button id="comprar" class="btn btn-primary" href="#confirmacion">Comprar</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="confirmacion" class="form-container">
+            <h3>Completa tu pedido</h3>
+            <div class="form-group">
+                <label for="fecha-entrega">Fecha de entrega:</label>
+                <input type="date" id="fecha-entrega">
+            </div>
+            
+            <div class="form-group">
+                <h4>¿Desea retirar en domicilio?</h4>
+                <div class="radio-group">
+                    <input type="radio" id="retirar-si" name="retiro" value="si">
+                    <label for="retirar-si">Sí</label>
+                    <input type="radio" id="retirar-no" name="retiro" value="no">
+                    <label for="retirar-no">No (Coordinar entrega)</label>
+                </div>
+            </div>
+            <button id="confirmar-pedido" class="btn btn-primary">Confirmar</button>
+        </section>
+    </div>
+
+    <script src="../main/carrito.js"></script>
+</body>
+</html>
