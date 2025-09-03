@@ -393,6 +393,45 @@ a {
         transform: translateX(-100%);
     }
 }
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 60px; /* Ajusta el ancho del botón */
+    height: 60px; /* Ajusta el alto del botón */
+    background: transparent;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.loading span {
+    display: none; /* Oculta el texto del botón cuando está cargando */
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px; /* Tamaño del spinner */
+    height: 20px; /* Tamaño del spinner */
+    border: 4px solid #f3f3f3; /* Color claro del borde */
+    border-top: 4px solid black; /* Color del borde superior */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modifica el estilo del enlace para que se parezca al botón cuando está en estado de carga */
+.tarjeta2 a.loading {
+    padding: 0;
+    box-shadow: none;
+}
+
 html {
     scroll-behavior: smooth;
 }

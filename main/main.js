@@ -8,7 +8,27 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburguesa.classList.toggle('active');
         });
     } else {
-        // Corrección del selector: debería ser .hamburguesa
         console.error('No se encontraron los elementos .hamburguesa o .nav_links. Verifica tus selectores.');
+    }
+
+    // Nuevo código para el botón de "Ver"
+    const postresLink = document.getElementById('postres-link');
+
+    if (postresLink) {
+        postresLink.addEventListener('click', (event) => {
+            // Previene la navegación inmediata del enlace
+            event.preventDefault();
+
+            // Añade la clase 'loading' al enlace para mostrar el spinner
+            postresLink.classList.add('loading');
+
+            // Obtiene la URL del enlace
+            const href = postresLink.href;
+
+            // Retrasa la navegación de la página para que el usuario pueda ver el spinner
+            setTimeout(() => {
+                window.location.href = href;
+            }, 1000); // Retraso de 1 segundo (1000 ms)
+        });
     }
 });
