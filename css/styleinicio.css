@@ -1,437 +1,600 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    line-height: 1.6;
-    height: 90vh;
-    background-color: #e6e6e6;
-}
-.navegador {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    color: black;
-    position: sticky;
-    background-color: #e6e6e6;
-    top: 0;
-    z-index: 900;
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
     
-    border-bottom: 2px solid black;
-}
-.navegador .logo{
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-}
-.nav_links {
-    list-style: none;
-    display: flex; /* Esto es para la versión de escritorio */
-    gap: 1rem;
-    border-bottom: 2px solid black;
-}
-.nav_links a{
-    text-decoration: none;
-    color: black;
-    transition: color 0.3s;
-    -webkit-tap-highlight-color: transparent;
-}
-.nav_links a:hover {
-    color: #818181;
-}
-.hamburguesa {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0%;
-    z-index: 1000;
-    -webkit-tap-highlight-color: transparent;
-}
-.hamburguesa span{
-    display: block;
-    width: 100%;
-    height: 3px;
-    color: #e6e6e6;
-    background: black;
-    transition: all 0.3s ease-in-out;
-}
-.hamburguesa.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7.6px, 6.5px);
-}
-.hamburguesa.active span:nth-child(2) {
-    opacity: 0;
-}
-.hamburguesa.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(4.9px, -5.1px);
-}
-.hero_seccion {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    padding: 2rem;
-    z-index: 1;
-    overflow: hidden;
-    position: relative;
-}
-#miVideo{
-    min-width: 100%;
-    min-height: 100%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    object-fit: cover;
-}
-.btn_primary {
-    background-color: black;
-    color: white;
-    padding: 0.8rem 1.8rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    -webtik-tap-highlight-color: transparent;
-}
-.btn_primary:hover {
-    background: #0001;
-    border: 2px solid white;
-    transform: translate(-3px);
-}
-.tarjetas_contenedor {
-    background-color: #e6e6e6; 
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-}
-.tarjetas_contenedor h2{
-    text-align: center;
-    margin: 1.5rem;
-    font-size: 2.5rem;
-    color: black;
-   
-}
-.tarjetas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-.tarjeta1 {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(../css/fotos/viandas.jpeg);
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    overflow: hidden;
-    margin: 1rem 0;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-}
-.tarjeta1 h3{
-    color: white;
-    gap: 2rem;
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 1rem;
-    text-shadow: 4px 4px 5px black;
-}
-.tarjeta1 p{
-    color: white;
-    text-align: center;
-    width: 100%;
-    margin: 1rem;
-    text-shadow: 4px 4px 5px black;
-    font-size: 1.2rem;
-}
-.tarjeta1 a{
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-    -webtik-tap-highlight-color: transparent;
-    background-color: white;
-    color: black;
-    padding: 0.8rem 1.8rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: background 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin: 2rem;
-}
-.tarjeta2 {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(../css/fotos/postres\ en\ inicio.jpeg);
-    overflow: hidden;
-    border-top: 2px solid black;
-}
-.tarjeta2 h3{
-    color: white;
-    gap: 2rem;
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 1rem;
-    text-shadow: 4px 4px 5px black;
-}
-.tarjeta2 p{
-    color: black;
-    text-align: center;
-    width: 100%;
-    margin: 1rem;
-    font-size: 1.2rem;
-}
-.tarjeta2 a{
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-    -webtik-tap-highlight-color: transparent;
-    background-color: white;
-    color: black;
-    padding: 0.8rem 1.8rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: background 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin: 2rem;
-    border: 2px solid black;
-}
-.tarjeta3 {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(../css/fotos/deliciosa-salsa-napoletana-roja-cebolla-sal-especias-hierbas-recipiente-blanco-sobre-fondo-hormigon-oscuro_73989-52273.jpg);
-    border-image: fill 0 linear-gradient(to left, #000, #0001);
-    overflow: hidden;
-}
-.tarjeta3 h3{
-    color: white;
-    gap: 2rem;
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 1rem;
-    text-shadow: 4px 4px 5px black;
-}
-.tarjeta3 p{
-    color: white;
-    text-align: justify;
-    width: 60%;
-    margin: 1rem;
-    text-shadow: 4px 4px 5px black;
-}
-.tarjeta3 a{
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-    -webtik-tap-highlight-color: transparent;
-    background-color: white;
-    color: black;
-    padding: 0.8rem 1.8rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    transition: background 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin: 2rem;
-}
-.tarjeta1 a:hover{
-    background-color:#0001;
-    color: white;
-    border: 1px solid white;
-    transform: translate(-3px);
-}
-.tarjeta2 a:hover{
-    background-color:#0001;
-    color: white;
-    border: 1px solid white;
-    transform: translate(-3px);
-}
-.tarjeta3 a:hover{
-    background-color:#0001;
-    color: white;
-    border: 1px solid white;
-    transform: translate(-3px);
-}
-.parrafo {
-    display: flex;
-    justify-content: center;
-    background-color: #e6e6e680;
-    color: black;
-}
-.mirar {
-    display: flex;
-    justify-content: center;
-}
-footer{
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    background-color:#e6e6e6;
-    border-top: 2px solid black;
-}
-footer p {
-    color: black;
-    font-size: 1rem;
-    text-align: center;
-}
-@media (max-width: 768px) {
-    .nav_links {
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        line-height: 1.6;
+        height: 90vh;
         background-color: #e6e6e6;
-        padding: 0 1rem;
-        /* Estilos para la animación */
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-        visibility: hidden; /* Oculta el menú pero mantiene su espacio en el DOM */
-        border-top: 2px black solid;
     }
-
-    .nav_links.active {
-        max-height: 300px;
-        padding: 1rem;
-        visibility: visible;
+    /*Bloquear esta clase promomcion luego de que termine la misma*/
+    
+    .promocion {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
     }
-
-    .hamburguesa {
+    
+    .navegador {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        color: black;
+        position: sticky;
+        background-color: #e6e6e6;
+        top: 35px;
+        /* Modificar a 0 luego de terminar la promociones*/
+        width: 100%;
+        z-index: 900;
+        border-bottom: 2px solid black;
     }
-}
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-.hero_seccion2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    background-color: #e6e6e6;
-    text-align: center;
-    padding: 1rem;
-}
-/* CÓDIGO CORREGIDO AQUÍ */
-.redes-link {
-    transition: transform 0.3s ease;
-}
-
-.redes-link:hover {
-    transform: scale(1.1); /* Agranda la imagen un 10% */
-}
-
-.redes-link:active {
-    transform: scale(0.95); /* Encoge la imagen un 5% al ser presionada */
-}
-.whatsapp-btn{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-.whatsapp-btn img{
-    width: 60px;
-    max-width: 55px;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-.whatsapp-btn img:hover {
-    transform: scale(1.1); /* Agranda la imagen un 10% al pasar el mouse */
-}
-.whatsapp-btn a:active {
-    transform: scale(0.95); /* Encoge la imagen un 5% al ser presionada */
-}
-@media (max-width: 768px) {
+    
+    .navegador .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: black;
+    }
+    
+    .nav_links {
+        list-style: none;
+        display: flex;
+        /* Esto es para la versión de escritorio */
+        gap: 1rem;
+        border-bottom: 2px solid black;
+    }
+    
+    .nav_links a {
+        text-decoration: none;
+        color: black;
+        transition: color 0.3s;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .nav_links a:hover {
+        color: #818181;
+    }
+    
+    .hamburguesa {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0%;
+        z-index: 1000;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .hamburguesa span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        color: #e6e6e6;
+        background: black;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .hamburguesa.active span:nth-child(1) {
+        transform: rotate(45deg) translate(7.6px, 6.5px);
+    }
+    
+    .hamburguesa.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburguesa.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4.9px, -5.1px);
+    }
+    
+    .hero_seccion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 2rem;
+        z-index: 1;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    #miVideo {
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        object-fit: cover;
+    }
+    
+    .btn_primary {
+        background-color: black;
+        color: white;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: 0.3s, transform 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        -webtik-tap-highlight-color: transparent;
+    }
+    
+    .btn_primary:hover {
+        background: #0001;
+        border: 2px solid white;
+        transform: translate(-3px);
+    }
+    
+    .tarjetas_contenedor {
+        background-color: #e6e6e6;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+    
+    .tarjetas_contenedor h2 {
+        text-align: center;
+        margin: 1.5rem;
+        font-size: 2.5rem;
+        color: black;
+    }
+    
+    .tarjetas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+    }
+    
+    .tarjeta1 {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(../css/fotos/viandas.jpeg);
+        border-image: fill 0 linear-gradient(to left, #000, #0001);
+        overflow: hidden;
+        margin: 1rem 0;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+    }
+    
+    .tarjeta1 h3 {
+        color: white;
+        gap: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 1rem;
+        text-shadow: 4px 4px 5px black;
+    }
+    
+    .tarjeta1 p {
+        color: white;
+        text-align: center;
+        width: 100%;
+        margin: 1rem;
+        text-shadow: 4px 4px 5px black;
+        font-size: 1.2rem;
+    }
+    
+    .tarjeta1 a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+        -webtik-tap-highlight-color: transparent;
+        background-color: white;
+        color: black;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background 0.3s, transform 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        margin: 2rem;
+    }
+    
+    .tarjeta2 {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(../css/fotos/postres\ en\ inicio.jpeg);
+        overflow: hidden;
+        border-top: 2px solid black;
+    }
+    
+    .tarjeta2 h3 {
+        color: white;
+        gap: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 1rem;
+        text-shadow: 4px 4px 5px black;
+    }
+    
+    .tarjeta2 p {
+        color: black;
+        text-align: center;
+        width: 100%;
+        margin: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .tarjeta2 a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+        -webtik-tap-highlight-color: transparent;
+        background-color: white;
+        color: black;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background 0.3s, transform 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        margin: 2rem;
+        border: 2px solid black;
+    }
+    
+    .tarjeta3 {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(../css/fotos/deliciosa-salsa-napoletana-roja-cebolla-sal-especias-hierbas-recipiente-blanco-sobre-fondo-hormigon-oscuro_73989-52273.jpg);
+        border-image: fill 0 linear-gradient(to left, #000, #0001);
+        overflow: hidden;
+    }
+    
+    .tarjeta3 h3 {
+        color: white;
+        gap: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 1rem;
+        text-shadow: 4px 4px 5px black;
+    }
+    
+    .tarjeta3 p {
+        color: white;
+        text-align: justify;
+        width: 60%;
+        margin: 1rem;
+        text-shadow: 4px 4px 5px black;
+    }
+    
+    .tarjeta3 a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s;
+        -webtik-tap-highlight-color: transparent;
+        background-color: white;
+        color: black;
+        padding: 0.8rem 1.8rem;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background 0.3s, transform 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        margin: 2rem;
+    }
+    
+    .tarjeta1 a:hover {
+        background-color: #0001;
+        color: white;
+        border: 1px solid white;
+        transform: translate(-3px);
+    }
+    
+    .tarjeta2 a:hover {
+        background-color: #0001;
+        color: white;
+        border: 1px solid white;
+        transform: translate(-3px);
+    }
+    
+    .tarjeta3 a:hover {
+        background-color: #0001;
+        color: white;
+        border: 1px solid white;
+        transform: translate(-3px);
+    }
+    
+    .parrafo {
+        display: flex;
+        justify-content: center;
+        background-color: #e6e6e680;
+        color: black;
+    }
+    
+    .mirar {
+        display: flex;
+        justify-content: center;
+    }
+    
+    footer {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        background-color: #e6e6e6;
+        border-top: 2px solid black;
+    }
+    
+    footer p {
+        color: black;
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+        .nav_links {
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #e6e6e6;
+            padding: 0 1rem;
+            /* Estilos para la animación */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            visibility: hidden;
+            /* Oculta el menú pero mantiene su espacio en el DOM */
+            border-top: 2px black solid;
+        }
+        .nav_links.active {
+            max-height: 300px;
+            padding: 1rem;
+            visibility: visible;
+        }
+        .hamburguesa {
+            display: flex;
+        }
+    }
+    
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .hero_seccion2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        background-color: #e6e6e6;
+        text-align: center;
+        padding: 1rem;
+    }
+    /* CÓDIGO CORREGIDO AQUÍ */
+    
+    .redes-link {
+        transition: transform 0.3s ease;
+    }
+    
+    .redes-link:hover {
+        transform: scale(1.1);
+        /* Agranda la imagen un 10% */
+    }
+    
+    .redes-link:active {
+        transform: scale(0.95);
+        /* Encoge la imagen un 5% al ser presionada */
+    }
+    
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    
     .whatsapp-btn img {
-        width: 15vw; /* Ajusta el tamaño para pantallas más pequeñas */
+        width: 60px;
+        max-width: 55px;
+        height: auto;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
     }
-}
-.contenido-marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-    width: 100%;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    z-index: 999;
-}
-.texto-marquee {
-    display: inline-block;
-    padding-left: 100%;
-    font-size: 1rem;
-    color: black;
-    font-weight: bold;
-    animation: desplazamiento 15s linear infinite;
-}
-@keyframes desplazamiento {
-    from {
-        transform: translateX(0);
+    
+    .whatsapp-btn img:hover {
+        transform: scale(1.1);
+        /* Agranda la imagen un 10% al pasar el mouse */
     }
-    to {
-        transform: translateX(-100%);
+    
+    .whatsapp-btn a:active {
+        transform: scale(0.95);
+        /* Encoge la imagen un 5% al ser presionada */
     }
+    
+    @media (max-width: 768px) {
+        .whatsapp-btn img {
+            width: 15vw;
+            /* Ajusta el tamaño para pantallas más pequeñas */
+        }
+    }
+    
+    .contenido-marquee {
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+        width: 100%;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        z-index: 999;
+    }
+    
+    .texto-marquee {
+        display: inline-block;
+        padding-left: 100%;
+        font-size: 1rem;
+        color: black;
+        font-weight: bold;
+        animation: desplazamiento 15s linear infinite;
+    }
+    
+    @keyframes desplazamiento {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+    
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 60px;
+        /* Ajusta el ancho del botón */
+        height: 60px;
+        /* Ajusta el alto del botón */
+        background: transparent;
+        border: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .loading span {
+        display: none;
+        /* Oculta el texto del botón cuando está cargando */
+    }
+    
+    .loading::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        /* Tamaño del spinner */
+        height: 20px;
+        /* Tamaño del spinner */
+        border: 4px solid #f3f3f3;
+        /* Color claro del borde */
+        border-top: 4px solid black;
+        /* Color del borde superior */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    /* Modifica el estilo del enlace para que se parezca al botón cuando está en estado de carga */
+    
+    .tarjeta2 a.loading {
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    /* From Uiverse.io by david-mohseni */
+    
+    .wrapper {
+        display: inline-flex;
+        list-style: none;
+        width: 100%;
+        font-family: "Poppins", sans-serif;
+        justify-content: center;
+    }
+    
+    .wrapper .icon {
+        position: relative;
+        background: #fff;
+        border-radius: 50%;
+        margin: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .wrapper .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 14px;
+        background: #fff;
+        color: #fff;
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .wrapper .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #fff;
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .wrapper .icon:hover .tooltip {
+        top: -45px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    
+    .wrapper .icon:hover span,
+    .wrapper .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+    /*
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+    color: #fff;
 }
 
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 60px; /* Ajusta el ancho del botón */
-    height: 60px; /* Ajusta el alto del botón */
-    background: transparent;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+    background: #1da1f2;
+    color: #fff;
 }
-
-.loading span {
-    display: none; /* Oculta el texto del botón cuando está cargando */
-}
-
-.loading::after {
-    content: '';
-    position: absolute;
-    width: 20px; /* Tamaño del spinner */
-    height: 20px; /* Tamaño del spinner */
-    border: 4px solid #f3f3f3; /* Color claro del borde */
-    border-top: 4px solid black; /* Color del borde superior */
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Modifica el estilo del enlace para que se parezca al botón cuando está en estado de carga */
-.tarjeta2 a.loading {
-    padding: 0;
-    box-shadow: none;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+*/
+    
+    .wrapper .instagram:hover,
+    .wrapper .instagram:hover .tooltip,
+    .wrapper .instagram:hover .tooltip::before {
+        background: #e4405f;
+        color: #fff;

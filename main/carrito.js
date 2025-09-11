@@ -16,8 +16,8 @@ const fechaInput = document.getElementById('fecha-entrega');
 const confirmarPedidoBtn = document.getElementById('confirmar-pedido');
 
 /**
- * Agrupa los productos del carrito por nombre y actualiza la interfaz.
- * Asigna los event listeners para los botones de sumar/restar.
+ * Agrupa los productos del carrito por nombre y actualiza la interfaz,
+ * aplicando las promociones de 2x1 para budines y mini budines.
  */
 function actualizarCarrito() {
     const carrito = getCarrito();
@@ -26,32 +26,55 @@ function actualizarCarrito() {
 
     // Agrupa productos por nombre para el contador
     const productosAgrupados = carrito.reduce((acumulador, item) => {
-        if (!acumulador[item.nombre]) {
-            acumulador[item.nombre] = { ...item, cantidad: 0 };
+        const nombre = item.nombre;
+        if (!acumulador[nombre]) {
+            acumulador[nombre] = {...item, cantidad: 0 };
         }
-        acumulador[item.nombre].cantidad++;
+        acumulador[nombre].cantidad++;
         return acumulador;
     }, {});
 
+    // Calcula el total con promociones
     for (const nombre in productosAgrupados) {
         const item = productosAgrupados[nombre];
-        total += item.precio * item.cantidad;
+        let subtotal = 0;
+        let cantidad = item.cantidad;
+
+        // Lógica para el Budín regular
+        if (nombre.includes("Promo Budín") && !nombre.includes("(Gluten free)")) {
+            const pares = Math.floor(cantidad / 2);
+            const restantes = cantidad % 2;
+            subtotal = (pares * 14500) + (restantes * item.precio);
+        }
+        // Lógica para el Mini budín
+        else if (nombre.includes("Promo Mini")) {
+            const pares = Math.floor(cantidad / 2);
+            const restantes = cantidad % 2;
+            subtotal = (pares * 5500) + (restantes * item.precio);
+        }
+        // Lógica para otros productos
+        else {
+            subtotal = item.precio * cantidad;
+        }
+
+        total += subtotal;
+
         const li = document.createElement('li');
-        
+
         li.innerHTML = `
             <span>${item.nombre}</span>
             <div class="cantidad-control">
-                <button class="restar-btn" data-nombre="${item.nombre}">-</button>
-                <span>${item.cantidad}</span>
-                <button class="sumar-btn" data-nombre="${item.nombre}">+</button>
+                <button class="restar-btn" data-nombre="${nombre}">-</button>
+                <span>${cantidad}</span>
+                <button class="sumar-btn" data-nombre="${nombre}">+</button>
             </div>
-            <span>$${item.precio * item.cantidad}</span>
+            <span>$${subtotal}</span>
         `;
         listaCarrito.appendChild(li);
     }
-    
+
     totalElem.textContent = `Total: $${total}`;
-    
+
     // Asigna eventos a los botones de sumar/restar
     document.querySelectorAll('.sumar-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -65,7 +88,7 @@ function actualizarCarrito() {
             }
         });
     });
-    
+
     document.querySelectorAll('.restar-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const nombre = this.dataset.nombre;
@@ -89,13 +112,13 @@ function inicializarListeners() {
             alert('El carrito está vacío.');
         } else {
             // Muestra la ventana de confirmación
-            confirmacionDiv.style.display = 'block'; // Usar 'flex' para mantener el diseño CSS
+            confirmacionDiv.style.display = 'block';
 
             // Establece la fecha mínima en el calendario (hoy)
             const hoy = new Date().toISOString().split('T')[0];
             fechaInput.setAttribute('min', hoy);
-            
-            // Autoscroll suave con un pequeño retraso para asegurar el renderizado
+
+            // Autoscroll suave
             setTimeout(() => {
                 confirmacionDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
@@ -105,38 +128,64 @@ function inicializarListeners() {
     seguirComprandoBtn.addEventListener('click', () => {
         window.location.href = 'postres.html';
     });
-    
+
     confirmarPedidoBtn.addEventListener('click', () => {
         const carrito = getCarrito();
         const fecha = fechaInput.value;
         const opcionRetiro = document.querySelector('input[name="retiro"]:checked');
-        
+
         if (!fecha || !opcionRetiro) {
             alert('Por favor, selecciona una fecha y una opción de entrega.');
             return;
         }
-        
+
         const esRetiro = opcionRetiro.value === 'si';
-        
+
         const productosAgrupados = carrito.reduce((acumulador, item) => {
             if (!acumulador[item.nombre]) {
-                acumulador[item.nombre] = { ...item, cantidad: 0 };
+                acumulador[item.nombre] = {...item, cantidad: 0 };
             }
             acumulador[item.nombre].cantidad++;
             return acumulador;
         }, {});
-        
+
         let total = 0;
         let mensaje = "¡Hola! He realizado un pedido a través de su página web.\n\n";
         mensaje += "Detalles del pedido:\n";
-        
+
         for (const nombre in productosAgrupados) {
             const item = productosAgrupados[nombre];
-            const subtotal = item.precio * item.cantidad;
+            let subtotal = 0;
+            let cantidad = item.cantidad;
+            let nombreMostrado = item.nombre;
+
+            // Lógica para el Budín regular
+            if (nombre.includes("Budín de") && !nombre.includes("(Gluten free)")) {
+                const pares = Math.floor(cantidad / 2);
+                const restantes = cantidad % 2;
+                subtotal = (pares * 14500) + (restantes * item.precio);
+                if (cantidad >= 2) {
+                    nombreMostrado += ` (PROMO)`;
+                }
+            }
+            // Lógica para el Mini budín
+            else if (nombre.includes("Mini budín de")) {
+                const pares = Math.floor(cantidad / 2);
+                const restantes = cantidad % 2;
+                subtotal = (pares * 5500) + (restantes * item.precio);
+                if (cantidad >= 2) {
+                    nombreMostrado += ` (PROMO)`;
+                }
+            }
+            // Lógica para otros productos
+            else {
+                subtotal = item.precio * cantidad;
+            }
+
             total += subtotal;
-            mensaje += `- ${item.nombre} (x${item.cantidad}) - Total: $${subtotal}\n`;
+            mensaje += `- ${nombreMostrado} (x${item.cantidad}) - Total: $${subtotal}\n`;
         }
-        
+
         mensaje += `\nTotal a pagar: $${total}\n`;
         mensaje += `Fecha de entrega: ${fecha}\n`;
 
@@ -147,11 +196,11 @@ function inicializarListeners() {
         }
 
         const mensajeCodificado = encodeURIComponent(mensaje);
-        const numeroWhatsapp = "5492617028044"; 
-        
+        const numeroWhatsapp = "5492617028044";
+
         const enlaceWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${mensajeCodificado}`;
         window.open(enlaceWhatsapp, '_blank');
-        
+
         localStorage.removeItem('carrito');
         actualizarCarrito();
         confirmacionDiv.style.display = 'none';

@@ -169,8 +169,22 @@ body {
     margin-bottom: 1rem;
 }
 
+
 /* Nuevas clases para los budines con select */
-.alfajores-maicena, .postres-pote, .tarjeta-budin, .tarjeta-mini-budin, .tarjeta-sin-gluten, .tarjeta18, .tarjeta7, .tarjeta8, .tarjeta9, .tarjeta10, .tarjeta11, .tarjeta12, .tarjeta13 {
+
+.alfajores-maicena,
+.postres-pote,
+.tarjeta-budin,
+.tarjeta-mini-budin,
+.tarjeta-sin-gluten,
+.tarjeta18,
+.tarjeta7,
+.tarjeta8,
+.tarjeta9,
+.tarjeta10,
+.tarjeta11,
+.tarjeta12,
+.tarjeta13 {
     padding: 2rem;
     margin-bottom: 1rem;
     background-position: center;
@@ -179,16 +193,43 @@ body {
     text-align: center;
     border-bottom: 2px solid black;
     border-top: 2px solid black;
-    
 }
 
-.alfajores-maicena h3, .postres-pote h3, .tarjeta-budin h3, .tarjeta-mini-budin h3, .tarjeta-sin-gluten h3, .tarjeta18 h3, .tarjeta7 h3, .tarjeta8 h3, .tarjeta9 h3, .tarjeta10 h3, .tarjeta11 h3, .tarjeta12 h3, .tarjeta13 h3 {
+.alfajores-maicena h3,
+.postres-pote h3,
+.tarjeta-budin h3,
+.tarjeta-mini-budin h3,
+.tarjeta-sin-gluten h3,
+.tarjeta18 h3,
+.tarjeta7 h3,
+.tarjeta8 h3,
+.tarjeta9 h3,
+.tarjeta10 h3,
+.tarjeta11 h3,
+.tarjeta12 h3,
+.tarjeta13 h3 {
     text-align: center;
     margin: 1rem;
     font-size: 2rem;
 }
 
-.alfajores-maicena label, .postres-pote label, .postres-pote p, .tarjeta-budin label, .tarjeta-budin p, .tarjeta-mini-budin label, .tarjeta-mini-budin p, .tarjeta-sin-gluten label, .tarjeta-sin-gluten p, .tarjeta18 p, .tarjeta7 p, .tarjeta8 p, .tarjeta9 p, .tarjeta10 p, .tarjeta11 p, .tarjeta12 p, .tarjeta13 p{
+.alfajores-maicena label,
+.postres-pote label,
+.postres-pote p,
+.tarjeta-budin label,
+.tarjeta-budin p,
+.tarjeta-mini-budin label,
+.tarjeta-mini-budin p,
+.tarjeta-sin-gluten label,
+.tarjeta-sin-gluten p,
+.tarjeta18 p,
+.tarjeta7 p,
+.tarjeta8 p,
+.tarjeta9 p,
+.tarjeta10 p,
+.tarjeta11 p,
+.tarjeta12 p,
+.tarjeta13 p {
     text-align: center;
     font-size: 1rem;
 }
@@ -200,12 +241,16 @@ body {
     align-items: center;
     gap: 0rem;
 }
+
 .mirar {
     display: flex;
     justify-content: center;
 }
 
-.mostrar, .btn, .mostrar-mini, .mostrar-sg {
+.mostrar,
+.btn,
+.mostrar-mini,
+.mostrar-sg {
     text-decoration: none;
     color: white;
     font-weight: bold;
@@ -220,7 +265,10 @@ body {
     margin-top: 0.5rem;
 }
 
-.mostrar:hover, .btn:hover, .mostrar-mini:hover, .mostrar-sg:hover {
+.mostrar:hover,
+.btn:hover,
+.mostrar-mini:hover,
+.mostrar-sg:hover {
     transform: translate(-3px);
     background: #0001;
 }
@@ -245,17 +293,16 @@ button {
         transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
         visibility: hidden;
     }
-
     .navegador2.active {
         max-height: 300px;
         padding: 1rem;
         visibility: visible;
     }
-
     .hamburguesa {
         display: flex;
     }
 }
+
 .carrito {
     display: flex;
     position: fixed;
@@ -280,9 +327,11 @@ button {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    margin: 0; /* Elimina margen extra */
+    margin: 0;
+    /* Elimina margen extra */
     transition: background-color 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); /* Sombra para el botón de WhatsApp */
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    /* Sombra para el botón de WhatsApp */
 }
 
 #btn-whatsapp:hover {
@@ -300,6 +349,7 @@ button {
     font-size: 0.9em;
     margin-top: 5px;
 }
+
 footer {
     display: flex;
     justify-content: center;
@@ -347,22 +397,17 @@ footer p {
     margin: 0;
 }
 
-.contenido-marquee {
-    overflow: hidden;
-    white-space: nowrap;
+.marquee-promo {
+    font-size: 1rem;
+    font-weight: bold;
     width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
-.texto-marquee {
-    display: inline-block;
-    padding-left: 100%;
-    font-size: 1rem;
-    color: white;
-    font-weight: bold;
-    animation: desplazamiento 15s linear infinite;
+.promocion {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 @keyframes desplazamiento {
@@ -471,6 +516,7 @@ footer p {
 .cerrar-modal:hover {
     color: #333;
 }
+
 select {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-bottom: 1rem;
@@ -481,6 +527,7 @@ select {
     width: 100%;
     border: none;
 }
+
 @keyframes show {
     from {
         opacity: 0;
@@ -503,28 +550,39 @@ img {
 html {
     scroll-behavior: smooth;
 }
+
+
 /* Estilo para el icono de carga */
+
 .fa-shopping-cart.loading {
     display: none;
 }
 
+
 /* El spinner */
+
 .icono-wrapper::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1.25rem; /* 20px */
-    height: 1.25rem; /* 20px */
-    border: 0.1875rem solid rgba(255, 255, 255, 0.3); /* 3px */
+    width: 1.25rem;
+    /* 20px */
+    height: 1.25rem;
+    /* 20px */
+    border: 0.1875rem solid rgba(255, 255, 255, 0.3);
+    /* 3px */
     border-top-color: white;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    display: none; /* Oculto por defecto */
+    display: none;
+    /* Oculto por defecto */
 }
 
+
 /* Clases para controlar el spinner */
+
 .carrito.loading .icono-wrapper .fa-shopping-cart {
     display: none;
 }
@@ -533,7 +591,9 @@ html {
     display: flex;
 }
 
+
 /* Animación del spinner */
+
 @keyframes spin {
     to {
         transform: translate(-50%, -50%) rotate(360deg);

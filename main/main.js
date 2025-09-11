@@ -32,3 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const instagram = document.querySelector('.instagram');
+    if (instagram) {
+        instagram.addEventListener('click', () => {
+            window.open('https://www.instagram.com/aromaabakery?igsh=ZWczb3drZTdpdnpn', '_blank');
+        });
+    }
+});
