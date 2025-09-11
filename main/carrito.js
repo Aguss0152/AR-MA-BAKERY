@@ -28,49 +28,100 @@ function actualizarCarrito() {
     const productosAgrupados = carrito.reduce((acumulador, item) => {
         const nombre = item.nombre;
         if (!acumulador[nombre]) {
-            acumulador[nombre] = {...item, cantidad: 0 };
+            acumulador[nombre] = { ...item,
+                cantidad: 0
+            };
         }
         acumulador[nombre].cantidad++;
         return acumulador;
     }, {});
 
-    // Calcula el total con promociones
+    // Agrupa productos por tipo de promoción para calcular el subtotal de las promos
+    const promosAgrupadas = {};
+
     for (const nombre in productosAgrupados) {
         const item = productosAgrupados[nombre];
-        let subtotal = 0;
-        let cantidad = item.cantidad;
+        let tipoPromo = 'otros';
 
-        // Lógica para el Budín regular
-        if (nombre.includes("Promo Budín") && !nombre.includes("(Gluten free)")) {
-            const pares = Math.floor(cantidad / 2);
-            const restantes = cantidad % 2;
-            subtotal = (pares * 14500) + (restantes * item.precio);
-        }
-        // Lógica para el Mini budín
-        else if (nombre.includes("Promo Mini")) {
-            const pares = Math.floor(cantidad / 2);
-            const restantes = cantidad % 2;
-            subtotal = (pares * 5500) + (restantes * item.precio);
-        }
-        // Lógica para otros productos
-        else {
-            subtotal = item.precio * cantidad;
+        if (nombre.includes("Budín de") && !nombre.includes("Mini") && !nombre.includes("(Gluten free)")) {
+            tipoPromo = 'budin';
+        } else if (nombre.includes("Mini budín de")) {
+            tipoPromo = 'mini-budin';
         }
 
-        total += subtotal;
+        if (!promosAgrupadas[tipoPromo]) {
+            promosAgrupadas[tipoPromo] = {
+                totalCantidad: 0,
+                items: []
+            };
+        }
+        promosAgrupadas[tipoPromo].totalCantidad += item.cantidad;
+        promosAgrupadas[tipoPromo].items.push(item);
+    }
+    
+    // Calcula el total con promociones y renderiza los productos
+    for (const tipoPromo in promosAgrupadas) {
+        const grupo = promosAgrupadas[tipoPromo];
+        let subtotalGrupo = 0;
 
-        const li = document.createElement('li');
+        if (tipoPromo === 'budin') {
+            const pares = Math.floor(grupo.totalCantidad / 2);
+            const restantes = grupo.totalCantidad % 2;
+            subtotalGrupo = (pares * 14500) + (restantes * grupo.items[0].precio);
+            
+            // Renderiza cada producto del grupo
+            grupo.items.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.nombre}</span>
+                    <div class="cantidad-control">
+                        <button class="restar-btn" data-nombre="${item.nombre}">-</button>
+                        <span>${item.cantidad}</span>
+                        <button class="sumar-btn" data-nombre="${item.nombre}">+</button>
+                    </div>
+                    <span>$${item.precio * item.cantidad}</span>
+                `;
+                listaCarrito.appendChild(li);
+            });
+            
+        } else if (tipoPromo === 'mini-budin') {
+            const pares = Math.floor(grupo.totalCantidad / 2);
+            const restantes = grupo.totalCantidad % 2;
+            subtotalGrupo = (pares * 5500) + (restantes * grupo.items[0].precio);
+            
+            // Renderiza cada producto del grupo
+            grupo.items.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>${item.nombre}</span>
+                    <div class="cantidad-control">
+                        <button class="restar-btn" data-nombre="${item.nombre}">-</button>
+                        <span>${item.cantidad}</span>
+                        <button class="sumar-btn" data-nombre="${item.nombre}">+</button>
+                    </div>
+                    <span>$${item.precio * item.cantidad}</span>
+                `;
+                listaCarrito.appendChild(li);
+            });
 
-        li.innerHTML = `
-            <span>${item.nombre}</span>
-            <div class="cantidad-control">
-                <button class="restar-btn" data-nombre="${nombre}">-</button>
-                <span>${cantidad}</span>
-                <button class="sumar-btn" data-nombre="${nombre}">+</button>
-            </div>
-            <span>$${subtotal}</span>
-        `;
-        listaCarrito.appendChild(li);
+        } else {
+            // Renderiza los productos que no son de promoción
+            grupo.items.forEach(item => {
+                const li = document.createElement('li');
+                subtotalGrupo += item.precio * item.cantidad;
+                li.innerHTML = `
+                    <span>${item.nombre}</span>
+                    <div class="cantidad-control">
+                        <button class="restar-btn" data-nombre="${item.nombre}">-</button>
+                        <span>${item.cantidad}</span>
+                        <button class="sumar-btn" data-nombre="${item.nombre}">+</button>
+                    </div>
+                    <span>$${item.precio * item.cantidad}</span>
+                `;
+                listaCarrito.appendChild(li);
+            });
+        }
+        total += subtotalGrupo;
     }
 
     totalElem.textContent = `Total: $${total}`;
@@ -120,7 +171,10 @@ function inicializarListeners() {
 
             // Autoscroll suave
             setTimeout(() => {
-                confirmacionDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                confirmacionDiv.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }, 100);
         }
     });
@@ -143,7 +197,9 @@ function inicializarListeners() {
 
         const productosAgrupados = carrito.reduce((acumulador, item) => {
             if (!acumulador[item.nombre]) {
-                acumulador[item.nombre] = {...item, cantidad: 0 };
+                acumulador[item.nombre] = { ...item,
+                    cantidad: 0
+                };
             }
             acumulador[item.nombre].cantidad++;
             return acumulador;
@@ -160,7 +216,7 @@ function inicializarListeners() {
             let nombreMostrado = item.nombre;
 
             // Lógica para el Budín regular
-            if (nombre.includes("Budín de") && !nombre.includes("(Gluten free)")) {
+            if (nombre.includes("Budín de") && !nombre.includes("Mini") && !nombre.includes("(Gluten free)")) {
                 const pares = Math.floor(cantidad / 2);
                 const restantes = cantidad % 2;
                 subtotal = (pares * 14500) + (restantes * item.precio);
