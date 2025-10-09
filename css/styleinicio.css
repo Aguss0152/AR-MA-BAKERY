@@ -11,7 +11,7 @@ body {
     width: 100%;
     background-color: #e6e6e6;
     font-size: 1rem;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 .navegador {
@@ -125,6 +125,11 @@ span {
     flex-grow: 1; 
     max-width: 500px; 
     margin: 0 auto;
+}
+
+.titulo a{
+    text-decoration: none;
+    color: #000000;
 }
 
 .titulo h1 {
@@ -279,6 +284,7 @@ html {
     display: flex;
     justify-content: flex-start;
     color: black;
+    gap: 10px;
 }
 
 .wrapper .icon {
@@ -341,6 +347,13 @@ html {
 .wrapper .instagram:hover .tooltip::before {
     background: #e4405f;
     color: #fff;
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877f2;
+  color: #fff;
 }
 
 .oculto{
