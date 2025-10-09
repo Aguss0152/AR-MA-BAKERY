@@ -5,75 +5,532 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Aróma Bakery</title>
     <link rel="stylesheet" href="css/styleinicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
 
-    <body>
+<body>
 
-        <nav class="navegador">
-            <div class="logo">ARÓMA BAKERY</div>
-            <ul class="nav_links">
-                <li><a href="#inicio">INICIO</a></li>
-                <li><a href="#postres">POSTRES</a></li>
-                <li><a href="html/condiciones.html">INFO Y CONDICIONES</a></li>
-            </ul>
-            <button class="hamburguesa">
-          <span></span>
-          <span></span>
-          <span></span>
-       </button>
-        </nav>
+    <nav class="nav_promocion">
+        <marquee behavior="scroll" direction="left" class="promocion">¡Gran promoción en nuestros budines 2 x 14.500 y
+            mini budines 2 x $5.500!</marquee>
+    </nav>
 
-        <nav>
-            <marquee behavior="scroll" direction="left" class="promocion">¡Gran promoción en nuestros budines 2 x 14.500 y mini budines 2 x $5.500!</marquee>
-        </nav>
+    <nav class="navegador">
+    <div class="logo">ARÓMA <span>BAKERY</span></div>
+    
+    <button id="carrito" class="carrito">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="contador-carrito" class="contador-productos">0</span>
+    </button>
+    
+    <ul class="nav_links">
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#cocina">POSTRES</a></li>
+        <li><a href="html/condiciones.html">INFO Y CONDICIONES</a></li>
+    </ul>
 
-        <header id="inicio" class="hero_seccion">
-            <video autoplay muted loop playsinline id="miVideo">
-        <source src="css/fotos/WhatsApp Video 2025-08-16 at 7.14.26 PM.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-        </video>
-        </header>
-        <main>
-            <section id="cocina" class="tarjetas_contenedor">
-                <h2>Catálogo</h2>
-                <div class="tarjeta2" id="postres">
-                    <h3>Postres</h3>
-                    <div class="parrafo">
-                        <p>Para realizar un pedido de nuestros deliciosos postres, por favor ingrese aquí.</p>
-                    </div>
-                    <div class="mirar">
-                        <a href="html/postres.html" id="postres-link"><span>Ver</span></a>
-                    </div>
-                </div>
-                </div>
-            </section>
-        </main>
-        <header id="inicio2" class="hero_seccion2">
-            <h1>Redes Sociales</h1>
-            <!-- From Uiverse.io by david-mohseni -->
+    <button class="hamburguesa">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+    <header id="inicio" class="hero_seccion">
+
+        <div class="titulo">
+            <h2>Un Detalle Dulce</h2>
+            <p>Endulza su día con nuestro postre especial. Hecho con amor, detalle perfecto para expresar tu cariño de
+                forma inolvidable. ¡Ordena ahora y sorpréndela!</p>
+            <a href="#box1"><button id="cta" class="cta">Pedilo ahora</button></a>
+
+            <h2>Redes Sociales</h2>    
             <ul class="wrapper">
                 <li class="icon instagram">
                     <span id="instagram" class="tooltip">Instagram</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-      <path
-        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
-      ></path>
-    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" class="bi bi-instagram"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                        </path>
+                    </svg>
                 </li>
             </ul>
+        </div>
 
-            <div class="whatsapp-btn">
-                <a href="https://wa.me/5492617028044?text=Hola%20Aróma%20Bakery!%20Soy%20[Tu%20nombre]quisiera%20realizar%20un%20pedido.🥧" target="_blank" class="redes-link">
-                    <img id="whatsapp" src="css/fotos/whatsapp-icon-free-png.webp" alt="WhatsApp">
-                </a>
+        <div class="img-header">
+
+            <div class="img_uno">
+                <img src="/css/fotos/WhatsApp Image 2025-10-04 at 12.37.59 AM.jpeg"
+                    alt="Tu navegador no soporta la imagen">
             </div>
-        </header>
-        <footer>
-            <p>&copy; 2025 Todos los derechos reservados.</p>
-        </footer>
-        <script src="main/main.js"></script>
-    </body>
+
+            <div class="img_dos">
+                <img src="css/fotos/WhatsApp Image 2025-10-04 at 12.38.00 AM.jpeg"
+                    alt="Tu navegador no soporta la imagen">
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="titulos-tienda">
+
+        <h1>Menú</h1>
+
+    </div>
+
+    <section id="cocina" class="tarjetas_contenedor">
+
+        <div class="tarjeta-postre">
+
+            <h2 id="budines">Budines</h2>
+
+            <marquee class="marquee-promo" behavior="scroll" direction="left" scrollamount="10">
+                <p>¡Promo de 2 x $14.500!</p>
+            </marquee>
+
+            <img src="../css/fotos/budin de chocolate.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <label for="selector-3">Selecciona sabor:</label>
+
+                <select class="precio-selector" data-target-price="precio-3">
+
+                    <option value="chocolate" data-nombre="Budín de Chocolate" data-precio="9000">Chocolate
+                    </option>
+                    <option value="limon" data-nombre="Budín de Limón" data-precio="8000">Limón</option>
+                    <option value="vainilla" data-nombre="Budín de Vainilla" data-precio="8000">Vainilla
+                    </option>
+                    <option value="banana" data-nombre="Budín de Banana" data-precio="8000">Banana</option>
+                    <option value="naranja-mandarina" data-nombre="Budín de Naranja y Mandarina" data-precio="8000">
+                        Naranja y Mandarina</option>
+                    <option value="zanahoria" data-nombre="Budín de Zanahoria" data-precio="10000">Zanahoria
+                    </option>
+
+                </select>
+
+                <p>Precio: <span id="precio-3" class="precio">$9.000</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+
+        </div>
+
+        <div class="tarjeta-postre">
+
+            <h2 class="titulo-sticky-promo" id="mini-budines">Mini budines</h2>
+
+            <marquee class="marquee-promo" behavior="scroll" direction="left">
+                <p>¡Promo de 2 x $5.500!</p>
+            </marquee>
+
+            <img src="../css/fotos/mini budines.jpeg" alt="">
+
+            <div class="parrafo">
+
+                <label for="selector-4">Selecciona sabor:</label>
+
+                <select class="precio-selector" data-target-price="precio-4">
+                    <option value="limon" data-nombre="Mini budín de Limón" data-precio="3500">Limón
+                    </option>
+                    <option value="vainilla" data-nombre="Mini budín de Vainilla" data-precio="3500">
+                        Vainilla</option>
+                    <option value="banana" data-nombre="Mini budín de Banana" data-precio="3500">Banana
+                    </option>
+                    <option value="chocolate" data-nombre="Mini budín de Chocolate" data-precio="3500">
+                        Chocolate</option>
+                    <option value="naranja-mandarina" data-nombre="Mini budín de Naranja y Mandarina"
+                        data-precio="3500">Naranja y Mandarina</option>
+                    <option value="zanahoria" data-nombre="Mini budín de Zanahoria" data-precio="3500">
+                        Zanahoria</option>
+
+                </select>
+
+                <p>Precio: <span id="precio-4" class="precio">$9.500</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+
+        <div class="tarjeta-postre">
+
+            <h2 id="budines-sin-gluten">Budines (Sin gluten)</h2>
+
+            <img src="../css/fotos/budin banana.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <label for="selector-1">Selecciona el sabor:</label>
+
+                <select class="precio-selector" data-target-price="precio-2">
+
+                    <option value="banana" data-nombre="(Gluten free) Budín de Banana" data-precio="9500">
+                        Banana</option>
+                    <option value="limon" data-nombre="(Gluten free) Budín de Limón" data-precio="9500">
+                        Limón</option>
+                    <option value="vainilla" data-nombre="(Gluten free) Budín de Vainilla" data-precio="9500">Vainilla
+                    </option>
+                    <option value="chocolate" data-nombre="(Gluten free) Budín de Chocolate" data-precio="10500">
+                        Chocolate</option>
+                    <option value="naranja-mandarina" data-nombre="(Gluten free) Budín de Naranja y Mandarina"
+                        data-precio="9500">Naranja
+                        y Mandarina</option>
+                    <option value="zanahoria" data-nombre="(Gluten free) Budín de Zanahoria" data-precio="11500">
+                        Zanahoria</option>
+
+                </select>
+
+                <p>Precio: <span id="precio-2" class="precio">$9.500</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+    </section>
+
+
+    <div class="titulos-tienda">
+
+        <h2 id="reposteria">Reposteria</h2>
+
+    </div>
+
+
+    <section id="cocina" class="tarjetas_contenedor">
+
+        <div class="tarjeta-postre">
+
+            <h3>Postre en Pote</h3>
+
+            <img src="../css/fotos/postre pote.jpeg" alt="">
+
+            <div class="parrafo">
+
+                <label for="postre-selector">Selecciona sabor:</label>
+
+                <select id="postre-selector" name="saborpostre" class="precio-selector" data-target-price="precio-parrafo">
+                    <option value="oreo" data-nombre="Postre en Pote de Oreo" data-precio="7000">Oreo
+                    </option>
+                    <option value="chocotorta" data-nombre="Postre en Pote de chocotorta" data-precio="7000">Chocotorta
+                    </option>
+                    <option value="cheesecake" data-nombre="Postre en Pote - Cheesecake de Frutilla" data-precio="7000">
+                        Cheesecake de frutilla</option>
+                    <option value="durazno" data-nombre="Postre en Pote - Cheesecake de Durazno" data-precio="7000">
+                        Cheesecake de durazno</option>
+                    <option value="lemonpie" data-nombre="Postre en Pote - Lemon Pie" data-precio="7000">
+                        Lemon Pie</option>
+                </select>
+
+                <p>Precio: <span id="precio-parrafo" class="precio">$7.000</span></p>
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+
+        <div class="tarjeta-postre">
+
+            <h3>Alfajores de Maicena</h3>
+
+            <img src="../css/fotos/Alfajores de maicena.jpeg" alt="">
+
+            <div class="parrafo">
+
+                <label for="selector-1">Selecciona cantidad:</label>
+
+                <select class="precio-selector" data-target-price="precio-1">
+
+                    <option value="alfajores-en-pote" data-nombre="Alfajores en Pote" data-precio="3000">En
+                        pote</option>
+                    <option value="6 ud" data-nombre="Alfajores (6-ud.)" data-precio="5500">Alfajores de
+                        (6-ud.)</option>
+                    <option value="12 ud" data-nombre="Alfajores (12-ud.)" data-precio="11500">Alfajores de
+                        (12-ud.)</option>
+                    <option value="24 ud" data-nombre="Alfajores (24-ud.)" data-precio="23500">Alfajores de
+                        (24-ud.)</option>
+
+                </select>
+
+                <p>Precio: <span id="precio-1" class="precio">$3.000</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+
+        <div class="tarjeta-postre">
+
+            <h3>Mini torta</h3>
+
+            <img src="../css/fotos/mini tortas.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <label for="postre-selector">Selecciona sabor:</label>
+
+                <select class="precio-selector" data-target-price="precio-7">
+                    <option data-nombre="Mini torta (Tres leches)" value="tres leches vainilla" data-precio="5000">Tres leches
+                        vainilla</option>
+                    <option data-nombre="Mini torta (Chocolate)" value="chocolate" data-precio="5000">Chocolate</option>
+                    <option data-nombre="Mini torta (Oreo)" value="oreo" data-precio="5000">Oreo</option>
+                    <option data-nombre="Mini torta (Frutilla)" value="frutilla" data-precio="5000">Frutilla</option>
+                    <option data-nombre="Mini torta (Red Velvet)" value="red velvet" data-precio="5000">Red Velvet</option>
+                </select>
+
+                <p>Precio: <span id="precio-7" class="precio">$5.000</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre" data-nombre="Mini Brownies 25ud" data-precio="20000">
+
+            <h3>Mini Brownies</h3>
+
+            <img src="../css/fotos/mini brownies.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <p>Contiene: Dulce de leche</p>
+                <p>Precio 25ud: $20.000</p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre" data-nombre="Torta de Brownie" data-precio="35000">
+
+            <h3>Torta de Brownie</h3>
+
+            <img src="../css/fotos/torta de brownie.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <p>Precio: $35.000</p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre" data-nombre="Tarta de manzana" data-precio="23000">
+
+            <h3>Tarta de manzana</h3>
+
+            <img src="../css/fotos/apple pie.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+                <p>Precio: $23.000</p>
+                <button class="agregar btn-agregar">Agregar</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-postre" data-nombre="Chocotorta" data-precio="35000">
+
+            <h3>Chocotorta</h3>
+
+            <img src="../css/fotos/chocotorta.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <p>Contiene: Chocolinas, dulce de leche repostero y queso crema</p>
+                <p>Deco: $10.000</p>
+                <p>Precio: $35.000</p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre" data-nombre="Lemon pie" data-precio="25000">
+
+            <h3>Lemon Pie</h3>
+
+            <img src="../css/fotos/lemonpie.jpg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <p>Contiene: Curd de limón, merengue italiano</p>
+                <p>Precio: $25.000</p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre">
+
+            <h3>Galletas de Vainilla</h3>
+
+            <img src="../css/fotos/galletas de vainilla.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <label for="postre-selector">Selecciona cantidad:</label>
+
+                <select class="precio-selector" data-target-price="precio-6">
+                    <option value="12 unidades" data-nombre="Galletas de Vainilla (12ud)" data-precio="7500">12 Unidades
+                    </option>
+                    <option value="24 unidades" data-nombre="Galletas de Vainilla (24ud)" data-precio="13500">24 Unidades
+                    </option>
+                </select>
+
+                <p>Precio: <span id="precio-6" class="precio">$7500</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre">
+
+            <h3>Galletas de Avena</h3>
+
+            <img src="../css/fotos/galletas de avena.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="parrafo">
+
+                <label for="selector-5">Selecciona cantidad:</label>
+
+                <select class="precio-selector" data-target-price="precio-5">
+
+                    <option value="12 unidades" data-nombre="Galletas de Avena (12ud)" data-precio="10000">12 Unidades</option>
+                    <option value="24 unidades" data-nombre="Galletas de Avena (24ud)" data-precio="19500">24 Unidades</option>
+
+                </select>
+
+                <p>Precio: <span id="precio-5" class="precio">$10000</span></p>
+
+                <button class="agregar btn-agregar">Agregar</button>
+
+            </div>
+        </div>
+
+        <div class="tarjeta-postre" id="box1">
+
+            <h3>Box 1</h3>
+
+            <img src="css/fotos/WhatsApp Image 2025-10-04 at 12.38.00 AM.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="visible" id="box1Corta">
+
+                <p>Tarta de brownie...</p>
+
+            </div>
+
+            <div class="oculto" id="box1Completa">
+
+                <p>Tarta de brownie de 8cm</p>
+                <p>2 cupcakes con relleno de dulce de leche, sabores a elección (vainilla o chocolate)</p>
+                <p>2 mini brownies</p>
+                <p>2 alfajores de maicena</p>
+
+            </div>
+
+            <button class="agregar" onclick="alternarDescripcion(this, 'box1Corta', 'box1Completa')">Ver más...</button>
+
+            <p>Precio: <span id="precio-8" class="precio">$23000</span></p>
+            
+            <button class="agregar btn-agregar" data-nombre="Box 1" data-precio="23000">Agregar</button>
+
+        </div>
+
+        <div class="tarjeta-postre">
+
+            <h3>Box 2</h3>
+
+            <img src="css/fotos/WhatsApp Image 2025-10-04 at 12.37.59 AM.jpeg" alt="Tu navegador no soporta la imagen">
+
+            <div class="visible" id="box2Corta">
+
+                <p>Mini torta de chocola...</p>
+
+            </div>
+
+            <div class="oculto" id="box2Completa">
+
+                <p>Mini torta de chocolate con relleno de dulce de leche y cobertura de ganache de chocolate</p>
+                <p>2 cupcakes sabores a elección (vainilla o chocolate)</p>
+                <p>2 mini brownies</p>
+                <p>2 alfajores de maicena</p>
+
+            </div>
+
+            <button class="agregar" onclick="alternarDescripcion(this, 'box2Corta', 'box2Completa')">Ver más...</button>
+
+            <p>Precio: <span id="precio-9" class="precio">$26000</span></p>
+
+            <button class="agregar btn-agregar" data-nombre="Box 2" data-precio="26000">Agregar</button>
+
+        </div>
+
+    </section>
+    
+
+    <header id="inicio2" class="hero_seccion2">
+
+        <div class="whatsapp-btn">
+            <a href="https://wa.me/5492617028044?text=Hola%20Aróma%20Bakery!%20Soy%20[Tu%20nombre]quisiera%20realizar%20un%20pedido.🥧"
+                target="_blank" class="redes-link">
+                <img id="whatsapp" src="css/fotos/whatsapp-icon-free-png.webp" alt="WhatsApp">
+            </a>
+        </div>
+    </header>
+    
+    
+    <div id="carrito-panel" class="carrito-panel">
+        <div class="carrito-header">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Tu Pedido</h2>
+            <button id="cerrar-carrito">X</button>
+        </div>
+        <div id="lista-productos" class="lista-productos">
+            <p class="carrito-vacio-msj">Tu carrito está vacío.</p>
+        </div>
+        <div class="carrito-footer">
+            <p>Total: <span id="carrito-total">$0</span></p>
+            <button id="btn-comprar" disabled>Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal-fondo">
+        <div class="modal-contenido">
+            <h3>Detalles de la Entrega</h3>
+            <button id="cerrar-checkout">X</button>
+
+            <label for="fecha-entrega">Fecha de Entrega (Mínimo: Mañana):</label>
+            <input type="date" id="fecha-entrega">
+
+            <p>Opciones de Entrega:</p>
+            <label>
+                <input type="radio" name="opcion-entrega" value="Retiro en Domicilio" checked>
+                Retiro en Domicilio
+            </label><br>
+            <label>
+                <input type="radio" name="opcion-entrega" value="Coordinar la entrega"> 
+                Coordinar la entrega
+            </label>
+            
+            <p id="error-fecha" style="color: red;"></p>
+
+            <button id="enviar-whatsapp">Confirmar y Enviar por WhatsApp</button>
+        </div>
+    </div>
+    
+    
+    <footer>
+        <p>&copy; 2025 Todos los derechos reservados.</p>
+    </footer>
+    <script src="main/main.js"></script>
+</body>
 
 </html>
