@@ -495,17 +495,10 @@
 
     </section>
 
-    <div class="mapa-container">
-    <iframe 
-        src="https://maps.app.goo.gl/iunXGg4ccpeAasj86"
-        width="100%" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+    <div class="mapa">
+        <h2>En donde estamos?</h2>
+        <div id="map"></div>
+    </div>
 
 
     <header id="inicio2" class="hero_seccion2">
@@ -561,7 +554,8 @@
     <footer>
         <p>&copy; 2025 Todos los derechos reservados.</p>
     </footer>
-    <script src="main/main.js"></script>
-</body>
 
+</body>
+<script src="main/main.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3XEP3NsM91gadzvwqBz1oBGwqoGqtcFQ&callback=iniciarMap"></script>
 </html>

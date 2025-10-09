@@ -333,4 +333,16 @@ function configurarFechaMinima() {
 
     const minDate = yyyy + '-' + mm + '-' + dd;
     fechaEntregaInput.min = minDate;
-}
+};
+
+function iniciarMap(){
+    var coord = {lat:-32.9906024 ,lng:-68.7914612};
+    var map = new google.maps.Map(document.getElementById('map'),{
+      zoom: 17,
+      center: coord
+    });
+    var marker = new google.maps.Marker({
+      position: coord,
+      map: map
+    });
+};

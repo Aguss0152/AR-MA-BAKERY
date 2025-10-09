@@ -624,3 +624,15 @@ footer{
 marquee{
     display: none;
 }
+
+#map{
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    width: 100%;
+}
+
+.mapa{
+    text-align: center;
+    background-color: #aaaaaa;
+}
