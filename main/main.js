@@ -3,7 +3,7 @@
 // =================================================================
 
 // Número de WhatsApp al que se enviará el pedido
-const WSP_NUMBER = '5492617028044'; // Ejemplo: 5492617028044
+const WSP_NUMBER = '5492617028044'; 
 
 let carrito = [];
 
@@ -29,7 +29,9 @@ const contadorCarrito = document.getElementById('contador-carrito'); // Contador
  * @param {number} precio Precio unitario del producto.
  */
 function agregarAlCarrito(nombre, precio) {
-    const indiceExistente = carrito.findIndex(item => item.nombre === nombre);
+    // Usamos el nombre y el precio como identificadores únicos para la decoración
+    const id = `${nombre}-${precio}`; 
+    const indiceExistente = carrito.findIndex(item => `${item.nombre}-${item.precio}` === id);
 
     if (indiceExistente !== -1) {
         carrito[indiceExistente].cantidad++;
@@ -147,35 +149,56 @@ function generarMensajeWhatsApp() {
 
 
 // =================================================================
-// 3. LISTENERS Y MANEJO DE EVENTOS (¡Sección corregida!)
+// 3. LISTENERS Y MANEJO DE EVENTOS
 // =================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarritoHTML(); // Inicializa el carrito al cargar la página
 
-    // Listener general para agregar productos
+    // Listener general para agregar productos (MODIFICADO para Deco)
     document.querySelectorAll('.btn-agregar').forEach(boton => {
         boton.addEventListener('click', (e) => {
             const tarjeta = e.target.closest('.tarjeta-postre');
             const selector = tarjeta ? tarjeta.querySelector('.precio-selector') : null;
 
             let nombre, precio;
+            let precioBase = 0;
 
             if (selector) {
                 // Producto con selector (Budines, Alfajores, etc.)
                 const opcionSeleccionada = selector.options[selector.selectedIndex];
                 nombre = opcionSeleccionada.getAttribute('data-nombre');
-                // Asegurarse de que el precio es un número entero
                 precio = parseInt(opcionSeleccionada.getAttribute('data-precio'));
-            } else if (tarjeta && tarjeta.hasAttribute('data-nombre')) {
-                // Producto simple sin selector (Brownie, Chocotorta, etc.)
+            
+            } else if (tarjeta) {
+                // Lógica para Chocotorta y otros productos simples (MODIFICADA)
+                
+                // 1. Obtiene el precio base de la tarjeta (Chocotorta)
+                precioBase = parseInt(tarjeta.getAttribute('data-precio')) || 0;
                 nombre = tarjeta.getAttribute('data-nombre');
-                precio = parseInt(tarjeta.getAttribute('data-precio'));
-            } else if (e.target.hasAttribute('data-nombre')) {
-                // Producto Box (el botón "Agregar" tiene los datos directos)
-                nombre = e.target.getAttribute('data-nombre');
-                precio = parseInt(e.target.getAttribute('data-precio'));
+
+                // 2. Verifica si se presionó el botón de DECORACIÓN
+                if (e.target.getAttribute('data-action') === 'agregar-deco') {
+                    const precioDeco = parseInt(tarjeta.getAttribute('data-precio-deco')) || 0;
+                    
+                    // Calcula el precio total y cambia el nombre para identificarlo en el carrito
+                    precio = precioBase + precioDeco;
+                    nombre = nombre + ' (c/ Decoración)'; 
+                    
+                } else if (e.target.getAttribute('data-action') === 'agregar-base') {
+                    // Si es el botón base, usa solo el precio base de la tarjeta
+                    precio = precioBase; 
+
+                } else if (e.target.hasAttribute('data-nombre')) {
+                    // Lógica para productos Box (el botón tiene los datos directos)
+                    nombre = e.target.getAttribute('data-nombre');
+                    precio = parseInt(e.target.getAttribute('data-precio'));
+                } else {
+                    // Si no tiene action y solo es una tarjeta simple (ej: Brownie)
+                    precio = precioBase;
+                }
             }
+
 
             if (nombre && !isNaN(precio)) {
                 agregarAlCarrito(nombre, precio);
@@ -190,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = e.target;
         
         // --- Lógica para botones de SUMAR/RESTAR ---
-        // Busca el botón que tiene data-action (sin importar si el clic fue en el <button> o el <i>)
         const botonControl = target.closest('[data-action]');
         if (botonControl) {
             const index = parseInt(botonControl.getAttribute('data-index'));
@@ -200,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // --- Lógica para botón de ELIMINAR (btn-eliminar) ---
-        // Busca el botón con la clase .btn-eliminar (sin importar si el clic fue en el <button> o el <i>)
         const botonEliminar = target.closest('.btn-eliminar');
 
         if (botonEliminar) {
@@ -221,8 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Abrir/Cerrar Modal de Checkout
     btnComprar.addEventListener('click', () => {
-        carritoPanel.classList.remove('visible'); // Oculta el panel del carrito
-        checkoutModal.classList.add('visible'); // Muestra el modal de checkout
+        carritoPanel.classList.remove('visible'); 
+        checkoutModal.classList.add('visible'); 
         configurarFechaMinima();
     });
 
