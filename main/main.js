@@ -346,3 +346,9 @@ function iniciarMap(){
       map: map
     });
 };
+
+const map = document.getElementById('map');
+
+    map.addEventListener('click', function(){
+        window.open('https://maps.app.goo.gl/iunXGg4ccpeAasj86', '_blank');
+    });
