@@ -122,6 +122,12 @@ function generarMensajeWhatsApp() {
 
     errorFecha.textContent = ''; // Limpiar error si la fecha es válida
 
+    // ===============================================================
+    // CORRECCIÓN DE FECHA: Forzamos la zona horaria UTC al formatear
+    // para evitar el error de "un día menos" por el desplazamiento.
+    // ===============================================================
+    const fechaFormateada = new Date(fecha).toLocaleDateString('es-AR', { timeZone: 'UTC' }); 
+
     // 1. Detalles de los productos
     let detallesProductos = '¡Hola! Quiero hacer un pedido:\n\n*Productos:*\n';
     let total = 0;
@@ -132,7 +138,7 @@ function generarMensajeWhatsApp() {
     });
 
     // 2. Información de entrega/retiro
-    const detallesEntrega = `\n*Total a pagar:* $${total.toLocaleString('es-AR')}\n*Fecha de Entrega:* ${new Date(fecha).toLocaleDateString('es-AR')}\n*Opción de Entrega:* ${opcionEntrega}\n\n`;
+    const detallesEntrega = `\n*Total a pagar:* $${total.toLocaleString('es-AR')}\n*Fecha de Entrega:* ${fechaFormateada}\n*Opción de Entrega:* ${opcionEntrega}\n\n`;
 
     const mensajeFinal = detallesProductos + detallesEntrega + 'Mi nombre es:';
     
@@ -352,3 +358,69 @@ const map = document.getElementById('map');
     map.addEventListener('click', function(){
         window.open('https://maps.app.goo.gl/iunXGg4ccpeAasj86', '_blank');
     });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Configuración inicial
+    const textElement = document.getElementById('typing-text');
+    // Array con las palabras que se mostrarán
+    const words = ["Pasteles", "Catering", "Mesas Dulces", "Decoración"];
+    
+    let wordIndex = 0; // Índice de la palabra actual en el array
+    let charIndex = 0; // Índice del carácter actual de la palabra
+    const typingSpeed = 80; // Velocidad de escritura (ms)
+    const deletingSpeed = 80;  // Velocidad de borrado (ms)
+    const delayBeforeDelete = 1400; // Tiempo de espera antes de borrar (ms)
+    const delayBeforeType = 500; // Tiempo de espera antes de escribir la siguiente palabra (ms)
+
+    // =========================================================
+    // 2. FUNCIONES DE LÓGICA
+    // =========================================================
+
+    /**
+     * Inicia el ciclo de escritura de un carácter a la vez.
+     */
+    function type() {
+        // Obtenemos la palabra actual
+        const currentWord = words[wordIndex]; 
+
+        if (charIndex < currentWord.length) {
+            // Añade el siguiente carácter
+            textElement.textContent += currentWord.charAt(charIndex);
+            charIndex++;
+            // Llama a 'type' de nuevo después de un breve retraso
+            setTimeout(type, typingSpeed);
+        } else {
+            // Una vez que la palabra está completa, espera y luego borra
+            setTimeout(erase, delayBeforeDelete);
+        }
+    }
+
+    /**
+     * Borra el último carácter escrito uno a uno.
+     */
+    function erase() {
+        const currentWord = words[wordIndex]; 
+        
+        if (charIndex > 0) {
+            // Elimina el último carácter
+            textElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            // Llama a 'erase' de nuevo después de un breve retraso
+            setTimeout(erase, deletingSpeed);
+        } else {
+            // Una vez que el texto está vacío:
+            // 1. Avanza a la siguiente palabra en el array (y vuelve al inicio si es la última)
+            wordIndex = (wordIndex + 1) % words.length; 
+            
+            // 2. Espera un momento y luego comienza a escribir la nueva palabra
+            setTimeout(type, delayBeforeType);
+        }
+    }
+
+    // =========================================================
+    // 3. INICIO
+    // =========================================================
+    
+    // Inicia el ciclo tan pronto como la página cargue
+    type();
+});

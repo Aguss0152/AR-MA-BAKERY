@@ -107,7 +107,7 @@ span {
     border-bottom: 2px solid black;
     width: 100%;
     height: auto;
-    background-image: url(/css/fotos/🌹beautiful\ flowers\ pic🌹.jfif);
+    background-image: url(/css/fotos/postres\ en\ inicio.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -572,7 +572,7 @@ html {
         text-align: center;
         padding: 15px; 
         margin-top: 50px; 
-        min-height: 400px; 
+        min-height: 450px; 
         justify-content: center;
     }
     
@@ -635,4 +635,9 @@ marquee{
 .mapa{
     text-align: center;
     background-color: #aaaaaa;
+}
+
+.encabezado, .cursor{
+    color: #ff549b;
+    text-shadow: 2px 2px 2px black;
 }
