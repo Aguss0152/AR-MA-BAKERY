@@ -2,9 +2,7 @@
 // 1. CONFIGURACIÓN INICIAL Y VARIABLES GLOBALES
 // =================================================================
 
-// Número de WhatsApp al que se enviará el pedido
-const WSP_NUMBER = '5492617028044'; 
-
+const WSP_NUMBER = '5492617028044';
 let carrito = [];
 
 // Elementos del DOM (para el carrito y modal)
@@ -16,21 +14,19 @@ const checkoutModal = document.getElementById('checkout-modal');
 const cerrarCheckoutBoton = document.getElementById('cerrar-checkout');
 const enviarWhatsappBoton = document.getElementById('enviar-whatsapp');
 const fechaEntregaInput = document.getElementById('fecha-entrega');
-const contadorCarrito = document.getElementById('contador-carrito'); // Contador de productos
+const contadorCarrito = document.getElementById('contador-carrito');
+
+// Elementos de la lógica del mapa y el logo
+const mapElement = document.getElementById('map');
+const vortexLogo = document.getElementById("logo-vortex");
+
 
 // =================================================================
 // 2. FUNCIONES DEL CARRITO DE COMPRAS
 // =================================================================
 
-/**
- * Agrega un producto al carrito o incrementa su cantidad.
- * IMPORTANTE: No abre el panel del carrito, solo actualiza el contenido y el contador.
- * @param {string} nombre Nombre del producto.
- * @param {number} precio Precio unitario del producto.
- */
 function agregarAlCarrito(nombre, precio) {
-    // Usamos el nombre y el precio como identificadores únicos para la decoración
-    const id = `${nombre}-${precio}`; 
+    const id = `${nombre}-${precio}`;
     const indiceExistente = carrito.findIndex(item => `${item.nombre}-${item.precio}` === id);
 
     if (indiceExistente !== -1) {
@@ -41,10 +37,6 @@ function agregarAlCarrito(nombre, precio) {
     actualizarCarritoHTML();
 }
 
-/**
- * Actualiza la vista del carrito (productos listados, total y contador).
- * SE HAN REEMPLAZADO LOS EMOTICONOS +/- POR ICONOS DE FONT AWESOME.
- */
 function actualizarCarritoHTML() {
     const listaProductos = document.getElementById('lista-productos');
     const carritoTotalSpan = document.getElementById('carrito-total');
@@ -52,7 +44,7 @@ function actualizarCarritoHTML() {
     
     listaProductos.innerHTML = '';
     let total = 0;
-    let totalItems = 0; // Variable para contar el total de productos
+    let totalItems = 0;
 
     if (carrito.length === 0) {
         listaProductos.innerHTML = '<p class="carrito-vacio-msj">Tu carrito está vacío.</p>';
@@ -62,7 +54,7 @@ function actualizarCarritoHTML() {
         carrito.forEach((item, index) => {
             const subtotal = item.precio * item.cantidad;
             total += subtotal;
-            totalItems += item.cantidad; // Suma la cantidad de este producto al total de items
+            totalItems += item.cantidad;
 
             const productoDiv = document.createElement('div');
             productoDiv.classList.add('producto-carrito');
@@ -80,25 +72,18 @@ function actualizarCarritoHTML() {
         });
 
         btnComprar.disabled = false;
-        // Actualiza el contador del nav con la cantidad total de productos
-        contadorCarrito.textContent = totalItems; 
+        contadorCarrito.textContent = totalItems;
     }
 
     carritoTotalSpan.textContent = `$${total.toLocaleString('es-AR')}`;
 }
 
-/**
- * Maneja la lógica de incrementar o decrementar la cantidad de un producto.
- * @param {number} index Índice del producto en el array carrito.
- * @param {string} action 'sumar' o 'restar'.
- */
 function cambiarCantidad(index, action) {
     if (action === 'sumar') {
         carrito[index].cantidad++;
     } else if (action === 'restar') {
         carrito[index].cantidad--;
         if (carrito[index].cantidad <= 0) {
-            // Eliminar el producto si la cantidad llega a 0
             carrito.splice(index, 1);
         }
     }
@@ -106,26 +91,23 @@ function cambiarCantidad(index, action) {
 }
 
 /**
- * Genera y abre el enlace de WhatsApp con el detalle del pedido.
+ * Genera y abre el enlace de WhatsApp con el detalle del pedido,
+ * incluyendo la opción de entrega y la opción de pago.
  */
 function generarMensajeWhatsApp() {
     const fecha = fechaEntregaInput.value;
     const errorFecha = document.getElementById('error-fecha');
-    // Obtenemos el valor de la opción seleccionada
+    
+    // Captura de las nuevas opciones
     const opcionEntrega = document.querySelector('input[name="opcion-entrega"]:checked').value; 
+    const opcionPago = document.querySelector('input[name="opcion-pago"]:checked').value; 
 
-    // Validación de fecha
     if (!fecha) {
         errorFecha.textContent = 'Por favor, selecciona la fecha de entrega.';
         return;
     }
 
-    errorFecha.textContent = ''; // Limpiar error si la fecha es válida
-
-    // ===============================================================
-    // CORRECCIÓN DE FECHA: Forzamos la zona horaria UTC al formatear
-    // para evitar el error de "un día menos" por el desplazamiento.
-    // ===============================================================
+    errorFecha.textContent = '';
     const fechaFormateada = new Date(fecha).toLocaleDateString('es-AR', { timeZone: 'UTC' }); 
 
     // 1. Detalles de los productos
@@ -133,21 +115,29 @@ function generarMensajeWhatsApp() {
     let total = 0;
     carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
-        detallesProductos += `- ${item.cantidad} x ${item.nombre} ($${subtotal.toLocaleString('es-AR')})\n`; 
+        const precioUnitario = (item.precio).toLocaleString('es-AR');
+        detallesProductos += `- ${item.cantidad} x ${item.nombre} ($${precioUnitario} c/u)\n`; 
         total += subtotal;
     });
 
-    // 2. Información de entrega/retiro
-    const detallesEntrega = `\n*Total a pagar:* $${total.toLocaleString('es-AR')}\n*Fecha de Entrega:* ${fechaFormateada}\n*Opción de Entrega:* ${opcionEntrega}\n\n`;
+    // 2. Información de entrega/retiro y PAGO
+    const totalFormateado = total.toLocaleString('es-AR');
+    const detallesEntrega = `
+*Total a pagar:* $${totalFormateado}
+*Fecha de Entrega:* ${fechaFormateada}
+*Opción de Entrega:* ${opcionEntrega}
+*Opción de Pago:* ${opcionPago}
 
-    const mensajeFinal = detallesProductos + detallesEntrega + 'Mi nombre es:';
+Mi nombre es:`;
+
+    const mensajeFinal = detallesProductos + detallesEntrega;
     
     // 3. Codificar y enviar por WhatsApp
     const urlWhatsApp = `https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent(mensajeFinal)}`;
     
     window.open(urlWhatsApp, '_blank');
     
-    // Opcional: Reiniciar el carrito después de enviar
+    // Limpieza
     carrito = [];
     actualizarCarritoHTML();
     checkoutModal.classList.remove('visible');
@@ -155,13 +145,112 @@ function generarMensajeWhatsApp() {
 
 
 // =================================================================
-// 3. LISTENERS Y MANEJO DE EVENTOS
+// 3. FUNCIONES COMPLEMENTARIAS
+// =================================================================
+
+function actualizarPrecioEnTarjeta() {
+    const selectedOption = this.options[this.selectedIndex];
+    const nuevoPrecio = selectedOption.getAttribute('data-precio');
+    const targetId = this.getAttribute('data-target-price');
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+        targetElement.textContent = `$${parseInt(nuevoPrecio).toLocaleString('es-AR')}`;
+    }
+}
+
+function configurarFechaMinima() {
+    const hoy = new Date();
+    hoy.setDate(hoy.getDate() + 1); 
+    const dd = String(hoy.getDate()).padStart(2, '0');
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+    const yyyy = hoy.getFullYear();
+
+    const minDate = yyyy + '-' + mm + '-' + dd;
+    fechaEntregaInput.min = minDate;
+}
+
+/**
+ * Función que Google Maps llama al cargarse (Global).
+ */
+function iniciarMap(){
+    var coord = {lat:-32.9906024 ,lng:-68.7914612};
+    var map = new google.maps.Map(mapElement,{
+        zoom: 17,
+        center: coord
+    });
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    });
+};
+
+
+// =================================================================
+// 4. LÓGICA DE TIPIADO (EFECTO ANIMADO)
+// =================================================================
+
+function iniciarEfectoTipeo() {
+    const textElement = document.getElementById('typing-text');
+    const words = ["Pasteles", "Catering", "Mesas Dulces", "Decoración"];
+    
+    let wordIndex = 0;
+    let charIndex = 0;
+    const typingSpeed = 80;
+    const deletingSpeed = 80;
+    const delayBeforeDelete = 1400;
+    const delayBeforeType = 500;
+
+    function type() {
+        const currentWord = words[wordIndex]; 
+        if (charIndex < currentWord.length) {
+            textElement.textContent += currentWord.charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingSpeed);
+        } else {
+            setTimeout(erase, delayBeforeDelete);
+        }
+    }
+
+    function erase() {
+        const currentWord = words[wordIndex]; 
+        if (charIndex > 0) {
+            textElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, deletingSpeed);
+        } else {
+            wordIndex = (wordIndex + 1) % words.length; 
+            setTimeout(type, delayBeforeType);
+        }
+    }
+
+    type();
+}
+
+
+// =================================================================
+// 5. LISTENERS Y MANEJO DE EVENTOS (ÚNICO DOMContentLoaded)
 // =================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    actualizarCarritoHTML(); // Inicializa el carrito al cargar la página
+    actualizarCarritoHTML(); 
+    iniciarEfectoTipeo();
 
-    // Listener general para agregar productos (MODIFICADO para Deco)
+    // --- LOGICA DEL MAPA ---
+    if (mapElement) {
+        mapElement.addEventListener('click', function(){
+            window.open('https://maps.google.com/?q=-32.9906024,-68.7914612', '_blank');
+        });
+    }
+
+    // --- LOGICA DEL LOGO VORTEX ---
+    if (vortexLogo) {
+        vortexLogo.addEventListener("click", function(){
+            window.open("https://vortexcloud.vercel.app/", "_blank");
+        });
+    }
+
+    // --- LOGICA DE PRODUCTOS ---
     document.querySelectorAll('.btn-agregar').forEach(boton => {
         boton.addEventListener('click', (e) => {
             const tarjeta = e.target.closest('.tarjeta-postre');
@@ -171,36 +260,26 @@ document.addEventListener('DOMContentLoaded', () => {
             let precioBase = 0;
 
             if (selector) {
-                // Producto con selector (Budines, Alfajores, etc.)
                 const opcionSeleccionada = selector.options[selector.selectedIndex];
                 nombre = opcionSeleccionada.getAttribute('data-nombre');
                 precio = parseInt(opcionSeleccionada.getAttribute('data-precio'));
             
             } else if (tarjeta) {
-                // Lógica para Chocotorta y otros productos simples (MODIFICADA)
-                
-                // 1. Obtiene el precio base de la tarjeta (Chocotorta)
                 precioBase = parseInt(tarjeta.getAttribute('data-precio')) || 0;
                 nombre = tarjeta.getAttribute('data-nombre');
 
-                // 2. Verifica si se presionó el botón de DECORACIÓN
                 if (e.target.getAttribute('data-action') === 'agregar-deco') {
                     const precioDeco = parseInt(tarjeta.getAttribute('data-precio-deco')) || 0;
-                    
-                    // Calcula el precio total y cambia el nombre para identificarlo en el carrito
                     precio = precioBase + precioDeco;
                     nombre = nombre + ' (c/ Decoración)'; 
                     
                 } else if (e.target.getAttribute('data-action') === 'agregar-base') {
-                    // Si es el botón base, usa solo el precio base de la tarjeta
                     precio = precioBase; 
 
                 } else if (e.target.hasAttribute('data-nombre')) {
-                    // Lógica para productos Box (el botón tiene los datos directos)
                     nombre = e.target.getAttribute('data-nombre');
                     precio = parseInt(e.target.getAttribute('data-precio'));
                 } else {
-                    // Si no tiene action y solo es una tarjeta simple (ej: Brownie)
                     precio = precioBase;
                 }
             }
@@ -214,11 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Listener CORREGIDO para los botones de cantidad y eliminar dentro del carrito
+    // --- LOGICA DEL CARRITO (MODIFICAR CANTIDAD / ELIMINAR) ---
     document.getElementById('lista-productos').addEventListener('click', (e) => {
         const target = e.target;
         
-        // --- Lógica para botones de SUMAR/RESTAR ---
         const botonControl = target.closest('[data-action]');
         if (botonControl) {
             const index = parseInt(botonControl.getAttribute('data-index'));
@@ -227,9 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return; 
         }
         
-        // --- Lógica para botón de ELIMINAR (btn-eliminar) ---
         const botonEliminar = target.closest('.btn-eliminar');
-
         if (botonEliminar) {
             const index = parseInt(botonEliminar.getAttribute('data-index'));
             carrito.splice(index, 1);
@@ -237,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Abrir/Cerrar Carrito Panel (Solo con el botón del nav)
+    // --- LÓGICA DE APERTURA/CIERRE DE PANELES ---
     carritoBoton.addEventListener('click', () => {
         carritoPanel.classList.toggle('visible');
     });
@@ -246,7 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
         carritoPanel.classList.remove('visible');
     });
 
-    // Abrir/Cerrar Modal de Checkout
     btnComprar.addEventListener('click', () => {
         carritoPanel.classList.remove('visible'); 
         checkoutModal.classList.add('visible'); 
@@ -257,23 +332,15 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutModal.classList.remove('visible');
     });
     
-    // Botón Finalizar Compra a WhatsApp
     enviarWhatsappBoton.addEventListener('click', generarMensajeWhatsApp);
 
-    // =================================================================
-    // 4. LÓGICA DE SELECTORES (PRECIO DINÁMICO)
-    // =================================================================
-
+    // --- LÓGICA DE SELECTORES (PRECIO DINÁMICO) ---
     document.querySelectorAll('.precio-selector').forEach(selector => {
         selector.addEventListener('change', actualizarPrecioEnTarjeta);
-        // Llamar una vez para establecer el precio inicial
         actualizarPrecioEnTarjeta.call(selector); 
     });
-
-    // =================================================================
-    // 5. LÓGICA DE NAVEGACIÓN Y HAMBURGUESA
-    // =================================================================
     
+    // --- LÓGICA DE NAVEGACIÓN Y HAMBURGUESA ---
     const hamburguesa = document.querySelector('.hamburguesa');
     const navLinks = document.querySelector('.nav_links');
 
@@ -281,146 +348,5 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
         hamburguesa.classList.toggle('active');
     });
-    
-});
 
-
-// =================================================================
-// 6. FUNCIONES COMPLEMENTARIAS
-// =================================================================
-
-/**
- * Función que actualiza el precio visible en la tarjeta cuando cambia el selector.
- */
-function actualizarPrecioEnTarjeta() {
-    const selectedOption = this.options[this.selectedIndex];
-    const nuevoPrecio = selectedOption.getAttribute('data-precio');
-    const targetId = this.getAttribute('data-target-price');
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-        // Formatear el precio con separadores de miles
-        targetElement.textContent = `$${parseInt(nuevoPrecio).toLocaleString('es-AR')}`;
-    }
-}
-
-/**
- * Función original para alternar la visibilidad de la descripción (para los Box).
- */
-function alternarDescripcion(button, idCorta, idCompleta) {
-    const corta = document.getElementById(idCorta);
-    const completa = document.getElementById(idCompleta);
-
-    if (corta.classList.contains('visible')) {
-        corta.classList.remove('visible');
-        corta.classList.add('oculto');
-        completa.classList.remove('oculto');
-        completa.classList.add('visible');
-        button.textContent = 'Ver menos...';
-    } else {
-        corta.classList.remove('oculto');
-        corta.classList.add('visible');
-        completa.classList.remove('visible');
-        completa.classList.add('oculto');
-        button.textContent = 'Ver más...';
-    }
-}
-
-/**
- * Configura el campo de fecha para que el mínimo sea mañana.
- */
-function configurarFechaMinima() {
-    const hoy = new Date();
-    // Suma un día (mañana)
-    hoy.setDate(hoy.getDate() + 1); 
-    const dd = String(hoy.getDate()).padStart(2, '0');
-    const mm = String(hoy.getMonth() + 1).padStart(2, '0'); // Enero es 0!
-    const yyyy = hoy.getFullYear();
-
-    const minDate = yyyy + '-' + mm + '-' + dd;
-    fechaEntregaInput.min = minDate;
-};
-
-function iniciarMap(){
-    var coord = {lat:-32.9906024 ,lng:-68.7914612};
-    var map = new google.maps.Map(document.getElementById('map'),{
-      zoom: 17,
-      center: coord
-    });
-    var marker = new google.maps.Marker({
-      position: coord,
-      map: map
-    });
-};
-
-const map = document.getElementById('map');
-
-    map.addEventListener('click', function(){
-        window.open('https://maps.app.goo.gl/iunXGg4ccpeAasj86', '_blank');
-    });
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Configuración inicial
-    const textElement = document.getElementById('typing-text');
-    // Array con las palabras que se mostrarán
-    const words = ["Pasteles", "Catering", "Mesas Dulces", "Decoración"];
-    
-    let wordIndex = 0; // Índice de la palabra actual en el array
-    let charIndex = 0; // Índice del carácter actual de la palabra
-    const typingSpeed = 80; // Velocidad de escritura (ms)
-    const deletingSpeed = 80;  // Velocidad de borrado (ms)
-    const delayBeforeDelete = 1400; // Tiempo de espera antes de borrar (ms)
-    const delayBeforeType = 500; // Tiempo de espera antes de escribir la siguiente palabra (ms)
-
-    // =========================================================
-    // 2. FUNCIONES DE LÓGICA
-    // =========================================================
-
-    /**
-     * Inicia el ciclo de escritura de un carácter a la vez.
-     */
-    function type() {
-        // Obtenemos la palabra actual
-        const currentWord = words[wordIndex]; 
-
-        if (charIndex < currentWord.length) {
-            // Añade el siguiente carácter
-            textElement.textContent += currentWord.charAt(charIndex);
-            charIndex++;
-            // Llama a 'type' de nuevo después de un breve retraso
-            setTimeout(type, typingSpeed);
-        } else {
-            // Una vez que la palabra está completa, espera y luego borra
-            setTimeout(erase, delayBeforeDelete);
-        }
-    }
-
-    /**
-     * Borra el último carácter escrito uno a uno.
-     */
-    function erase() {
-        const currentWord = words[wordIndex]; 
-        
-        if (charIndex > 0) {
-            // Elimina el último carácter
-            textElement.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-            // Llama a 'erase' de nuevo después de un breve retraso
-            setTimeout(erase, deletingSpeed);
-        } else {
-            // Una vez que el texto está vacío:
-            // 1. Avanza a la siguiente palabra en el array (y vuelve al inicio si es la última)
-            wordIndex = (wordIndex + 1) % words.length; 
-            
-            // 2. Espera un momento y luego comienza a escribir la nueva palabra
-            setTimeout(type, delayBeforeType);
-        }
-    }
-
-    // =========================================================
-    // 3. INICIO
-    // =========================================================
-    
-    // Inicia el ciclo tan pronto como la página cargue
-    type();
 });

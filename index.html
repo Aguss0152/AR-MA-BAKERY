@@ -28,7 +28,7 @@
         <ul class="nav_links">
             <li><a href="#inicio">INICIO</a></li>
             <li><a href="#cocina">POSTRES</a></li>
-            <li><a href="html/condiciones.html">INFO Y CONDICIONES</a></li>
+            <li><a href="#footer">INFO Y CONDICIONES</a></li>
         </ul>
 
         <button class="hamburguesa">
@@ -431,64 +431,6 @@
             </div>
         </div>
 
-        <div class="tarjeta-postre" id="box1">
-
-            <h3>Box 1</h3>
-
-            <img src="css/fotos/WhatsApp Image 2025-10-04 at 12.38.00 AM.jpeg" alt="Tu navegador no soporta la imagen">
-
-            <div class="visible" id="box1Corta">
-
-                <p>Tarta de brownie...</p>
-
-            </div>
-
-            <div class="oculto" id="box1Completa">
-
-                <p>Tarta de brownie de 8cm</p>
-                <p>2 cupcakes con relleno de dulce de leche, sabores a elección (vainilla o chocolate)</p>
-                <p>2 mini brownies</p>
-                <p>2 alfajores de maicena</p>
-
-            </div>
-
-            <button class="agregar" onclick="alternarDescripcion(this, 'box1Corta', 'box1Completa')">Ver más...</button>
-
-            <p>Precio: <span id="precio-8" class="precio">$23000</span></p>
-
-            <button class="agregar btn-agregar" data-nombre="Box 1" data-precio="23000">Agregar</button>
-
-        </div>
-
-        <div class="tarjeta-postre">
-
-            <h3>Box 2</h3>
-
-            <img src="css/fotos/WhatsApp Image 2025-10-04 at 12.37.59 AM.jpeg" alt="Tu navegador no soporta la imagen">
-
-            <div class="visible" id="box2Corta">
-
-                <p>Mini torta de chocola...</p>
-
-            </div>
-
-            <div class="oculto" id="box2Completa">
-
-                <p>Mini torta de chocolate con relleno de dulce de leche y cobertura de ganache de chocolate</p>
-                <p>2 cupcakes sabores a elección (vainilla o chocolate)</p>
-                <p>2 mini brownies</p>
-                <p>2 alfajores de maicena</p>
-
-            </div>
-
-            <button class="agregar" onclick="alternarDescripcion(this, 'box2Corta', 'box2Completa')">Ver más...</button>
-
-            <p>Precio: <span id="precio-9" class="precio">$26000</span></p>
-
-            <button class="agregar btn-agregar" data-nombre="Box 2" data-precio="26000">Agregar</button>
-
-        </div>
-
     </section>
 
     <div class="mapa">
@@ -524,7 +466,7 @@
 
     <div id="checkout-modal" class="modal-fondo">
         <div class="modal-contenido">
-            <h3>Detalles de la Entrega</h3>
+            <h3>Detalles de la Entrega y Pago</h3>
             <button id="cerrar-checkout">X</button>
 
             <label for="fecha-entrega">Fecha de Entrega (Mínimo: Mañana):</label>
@@ -539,6 +481,20 @@
                 <input type="radio" name="opcion-entrega" value="Coordinar la entrega">
                 Coordinar la entrega
             </label>
+            
+            <hr style="margin: 15px 0;">
+            
+            <p>Opciones de Pago:</p>
+            <label>
+                <input type="radio" name="opcion-pago" value="Transferencia Bancaria (Mercado Pago)" checked>
+                Transferencia Bancaria (Mercado Pago)
+            </label><br>
+            <label>
+                <input type="radio" name="opcion-pago" value="Efectivo (al retirar/entregar)">
+                Efectivo (al retirar/entregar)
+            </label>
+            
+            <hr style="margin: 15px 0;">
 
             <p id="error-fecha" style="color: red;"></p>
 
@@ -546,12 +502,44 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4 id="footer">Compañia</h4>
+                    <ul>
+                        <li><a href="html/acerca.html">Acerca de Nosotros</a></li>
+                        <li><a href="html/condiciones.html">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="html/preguntas.html">Preguntas Frecuentes (FAQ)</a></li>
+                        <li><a href="html/pedido.html">¿Cómo realizar mi pedido?</a></li>
+                        <li><a href="html/entregasretiros.html">Entregas y Retiro</a></li>
+                        <li><a href="html/cancelacion.html">Políticas de cancelación</a></li>
+                    </ul>
 
-    <footer>
-        <p>&copy; 2025 Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Creado con</h4>
+                    <div class="creacion-footer">
+                        <img id="logo-vortex" src="css/fotos/logo-vortex.png" alt="Tu navegador no soporta la imagen" width="100px" height="auto">
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <footer>
+        <div class="marca">
+            <p>&reg;2025 - Aroma Bakery - Todos los derechos reservados</p>
+        </div>
+    </footer>
 </body>
+
 <script src="main/main.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3XEP3NsM91gadzvwqBz1oBGwqoGqtcFQ&callback=iniciarMap"></script>
+
 </html>

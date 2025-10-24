@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    width: 100%;
+    background-color: #e6e6e6;
+    font-size: 1rem;
+    overflow-x: hidden;
+    text-align: center;
+}
+.acerca, .preguntas{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    gap: 20px;
+}
+
+.acerca h2{
+    border-bottom: 2px solid #ff549b;
+}
+
+.aroma{
+    color: #ff549b;
+    font-weight: bold;
+}
+
+.navegador i{
+    color: black;
+    display: flex;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.border {
+    border-bottom: 2px solid #ff549b;
+}
+
+.respuestas {
+    display: none;
+}
+
+.respuestas-active {
+    display: block;
+}
+
+.marca {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #ff549b;
+    color: white;
+}
