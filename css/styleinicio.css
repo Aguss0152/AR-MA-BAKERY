@@ -109,13 +109,12 @@ span {
     align-items: center;
     border-bottom: 2px solid black;
     width: 100%;
-    height: auto;
     background-image: url(/css/fotos/Various\ Desserts\ That\ Are\ Full\ On\ The\ Table\ From\ The\ Top\ View\,\ Cakes\,\ Donuts\,\ And\ Sweets\,\ Fruit\,\ Delicious\ Bakery\ Background\ Зображення\ —\ огляд\ 27\ Стокові\ фото\,\ векторні\ зображення\ й\ відео.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     margin-top: 50px;
-    min-height: 400px;
+    min-height: 800px;
 }
 
 .titulo {
